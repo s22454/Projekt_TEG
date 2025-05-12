@@ -1,12 +1,13 @@
-# Projekt_TEG
+# Projekt TEG
 
 ## Spis tresci
 - [Ogólna koncepcja](#ogólna-koncepcja)
 - [Członkowie](#członkowie)
 - [TODO](#todo)
 - [Podział zadań](#podział-zadań)
-- [Kamienie milowe](#kamienie-milowe)
 - [Plan spotkań](#plan-spotkań)
+- [Kamienie milowe](#kamienie-milowe)
+- [Struktura git](#struktura-git)
 
 ## Ogólna koncepcja
 Projekt ma polegać na stworzeniu systemu wieloagentowego obsługującego interakcje gracza z postaciami NPC na podstawie prostego demo w Unity. Postacie NPC mają mieć możliwość komunikacji zarówno z graczem jak w między sobą. Każdy z nich ma odgrywać określoną rolę oraz przekazywać graczowi tylko informacje związane z jego rolą w grze. Dodatkowo interakcje gracza z NPC mają wpływać na interakcje z pozostałymi NPC.
@@ -42,6 +43,11 @@ Michał Dębski <br/>
 
 </details>
 
+## Plan spotkań
+
+1. *12.05.2025r.* - omówienie założeń i opracowanie planu dalszego rozwoju projektu
+2. *16.05.2025r.* - prezentacja dotychczasowych postępów oraz podział zadań związanych z implementacją elementów potrzebnych do demo
+
 ## Podział zadań
 | Mateusz Sasor-Adamczyk | Błażej Bartkiewicz | Cezary Daniłowski | Michał Dębski |
 | -- | -- | -- | -- |
@@ -65,7 +71,9 @@ Michał Dębski <br/>
    4. Agent komunikujący się za pośrednictwem konsoli
 3. System wieloagentowy w Unity
 
-## Plan spotkań
+## Struktura git
+main - środowisko produkcyjne zawierające wersje projektu gotowe do prezentacji <br/>
+dev - środowisko deweloperskie zawierające wersje proejektu z zaimplementowanymi poszczególnymi funkcjonalnościami <br/>
+imienne - środowiska deweloperskie w których poszczególni członkowie zespołu zajmują się implementacją poszczególnych funkcjonalności
 
-1. *12.05.2025r.* - omówienie założeń i opracowanie planu dalszego rozwoju projektu
-2. *16.05.2025r.* - prezentacja dotychczasowych postępów oraz podział zadań związanych z implementacją elementów potrzebnych do demo
+![diagram-struktury-git](./readme_img/diagram_struktury_git.drawio.png)
