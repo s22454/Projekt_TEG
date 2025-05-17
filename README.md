@@ -24,8 +24,8 @@ Michał Dębski <br/>
 <details open>
   <summary>Na 16.05.2025r.</summary>
 
-  - [ ] Wypełcić jire
-  - [ ] Sprawdzić czy w unity da się opdalać pythona
+  - [x] Wypełcić jire
+  - [x] Sprawdzić czy w unity da się opdalać pythona
   - [ ] Rozpoczęcie projektu w pythonie
   - [ ] Podstawowe diagramy
   - [ ] Stworzenie koncepcji miasta
