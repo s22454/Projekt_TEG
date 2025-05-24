@@ -24,22 +24,32 @@ Michał Dębski <br/>
 <details open>
   <summary>Na 16.05.2025r.</summary>
 
-  - [ ] Wypełcić jire
-  - [ ] Sprawdzić czy w unity da się opdalać pythona
-  - [ ] Rozpoczęcie projektu w pythonie
-  - [ ] Podstawowe diagramy
+  - [x] Wypełcić jire
+  - [x] Sprawdzić czy w unity da się opdalać pythona
+  - [x] Rozpoczęcie projektu w pythonie
+  - [x] Podstawowe diagramy
   - [ ] Stworzenie koncepcji miasta
+
+</details>
+
+<details open>
+  <summary>20.05.2025r.</summary>
+
+  - [ ] Model w Unity
+  - [ ] Podstawowy agent działający w konsoli
+  - [ ] Stworzenie menadżera który będzie synchronizował działanie agentów
+  - [ ] Stworzenie API od strony Unity działającego z modelami NPC
+  - [ ] Stworzenie API w pythonie działającego z LLM'em
+  - [ ] Opracowanie formatu pdf (lub czegoś innego) dla RAG'u dla LLM'a
 
 </details>
 
 <details open>
   <summary>Next</summary>
 
-  - [ ] Model w Unity
-  - [ ] Podstawowy agent działający w konsoli
-  - [ ] Stworzenie menadżera który będzie synchronizował działanie agentów
   - [ ] Stworzenie drugiego agenta oraz zaprojektowanie interakcji między nimi
   - [ ] Opracowanie prezentacji
+  - [ ] Wywoływanie metod z poziomu LLM'a
 
 </details>
 
@@ -53,6 +63,8 @@ Michał Dębski <br/>
 | -- | -- | -- | -- |
 | Wypełnić jire | Rozpoczęcie projektu w pythonie | Podstawowe diagramy | Stworzenie koncepcji miasta |
 | Sprawdzić czy w unity da się opdalać pythona | | |
+| Stworzenie API od strony Unity | Podstawowy agent działający | Opracowanie formatu pdf (lub czegoś innego) dla RAG'u dla LLM'a | Model w Unity |
+| Stworzenie API w pythonie |  | Stworzenie menadżera |  |
 
 ## Kamienie milowe
 1. Rozpoczęcie projektu
