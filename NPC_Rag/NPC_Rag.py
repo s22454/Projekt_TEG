@@ -67,7 +67,7 @@ class RAG:
     
 
 if __name__ == "__main__":
-    pdf_path = r"RAGAgent\Data\Kowal3.pdf"
+    pdf_path = r"NPC_Rag\Data\Kowal3.pdf"
     rag = RAG(pdf_path)
 
     question = "są rasy których nie lubisz?"
