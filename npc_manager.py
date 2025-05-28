@@ -9,18 +9,15 @@ from langchain.chains import RetrievalQA
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 
+from NPC_Rag.NPC_Rag import RAG
+
 class NPCManager:
     def __init__(self, data_folder):
         self.data_folder = data_folder
         self.npc_data = {}
-        self.npc_qa_chain = {}
-        self.npc_sources = {}
-        self.embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+        self.npc_agents = {}
+
         load_dotenv()
-        self.llm = ChatOpenAI(
-            model_name="gpt-4o-mini",
-            openai_api_key=os.environ['OPENAI_API_KEY']
-        )
         self.load_all_npcs()
 
     def load_all_npcs(self):
@@ -31,59 +28,14 @@ class NPCManager:
                 with open(path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 self.npc_data[npc_name] = data
-                self._initialize_npc(npc_name, data)
-
-    def _flatten_npc_to_text(self, data):
-        parts = [
-            f"{data['imie']} - {data['rola']}",
-            data["opis"],
-            f"Nastawienie do gracza: {data.get('nastawienie_do_gracza', 'neutralne')}",
-            "Przedmioty w ofercie:" + ''.join(f"\n- {p['nazwa']} ({p['cena']})" for p in data["przedmioty"]),
-            f"Relacje:\n  Lubi: {', '.join(data['relacje'].get('lubi', []))}\n  Nie lubi: {', '.join(data['relacje'].get('nie_lubi', []))}",
-            "Plotki:" + ''.join(f"\n- {p}" for p in data["plotki"]),
-            f"Waluta: {data['waluta']}"
-        ]
-        return "\n".join(parts)
-
-    def _initialize_npc(self, npc_name, data):
-        text = self._flatten_npc_to_text(data)
-        doc = Document(page_content=text)
-        splitter = RecursiveCharacterTextSplitter(chunk_size=300, chunk_overlap=20)
-        chunks = splitter.split_documents([doc])
-        self.npc_sources[npc_name] = chunks
-
-        vs = FAISS.from_documents(chunks, self.embedding_model)
-        retriever = vs.as_retriever(search_kwargs={"k": 3})
-        qa = RetrievalQA.from_chain_type(
-            llm=self.llm,
-            retriever=retriever,
-            return_source_documents=True
-        )
-        self.npc_qa_chain[npc_name] = qa
-
-    def get_chain(self, npc_name):
-        return self.npc_qa_chain.get(npc_name, None)
-
-    def get_npc_data(self, npc_name):
-        return self.npc_data.get(npc_name, None)
+                self.npc_agents[npc_name] = RAG(data)
 
     def share_info(self, from_npc, to_npc, message):
         if "plotki" not in self.npc_data[to_npc]:
             self.npc_data[to_npc]["plotki"] = []
+
         self.npc_data[to_npc]["plotki"].append(f"[Plotka od {from_npc}]: {message}")
-
         self._save_npc_to_file(to_npc)
-
-        updated_text = self._flatten_npc_to_text(self.npc_data[to_npc])
-        doc = Document(page_content=updated_text)
-        splitter = RecursiveCharacterTextSplitter(chunk_size=300, chunk_overlap=20)
-        chunks = splitter.split_documents([doc])
-        self.npc_sources[to_npc] = chunks
-
-        vs = FAISS.from_documents(chunks, self.embedding_model)
-        retriever = vs.as_retriever(search_kwargs={"k": 3})
-        qa = RetrievalQA.from_chain_type(llm=self.llm, retriever=retriever, return_source_documents=True)
-        self.npc_qa_chain[to_npc] = qa
 
     def _save_npc_to_file(self, npc_name):
         path = os.path.join(self.data_folder, f"{npc_name}.json")
@@ -91,14 +43,14 @@ class NPCManager:
             json.dump(self.npc_data[npc_name], f, ensure_ascii=False, indent=2)
 
     def talk_to_npc(self, npc_name, text):
-        qa_chain = self.get_chain(npc_name)
-        if not qa_chain:
+        agent = self.npc_agents.get(npc_name)
+        if not agent:
             print(f"NPC '{npc_name}' nie istnieje lub nie został załadowany.")
             return
 
-        result = qa_chain.invoke({"query": text})
+        result, answer = agent.answer(text)
         print("Odpowiedź NPC-a:")
-        print(result["result"])
+        print(answer)
         print("\nŹródła odpowiedzi:")
         for doc in result["source_documents"]:
             print("-", doc.page_content[:100])
@@ -143,7 +95,7 @@ class NPCManager:
         self.npc_data[to_npc]["nastawienie_do_gracza"] = new_attitude
 
         self._save_npc_to_file(to_npc)
-        self._update_npc_chain(to_npc)
+        self.npc_agents[to_npc].update_npc_data(self.npc_data[to_npc])
 
     def _adjust_attitude(self, current, sentiment):
         mapping = {
