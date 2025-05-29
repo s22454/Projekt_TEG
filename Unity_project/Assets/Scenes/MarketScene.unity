@@ -390,6 +390,10 @@ PrefabInstance:
       value: 1smith
       objectReference: {fileID: 0}
     - target: {fileID: 8254591194012794808, guid: fe1ced89a86cdcb46b51ff7dfe8da731, type: 3}
+      propertyPath: npcId
+      value: Smith
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254591194012794808, guid: fe1ced89a86cdcb46b51ff7dfe8da731, type: 3}
       propertyPath: dialogueUI
       value: 
       objectReference: {fileID: 295028237}
@@ -560,6 +564,10 @@ PrefabInstance:
     - target: {fileID: 3611754490303941568, guid: 89a00fa91ebdc464b96a44b94a2e7d09, type: 3}
       propertyPath: asdf
       value: 2herb
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611754490303941568, guid: 89a00fa91ebdc464b96a44b94a2e7d09, type: 3}
+      propertyPath: npcId
+      value: Herbalist
       objectReference: {fileID: 0}
     - target: {fileID: 3611754490303941568, guid: 89a00fa91ebdc464b96a44b94a2e7d09, type: 3}
       propertyPath: dialogueUI
@@ -1978,6 +1986,10 @@ PrefabInstance:
     - target: {fileID: 3228188345615553344, guid: 2af9d64de188125428048a408b321811, type: 3}
       propertyPath: asdf
       value: 3merch
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228188345615553344, guid: 2af9d64de188125428048a408b321811, type: 3}
+      propertyPath: npcId
+      value: Merchant
       objectReference: {fileID: 0}
     - target: {fileID: 3228188345615553344, guid: 2af9d64de188125428048a408b321811, type: 3}
       propertyPath: dialogueUI
