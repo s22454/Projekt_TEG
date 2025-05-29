@@ -9,6 +9,8 @@ public class DialogueUIController : MonoBehaviour
     public TMP_InputField inputField;
     public TMP_Text dialogueText;
     private string npcId;
+    public UnityEngine.UI.Image portraitImage;
+    public Sprite smithPortrait, merchantPortrait, herbalistPortrait;
 
     void Start()
     {
@@ -25,6 +27,15 @@ public class DialogueUIController : MonoBehaviour
     {
         npcId = npc;
         gameObject.SetActive(true);
+
+        switch (npcId)
+        {
+            case "Smith": portraitImage.sprite = smithPortrait; break;
+            case "Merchant": portraitImage.sprite = merchantPortrait; break;
+            case "Herbalist": portraitImage.sprite = herbalistPortrait; break;
+            default: portraitImage.sprite = null; break;
+        }
+
 
         // Send initial greeting through pipe
         string response = PipeMessenger.SendMessage($"{npcId}|Witaj!");
