@@ -1,12 +1,7 @@
 import os
 import re
 import json
-from langchain.docstore.document import Document
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
-from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 
 from NPC_Rag.NPC_Rag import RAG
@@ -104,7 +99,3 @@ class NPCManager:
             "negatywne": {"pozytywne": "neutralne"}
         }
         return mapping.get(current, {}).get(sentiment, current)
-
-npc_manager = NPCManager('NPC_template/Data')
-
-npc_manager.talk_to_npc("kowal", "Co potrafisz wykonać?")
