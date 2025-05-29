@@ -37,7 +37,16 @@ class NPCManager:
         with open(path, "w", encoding="utf-8") as f:
             json.dump(self.npc_data[npc_name], f, ensure_ascii=False, indent=2)
 
+    def _reload_npc_from_file(self, npc_name):
+        path = os.path.join(self.data_folder, f"{npc_name}.json")
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        self.npc_data[npc_name] = data
+        self.npc_agents[npc_name].update_npc_data(data)
+
     def talk_to_npc(self, npc_name, text):
+        self._reload_npc_from_file(npc_name)
+
         agent = self.npc_agents.get(npc_name)
         if not agent:
             print(f"NPC '{npc_name}' nie istnieje lub nie został załadowany.")
