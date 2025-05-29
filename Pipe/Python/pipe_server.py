@@ -61,7 +61,7 @@ class PipeServer:
                     _, data = win32file.ReadFile(self.pipe, 1024)
                     self.message = data.decode()
                     print(f"[PIPE SERVER] Got message: {self.message}")
-                    if ":" in self.message:
+                    if "|" in self.message:
                         npc_name, msg = map(str.strip, self.message.split(":", 1))
                         self.npc_manager.talk_to_npc(npc_name, msg)
 
