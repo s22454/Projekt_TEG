@@ -8,11 +8,17 @@ from dotenv import load_dotenv
 import os
 
 class RAG:
-    def __init__(self, pdf_path):
-
+    #def __init__(self, pdf_path):
+    def __init__(self, text):
+        documents = text
+        
+        #
         # 1. Loading PDF
-        loader = PyPDFLoader(pdf_path)
-        documents = loader.load()
+        #loader = PyPDFLoader(pdf_path)
+        #documents = loader.load()
+        
+        # 1.1 Loading text
+        
         
         # 2. Splitting document into chunks
         text_splitter = RecursiveCharacterTextSplitter(
