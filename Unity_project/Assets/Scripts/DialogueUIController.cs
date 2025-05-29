@@ -29,12 +29,14 @@ public class DialogueUIController : MonoBehaviour
     {
         yield return null;
         gameObject.SetActive(false);
+        infoPanel.SetActive(true);
     }
 
     public void OpenDialogue(string npc)
     {
         npcId = npc;
         gameObject.SetActive(true);
+        infoPanel.SetActive(false);
 
         switch (npcId)
         {
@@ -64,5 +66,6 @@ public class DialogueUIController : MonoBehaviour
     public void CloseDialogue()
     {
         gameObject.SetActive(false);
+        infoPanel.SetActive(true);
     }
 }

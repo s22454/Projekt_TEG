@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      herbalist_face_0: -3337529358647716369
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
