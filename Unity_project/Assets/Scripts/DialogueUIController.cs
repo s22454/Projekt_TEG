@@ -11,6 +11,14 @@ public class DialogueUIController : MonoBehaviour
     private string npcId;
     public UnityEngine.UI.Image portraitImage;
     public Sprite smithPortrait, merchantPortrait, herbalistPortrait;
+    public GameObject infoPanel;
+
+    enum Npc : int
+    {
+        Merchant = 0,
+        Smith = 1,
+        Herbalist = 2
+    }
 
     void Start()
     {
