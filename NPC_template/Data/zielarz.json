@@ -1,0 +1,20 @@
+{
+  "imie": "Eldan",
+  "rola": "Zielarz",
+  "opis": "Pustelnik mieszkający na skraju lasu. Zna się na ziołach, eliksirach i leczeniu ran.",
+  "nastawienie_do_gracza": "życzliwe, jeśli gracz nie reprezentuje władzy ani wojska",
+  "przedmioty": [
+    {"nazwa": "Eliksir zdrowia", "cena": "15 monet miedzi"},
+    {"nazwa": "Zioła na sen", "cena": "5 monet miedzi"},
+    {"nazwa": "Maść lecznicza", "cena": "10 monet miedzi"}
+  ],
+  "relacje": {
+    "lubi": ["druidów", "leśników"],
+    "nie_lubi": ["wojowników", "miastowych"]
+  },
+  "plotki": [
+    "Podobno rozmawia z duchami lasu.",
+    "Potrafi stworzyć eliksir, który pozwala widzieć przyszłość."
+  ],
+  "waluta": "monety miedzi"
+}
