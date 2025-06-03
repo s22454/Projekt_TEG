@@ -3,6 +3,7 @@ import re
 import json
 from langchain.chains import RetrievalQA
 from dotenv import load_dotenv
+from langchain_core.documents import Document
 
 from NPC_Rag.NPC_Rag import RAG
 
@@ -23,7 +24,20 @@ class NPCManager:
                 with open(path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 self.npc_data[npc_name] = data
-                self.npc_agents[npc_name] = RAG(data)
+                text = self._flatten_npc_to_text(data)
+                self.npc_agents[npc_name] = RAG(text)
+
+    def _flatten_npc_to_text(self, data):
+        parts = [
+            f"{data['imie']} - {data['rola']}",
+            data["opis"],
+            f"Nastawienie do gracza: {data.get('nastawienie_do_gracza', 'neutralne')}",
+            "Przedmioty w ofercie:" + ''.join(f"\n- {p['nazwa']} ({p['cena']})" for p in data["przedmioty"]),
+            f"Relacje:\n  Lubi: {', '.join(data['relacje'].get('lubi', []))}\n  Nie lubi: {', '.join(data['relacje'].get('nie_lubi', []))}",
+            "Plotki:" + ''.join(f"\n- {p}" for p in data["plotki"]),
+            f"Waluta: {data['waluta']}"
+        ]
+        return "\n".join(parts)
 
     def share_info(self, from_npc, to_npc, message):
         if "plotki" not in self.npc_data[to_npc]:

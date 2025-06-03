@@ -4,14 +4,15 @@ from langchain_community.vectorstores.faiss import FAISS
 from langchain.chains import RetrievalQA
 from langchain_openai import ChatOpenAI
 from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_core.documents import Document
 from dotenv import load_dotenv
 import os
 
 class RAG:
     #def __init__(self, pdf_path):
     def __init__(self, text):
-        documents = text
-        
+        documents = [Document(page_content=text)]
+
         #
         # 1. Loading PDF
         #loader = PyPDFLoader(pdf_path)
