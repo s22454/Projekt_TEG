@@ -28,28 +28,40 @@ Michał Dębski <br/>
   - [x] Sprawdzić czy w unity da się opdalać pythona
   - [x] Rozpoczęcie projektu w pythonie
   - [x] Podstawowe diagramy
-  - [ ] Stworzenie koncepcji miasta
+  - [x] Stworzenie koncepcji miasta
 
 </details>
 
 <details open>
   <summary>20.05.2025r.</summary>
 
-  - [ ] Model w Unity
-  - [ ] Podstawowy agent działający w konsoli
-  - [ ] Stworzenie menadżera który będzie synchronizował działanie agentów
-  - [ ] Stworzenie API od strony Unity działającego z modelami NPC
-  - [ ] Stworzenie API w pythonie działającego z LLM'em
-  - [ ] Opracowanie formatu pdf (lub czegoś innego) dla RAG'u dla LLM'a
+  - [x] Model w Unity
+  - [x] Podstawowy agent działający w konsoli
+  - [x] Stworzenie menadżera który będzie synchronizował działanie agentów
+  - [x] Stworzenie API od strony Unity działającego z modelami NPC
+  - [x] Stworzenie API w pythonie działającego z LLM'em
+  - [x] Opracowanie formatu pdf (lub czegoś innego) dla RAG'u dla LLM'a
+
+</details>
+
+<details open>
+  <summary>03.06.2025r.</summary>
+
+  - [x] Stworzenie drugiego agenta oraz zaprojektowanie interakcji między nimi
+  - [ ] Wywoływanie metod z poziomu LLM'a
+  - [ ] Opracowanie schematu wywołania metody w Unity/przekazania aktualizacji eq
+  - [ ] Multithreading dla pip'a
+  - [ ] Testy agentów
+  - [ ] Poprawa komunikacji pip'a z managerem LLM'ów
+  - [ ] Odpalanie skryptu pythona z Unity
+  - [ ] Opracowanie systemu eq
 
 </details>
 
 <details open>
   <summary>Next</summary>
 
-  - [ ] Stworzenie drugiego agenta oraz zaprojektowanie interakcji między nimi
   - [ ] Opracowanie prezentacji
-  - [ ] Wywoływanie metod z poziomu LLM'a
 
 </details>
 
@@ -59,12 +71,16 @@ Michał Dębski <br/>
 2. *16.05.2025r.* - prezentacja dotychczasowych postępów oraz podział zadań związanych z implementacją elementów potrzebnych do demo
 
 ## Podział zadań
-| Mateusz Sasor-Adamczyk | Błażej Bartkiewicz | Cezary Daniłowski | Michał Dębski |
-| -- | -- | -- | -- |
-| Wypełnić jire | Rozpoczęcie projektu w pythonie | Podstawowe diagramy | Stworzenie koncepcji miasta |
-| Sprawdzić czy w unity da się opdalać pythona | | |
-| Stworzenie API od strony Unity | Podstawowy agent działający | Opracowanie formatu pdf (lub czegoś innego) dla RAG'u dla LLM'a | Model w Unity |
-| Stworzenie API w pythonie |  | Stworzenie menadżera |  |
+| Sprint | Mateusz Sasor-Adamczyk | Błażej Bartkiewicz | Cezary Daniłowski | Michał Dębski |
+| :--: | -- | -- | -- | -- |
+| 1 | Wypełnić jire | Rozpoczęcie projektu w pythonie | Podstawowe diagramy | Stworzenie koncepcji miasta |
+| 1 | Sprawdzić czy w unity da się opdalać pythona | | |
+| 2 | Stworzenie API od strony Unity | Podstawowy agent działający | Opracowanie formatu pdf (lub czegoś innego) dla RAG'u dla LLM'a | Model w Unity |
+| 2 | Stworzenie API w pythonie |  | Stworzenie menadżera |  |
+| 3 | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a |
+| 3 | Multithreading dla pip'a | Testy agentów | Opracowanie schematu wywołania metody w Unity/przekazania aktualizacji eq | Opracowanie systemu eq |
+| 3 | Poprawa komunikacji pip'a z managerem LLM'ów | Odpalanie skryptu pythona z Unity* | Poprawa komunikacji pip'a z managerem LLM'ów | Odpalanie skryptu pythona z Unity |
+| | | | | |
 
 ## Kamienie milowe
 1. Rozpoczęcie projektu
