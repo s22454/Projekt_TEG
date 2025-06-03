@@ -75,6 +75,7 @@ class PipeServer:
                     else:
                         print(f"[PIPE SERVER] Reading error {e}")
                     break
+                
         # close pipe
         finally:
             win32file.CloseHandle(self.pipe)
