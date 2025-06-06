@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
 
 
     private Vector2 movement;
+    private InventoryUIController inventoryUI;
+
+    void Start()
+    {
+        inventoryUI = FindObjectOfType<InventoryUIController>();
+    }
 
     void Update()
     {
@@ -30,6 +36,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             GameManager.Instance.EndDay();
+        }
+        Debug.Log("PC update before");
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Debug.Log("PC update after");
+            inventoryUI.OpenDialogue();
         }
     }
 

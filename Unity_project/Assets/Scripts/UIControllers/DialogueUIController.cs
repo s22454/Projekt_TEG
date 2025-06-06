@@ -4,32 +4,19 @@ using UnityEngine.Networking;
 using System.Text;
 using System.Collections;
 
-public class DialogueUIController : MonoBehaviour
+public class DialogueUIController : UIController
 {
     public TMP_InputField inputField;
     public TMP_Text dialogueText;
     private string npcId;
     public UnityEngine.UI.Image portraitImage;
     public Sprite smithPortrait, merchantPortrait, herbalistPortrait;
-    public GameObject infoPanel;
 
     enum Npc : int
     {
         Merchant = 0,
         Smith = 1,
         Herbalist = 2
-    }
-
-    void Start()
-    {
-        StartCoroutine(HideAfterOneFrame());
-    }
-
-    System.Collections.IEnumerator HideAfterOneFrame()
-    {
-        yield return null;
-        gameObject.SetActive(false);
-        infoPanel.SetActive(true);
     }
 
     public void OpenDialogue(string npc)
@@ -61,11 +48,5 @@ public class DialogueUIController : MonoBehaviour
             dialogueText.text = response ?? "No response.";
             inputField.text = "";
         }
-    }
-
-    public void CloseDialogue()
-    {
-        gameObject.SetActive(false);
-        infoPanel.SetActive(true);
     }
 }
