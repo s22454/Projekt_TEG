@@ -8,15 +8,8 @@ public class InventoryUIController : UIController
 
     public new void OpenDialogue()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            gameObject.SetActive(!gameObject.activeSelf);
-            if (gameObject.activeSelf)
-            {
-                infoPanel.SetActive(false);
-                RefreshUI();
-            }
-        }
+        base.OpenDialogue();
+        RefreshUI();
     }
 
     void RefreshUI()

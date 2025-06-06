@@ -21,9 +21,8 @@ public class DialogueUIController : UIController
 
     public void OpenDialogue(string npc)
     {
+        base.OpenDialogue();
         npcId = npc;
-        gameObject.SetActive(true);
-        infoPanel.SetActive(false);
 
         switch (npcId)
         {

@@ -8,13 +8,14 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public TMP_InputField dialogueInputField;
 
-
     private Vector2 movement;
     private InventoryUIController inventoryUI;
+    private DialogueUIController dialogueUI;
 
     void Start()
     {
         inventoryUI = FindObjectOfType<InventoryUIController>();
+        dialogueUI = FindAnyObjectByType<DialogueUIController>();
     }
 
     void Update()
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.EndDay();
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && !dialogueUI.gameObject.activeSelf)
         {
             inventoryUI.OpenDialogue();
         }

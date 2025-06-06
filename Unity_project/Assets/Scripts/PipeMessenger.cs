@@ -23,12 +23,6 @@ public static class PipeMessenger
                     Console.WriteLine("Wys³ano: " + s);
 
                     string response = sr.ReadLine();
-
-                    if(response.Contains("ADD_ITEM Jablko 3"))
-                    {
-                        InventoryManager.Instance.AddItem("jablko", 3);
-                    }
-
                     return response;
                 }
             }
@@ -41,7 +35,6 @@ public static class PipeMessenger
 
     public static string EncodeMessage(PipeMessage msg)
     {
-
         return GetActionCode(msg.action);
     }
 
