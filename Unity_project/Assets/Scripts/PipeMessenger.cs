@@ -23,6 +23,12 @@ public static class PipeMessenger
                     Console.WriteLine("Wys³ano: " + s);
 
                     string response = sr.ReadLine();
+
+                    if(response.Contains("ADD_ITEM Jablko 3"))
+                    {
+                        InventoryManager.Instance.AddItem("jablko", 3);
+                    }
+
                     return response;
                 }
             }
@@ -31,5 +37,28 @@ public static class PipeMessenger
         {
             return $"PipeManager error: {e.Message}";
         }
+    }
+
+    public static string EncodeMessage(PipeMessage msg)
+    {
+
+        return GetActionCode(msg.action);
+    }
+
+    public static PipeMessage DecodeMessage(string msg)
+    {
+        return new PipeMessage(Action.Message, "topor", 1, 30, "Prosze, milego uzytkowania.");
+    }
+
+    public static string GetActionCode(Action a)
+    {
+        switch (a)
+        {
+            case Action.Message:
+                return "0001";
+            case Action.Buy:
+                return "0002";
+        }
+        return "";
     }
 }

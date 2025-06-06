@@ -8,7 +8,6 @@ public class InventoryUIController : UIController
 
     public new void OpenDialogue()
     {
-        Debug.Log("InventoryUIController Open called");
         if (Input.GetKeyDown(KeyCode.I))
         {
             gameObject.SetActive(!gameObject.activeSelf);

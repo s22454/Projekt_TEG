@@ -1528,6 +1528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pythonExePath: c:\python\.venv\Scripts\python.exe
+  pythonScriptPath: 
 --- !u!4 &799730856
 Transform:
   m_ObjectHideFlags: 0

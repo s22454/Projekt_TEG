@@ -37,10 +37,8 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.Instance.EndDay();
         }
-        Debug.Log("PC update before");
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("PC update after");
             inventoryUI.OpenDialogue();
         }
     }

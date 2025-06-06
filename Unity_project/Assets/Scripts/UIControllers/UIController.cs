@@ -16,8 +16,7 @@ public abstract class UIController : MonoBehaviour
     System.Collections.IEnumerator HideAfterOneFrame()
     {
         yield return null;
-        gameObject.SetActive(false);
-        infoPanel.SetActive(true);
+        this.CloseDialogue();
     }
 
     public void OpenDialogue()

@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class PythonServerLauncher : MonoBehaviour
 {
-    public string pythonExePath = @"C:\Path\To\python.exe"; // or just "python" if it's in PATH
+    public string pythonExePath = @"C:\Path\To\python.exe";
+    public string pythonScriptPath;
     private Process pipeProcess;
 
     void Start()
     {
-        string rootPath = Path.GetFullPath(Path.Combine(Application.dataPath, "../.."));
-        string scriptPath = Path.Combine(rootPath, "npc_manager.py");
-        UnityEngine.Debug.Log(rootPath);
-        UnityEngine.Debug.Log(scriptPath);
+        UnityEngine.Debug.Log(pythonScriptPath);
 
         ProcessStartInfo startInfo = new ProcessStartInfo();
         startInfo.FileName = pythonExePath;
-        startInfo.Arguments = $"\"{scriptPath}\"";
+        startInfo.Arguments = $"\"{pythonScriptPath}\"";
         startInfo.UseShellExecute = false;
         startInfo.CreateNoWindow = true;
         startInfo.RedirectStandardOutput = true;
@@ -25,7 +23,7 @@ public class PythonServerLauncher : MonoBehaviour
         try
         {
             pipeProcess = Process.Start(startInfo);
-            UnityEngine.Debug.Log("[Unity] Started pipe_server.py");
+            UnityEngine.Debug.Log("[Unity] Started " + pythonScriptPath);
         }
         catch (System.Exception ex)
         {
@@ -33,7 +31,7 @@ public class PythonServerLauncher : MonoBehaviour
         }
     }
 
-    void OnApplicationQuit()
+/*    void OnApplicationQuit()
     {
         if (pipeProcess != null && !pipeProcess.HasExited)
         {
@@ -41,5 +39,5 @@ public class PythonServerLauncher : MonoBehaviour
             pipeProcess.Dispose();
             UnityEngine.Debug.Log("[Unity] Pipe server terminated.");
         }
-    }
+    }*/
 }
