@@ -1,12 +1,7 @@
 import win32pipe, win32file, pywintypes
 import threading
 import time
-
-
-def test_message_print(message):
-    print(f"[TEST MESSAGE] Message: {message}")
-
-
+from NPC_Manager.npc_manager import NPCManager
 
 class PipeServer:
 
@@ -19,12 +14,15 @@ class PipeServer:
     pipe_thread = None
     stop_event = None
     message = ""
+    answer = ""
+    npc_manager = None
 
     # Singleton constructor
     def __new__(cls):
         if not cls._instance:
             cls._instance = super().__new__(cls)
             cls._instance.stop_event = threading.Event()
+            cls._instance.npc_manager = NPCManager("../../NPC_Manager/Data")
         return cls._instance
 
     # Start pipe server on new thread
@@ -59,10 +57,12 @@ class PipeServer:
                     _, data = win32file.ReadFile(self.pipe, 1024)
                     self.message = data.decode()
                     print(f"[PIPE SERVER] Got message: {self.message}")
-                    test_message_print(self.message)
+                    if "|" in self.message:
+                        npc_name, msg = map(str.strip, self.message.split("|", 1))
+                        self.answer = self.npc_manager.talk_to_npc(npc_name, msg)
 
                     if self.message != "exit":
-                        response = f"Got {self.message}"
+                        response = f'{self.answer}\n'
                         win32file.WriteFile(self.pipe, response.encode('utf-8'))
                 except pywintypes.error as e:
                     if e.winerror in [109, 233]: # ERROR_BROKEN_PIPE, ERROR_PIPE_NOT_CONNECTED
@@ -71,7 +71,6 @@ class PipeServer:
                     else:
                         print(f"[PIPE SERVER] Reading error {e}")
                     break
-                
         # close pipe
         finally:
             win32file.CloseHandle(self.pipe)
