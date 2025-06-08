@@ -84,8 +84,8 @@ class NPCManager:
         return [name for name in all_npcs if name.lower() in words and name.lower() != text.lower()]
 
     def _analyze_sentiment(self, text):
-        positive_keywords = ["lubię", "pomógł", "fajny", "miły", "dobry", "szanuję"]
-        negative_keywords = ["nienawidzę", "zły", "wredny", "oszukał", "niefajny"]
+        positive_keywords = ["lubię", "pomógł", "fajny", "miły", "dobry", "szanuję", "mądry"]
+        negative_keywords = ["nienawidzę", "zły", "wredny", "oszukał", "niefajny", "głupi"]
 
         text_lower = text.lower()
         score = 0
@@ -112,7 +112,8 @@ class NPCManager:
         self.npc_data[to_npc]["nastawienie_do_gracza"] = new_attitude
 
         self._save_npc_to_file(to_npc)
-        self.npc_agents[to_npc].update_npc_data(self.npc_data[to_npc])
+        text = self._flatten_npc_to_text(self.npc_data[to_npc])
+        self.npc_agents[to_npc].update_npc_data(text)
 
     def _adjust_attitude(self, current, sentiment):
         mapping = {

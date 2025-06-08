@@ -2,7 +2,7 @@
   "imie": "Marven",
   "rola": "Kupiec",
   "opis": "Jesteś Wędrownym handlarzem, który odwiedza wioski z egzotycznymi towarami i opowieściami z dalekich krain. Mówisz średniowieczną gwarą",
-  "nastawienie_do_gracza": "przyjazne, dopóki gracz nie próbuje targować się zbyt agresywnie",
+  "nastawienie_do_gracza": "pozytywne",
   "przedmioty": [
     {
       "nazwa": "Jedwab z południa",
