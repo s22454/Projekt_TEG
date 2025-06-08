@@ -13,7 +13,7 @@ public class TavernDialogueController : MonoBehaviour
 
     IEnumerator WaitAndStartNewDay()
     {
-        PipeMessenger.SendMessage("EndDay");
+        //PipeMessenger.SendMessage("EndDay");
         yield return new WaitForSeconds(10);
         GameManager.Instance.StartNewDay();
     }

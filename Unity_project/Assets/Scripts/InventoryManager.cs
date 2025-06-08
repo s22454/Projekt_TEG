@@ -17,31 +17,31 @@ public class InventoryManager : MonoBehaviour
         items.Add(new InventoryItem("Copper", 987654321));
     }
 
-    public void AddItem(string itemName, int amount = 1)
+    public void AddItem(Item item, int amount = 1)
     {
-        InventoryItem existing = items.Find(i => i.itemName == itemName);
+        InventoryItem existing = items.Find(i => i.itemName == "itemName");
         if (existing != null)
         {
             existing.quantity += amount;
         }
         else
         {
-            items.Add(new InventoryItem(itemName, amount));
+            items.Add(new InventoryItem("itemName", amount));
         }
 
-        Debug.Log($"Added {amount}x {itemName}");
+        Debug.Log($"Added {amount}x {"itemName"}");
     }
 
-    public void RemoveItem(string itemName, int amount = 1)
+    public void RemoveItem(string item, int amount = 1)
     {
-        InventoryItem existing = items.Find(i => i.itemName == itemName);
+        InventoryItem existing = items.Find(i => i.itemName == "itemName");
         if (existing != null)
         {
             existing.quantity -= amount;
             if (existing.quantity <= 0)
                 items.Remove(existing);
 
-            Debug.Log($"Removed {amount}x {itemName}");
+            Debug.Log($"Removed {amount}x {"itemName"}");
         }
     }
 }

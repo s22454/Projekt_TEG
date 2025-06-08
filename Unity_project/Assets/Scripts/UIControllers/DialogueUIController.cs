@@ -12,13 +12,6 @@ public class DialogueUIController : UIController
     public UnityEngine.UI.Image portraitImage;
     public Sprite smithPortrait, merchantPortrait, herbalistPortrait;
 
-    enum Npc : int
-    {
-        Merchant = 0,
-        Smith = 1,
-        Herbalist = 2
-    }
-
     public void OpenDialogue(string npc)
     {
         base.OpenDialogue();
@@ -32,10 +25,8 @@ public class DialogueUIController : UIController
             default: portraitImage.sprite = null; break;
         }
 
-
         // Send initial greeting through pipe
-        string response = PipeMessenger.SendMessage($"{npcId}|Witaj!");
-        dialogueText.text = response ?? "No response.";
+        PipeSystem.Instance.SendMessageToServer($"{ActionCode.TXTMESSAGE}|{Sender.PLAYER}|null|0|0|Witaj!");
     }
 
     public void OnSendMessage()
@@ -43,9 +34,13 @@ public class DialogueUIController : UIController
         string message = inputField.text.Trim();
         if (!string.IsNullOrEmpty(message))
         {
-            string response = PipeMessenger.SendMessage($"{npcId}|{message}");
-            dialogueText.text = response ?? "No response.";
+            PipeSystem.Instance.SendMessageToServer($"{ActionCode.TXTMESSAGE}|{Sender.PLAYER}|null|0|0|{message}"); //co z odbiorc¹?
             inputField.text = "";
         }
+    }
+
+    public void UpdateDialogueText(string text)
+    {
+        dialogueText.text = text ?? "No response";
     }
 }
