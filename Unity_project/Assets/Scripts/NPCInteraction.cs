@@ -4,6 +4,7 @@ public class NPCInteraction : MonoBehaviour
 {
     private bool playerInRange = false;
     private DialogueUIController dialogueUI;
+    [SerializeField] private string npcId;
 
     void Start()
     {
@@ -14,7 +15,7 @@ public class NPCInteraction : MonoBehaviour
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            dialogueUI.OpenDialogue(gameObject);
+            dialogueUI.OpenDialogue(npcId);
         }
     }
 
