@@ -12,33 +12,31 @@ public class InventoryManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        items.Add(new InventoryItem("Gold", 100));
-        items.Add(new InventoryItem("Silver", 1000));
-        items.Add(new InventoryItem("Copper", 987654321));
+        items.Add(new InventoryItem(Item.GOLD, 100));
     }
 
     public void AddItem(Item item, int amount = 1)
     {
-        InventoryItem existing = items.Find(i => i.itemName == "itemName");
+        InventoryItem existing = items.Find(i => i.itemType == item);
         if (existing != null)
         {
             existing.quantity += amount;
         }
         else
         {
-            items.Add(new InventoryItem("itemName", amount));
+            items.Add(new InventoryItem(item, amount));
         }
 
         Debug.Log($"Added {amount}x {"itemName"}");
     }
 
-    public void RemoveItem(string item, int amount = 1)
+    public void RemoveItem(Item item, int amount = 1)
     {
-        InventoryItem existing = items.Find(i => i.itemName == "itemName");
+        InventoryItem existing = items.Find(i => i.itemType == item);
         if (existing != null)
         {
             existing.quantity -= amount;
-            if (existing.quantity <= 0)
+            if (existing.quantity <= 0 && existing.itemType != Item.GOLD)
                 items.Remove(existing);
 
             Debug.Log($"Removed {amount}x {"itemName"}");

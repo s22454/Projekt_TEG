@@ -167,7 +167,7 @@ public class PipeSystem : MonoBehaviour
                     // frame rate limiter
                     Thread.Sleep(sleepTime);
 
-                } while (_active && !_response.Equals("exit"));
+                } while (_active);
             }
         }
         catch (Exception e)
@@ -208,12 +208,12 @@ public class PipeSystem : MonoBehaviour
 
         if (msgStruct.ActionCode == ActionCode.COMMAND)
         {
-            InventoryItem goldItem = InventoryManager.Instance.items.Find(i => i.itemName.Equals("Gold", StringComparison.OrdinalIgnoreCase));
+            InventoryItem goldItem = InventoryManager.Instance.items.Find(i => i.itemType == Item.GOLD);
 
             if (goldItem != null && goldItem.quantity >= msgStruct.Price)
             {
                 InventoryManager.Instance.AddItem(msgStruct.Item, msgStruct.Quantity);
-                InventoryManager.Instance.RemoveItem("Gold", msgStruct.Price);
+                InventoryManager.Instance.RemoveItem(Item.GOLD, msgStruct.Price);
 
                 dialogueUI.UpdateDialogueText(msgStruct.Message); //chyba ¿e wysy³amy wiadomoœæ "twój klient ma wystarczaj¹c¹ iloœæ z³ota, dokonano zakupu." i wyœwietlamy dopiero kolejn¹ wiadomoœæ
             }
@@ -242,6 +242,7 @@ public class PipeSystem : MonoBehaviour
             while (_message.Length > 0)
                 Thread.Sleep(100);
 
+            _active = false;
             // close clinet if it still exisits
             _pipeClient?.Close();
         }

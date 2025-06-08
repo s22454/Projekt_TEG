@@ -36,6 +36,7 @@ public class DialogueUIController : UIController
         {
             PipeSystem.Instance.SendMessageToServer($"{ActionCode.TXTMESSAGE}|{Sender.PLAYER}|null|0|0|{message}"); //co z odbiorc¹?
             inputField.text = "";
+            dialogueText.text = "...";
         }
     }
 

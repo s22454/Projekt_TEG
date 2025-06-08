@@ -17,7 +17,7 @@ public class InventoryUIController : UIController
         StringBuilder sb = new StringBuilder();
         foreach (var item in InventoryManager.Instance.items)
         {
-            sb.AppendLine($"{item.quantity}x {item.itemName}");
+            sb.AppendLine($"{item.quantity}x {item.itemType}");
         }
 
         inventoryText.text = sb.Length > 0 ? sb.ToString() : "Inventory is empty.";
