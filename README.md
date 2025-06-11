@@ -49,12 +49,23 @@ Michał Dębski <br/>
 
   - [x] Stworzenie drugiego agenta oraz zaprojektowanie interakcji między nimi
   - [ ] Wywoływanie metod z poziomu LLM'a
-  - [ ] Opracowanie schematu wywołania metody w Unity/przekazania aktualizacji eq
-  - [ ] Multithreading dla pip'a
-  - [ ] Testy agentów
-  - [ ] Poprawa komunikacji pip'a z managerem LLM'ów
-  - [ ] Odpalanie skryptu pythona z Unity
-  - [ ] Opracowanie systemu eq
+  - [x] Opracowanie schematu wywołania metody w Unity/przekazania aktualizacji eq
+  - [x] Multithreading dla pip'a
+  - [x] Testy agentów
+  - [x] Poprawa komunikacji pip'a z managerem LLM'ów
+  - [x] Odpalanie skryptu pythona z Unity
+  - [x] Opracowanie systemu eq
+
+</details>
+
+<details open>
+  <summary>08.06.2025r.</summary>
+
+  - [ ] Wywoływanie metod z poziomu LLM'a
+  - [ ] Kodowanie/Dekodowanie wiadomości przez pip'a
+  - [ ] Poprawa komunikacji controlera ui z pipem
+  - [ ] Menadżer aktualizujący po swojej stronie zawartość eq npc i stanu konta gracza
+  - [ ] Obczajenie możliwości w kwesti usprawnienia procesu aktualizacji ragu dla llma
 
 </details>
 
@@ -80,7 +91,10 @@ Michał Dębski <br/>
 | 3 | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a |
 | 3 | Multithreading dla pip'a | Testy agentów | Opracowanie schematu wywołania metody w Unity/przekazania aktualizacji eq | Opracowanie systemu eq |
 | 3 | Poprawa komunikacji pip'a z managerem LLM'ów | Odpalanie skryptu pythona z Unity* | Poprawa komunikacji pip'a z managerem LLM'ów | Odpalanie skryptu pythona z Unity |
-| | | | | |
+| 4 | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a |
+| 4 | Kodowanie/Dekodowanie wiadomości przez pip'a | Obczajenie możliwości w kwesti usprawnienia procesu aktualizacji ragu dla llma | Menadżer aktualizujący po swojej stronie zawartość eq npc i stanu konta gracza | Poprawa komunikacji controlera ui z pipem |
+|  |  |  |  |  |
+
 
 ## Kamienie milowe
 1. Rozpoczęcie projektu
