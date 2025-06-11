@@ -1,9 +1,7 @@
 using UnityEngine;
 using System;
 using System.IO.Pipes;
-using System.Text;
 using System.Threading;
-using UnityEditor;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
@@ -216,7 +214,7 @@ public class PipeSystem : MonoBehaviour
         _writerActive = false;
     }
 
-    public bool SendMessageToServer(string message)
+    private bool SendMessageToServer(string message)
     {
         if (_pipeClientWrite is not null && _pipeClientWrite.IsConnected && _active && _writerActive)
         {
@@ -239,6 +237,18 @@ public class PipeSystem : MonoBehaviour
         ;
 
         return SendMessageToServer(encodedMessage);
+    }
+
+    public bool EncodeAndSendMessageToServer(MessageStruct messageStruct)
+    {
+        return EncodeAndSendMessageToServer(
+            code: messageStruct.ActionCode,
+            sender: messageStruct.Sender,
+            item: messageStruct.Item,
+            quantity: messageStruct.Quantity,
+            price: messageStruct.Price,
+            message: messageStruct.Message
+        );
     }
 
     private MessageStruct DecodeMessage(string message)

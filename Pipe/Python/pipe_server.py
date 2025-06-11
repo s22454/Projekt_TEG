@@ -1,7 +1,10 @@
 import win32pipe, win32file, pywintypes
 import threading
 import time
-
+from pipe_enums import EnumType, ActionCode, Sender, Item
+import json
+from message import Message
+from pipe_event import Event
 
 class PipeServer:
 
@@ -18,7 +21,11 @@ class PipeServer:
     stop_event_read = None
     stop_event_write = None
     message = ""
-    response = ""
+    response:Message = None
+    message_data_translations = {}
+
+    # Event
+    OnMessageRecived:Event
 
     # Singleton constructor
     def __new__(cls):
@@ -26,18 +33,46 @@ class PipeServer:
             cls._instance = super().__new__(cls)
             cls._instance.stop_event_read = threading.Event()
             cls._instance.stop_event_write = threading.Event()
+            cls.OnMessageRecived = Event()
         return cls._instance
 
     # Start pipe server on new thread
     def start(self):
         print(f"[PIPE SERVER] Starting pipe server on new thread")
-        self.pipe_thread_read = threading.Thread(target=self.read, daemon=True)
-        self.pipe_thread_write = threading.Thread(target=self.write, daemon=True)
+        self.ImportEnumCodes()
+        self.pipe_thread_read = threading.Thread(target=self.Read, daemon=True)
+        self.pipe_thread_write = threading.Thread(target=self.Write, daemon=True)
         self.pipe_thread_read.start()
         self.pipe_thread_write.start()
 
+    # Import code translations
+    def ImportEnumCodes(self):
+        with open("./../../Unity_project/Assets/Scripts/Constants/PipeMessageDataTranslations.json") as f:
+            js = json.load(f)
+
+            for enumTypeStr, codes in js.items():
+
+                # check if enum type is correct
+                if not enumTypeStr in EnumType.__members__:
+                    print(f"[PIPE SERVER] Bad enum type {enumTypeStr}")
+                    continue
+
+                enumType = EnumType[enumTypeStr]
+
+                # get enum inner translation values
+                inner_ditc = {}
+                for code, enumValue in codes.items():
+                    #print(f"{enumValue} | {code}")
+                    if not enumValue in enumType.value.__members__:
+                        print(f"[PIPE SERVER] Bad enum value {enumValue}")
+                        continue
+
+                    inner_ditc[enumType.value[enumValue]] = code
+
+                self.message_data_translations[enumType] = inner_ditc
+
     # Run pipe server read logic
-    def read(self):
+    def Read(self):
 
         print(f"[PIPE SERVER READ] Server read is running")
 
@@ -62,24 +97,31 @@ class PipeServer:
                 try:
                     # get message and decode it
                     _, data = win32file.ReadFile(self.pipe_read, 1024)
-                    self.response = data.decode().strip()
-                    print(f"[PIPE SERVER READ] Got message: {self.response}")
+                    encoded_response = data.decode().strip()
+                    print(f"[PIPE SERVER READ] Got encoded message: {encoded_response}")
+
+                    # decode message
+                    self.response = self.DecodeMessage(encoded_response)
+                    print(f"[PIPE SERVER READ] Got decoded message: {self.response}")
+
+                    # fire event
+                    self.OnMessageRecived.fire(self.response)
 
                     # check for exit
-                    if self.response == "exit":
-                        self.stop(self)
+                    if self.response.action_code == ActionCode.ENDCONVARSATION:
+                        self.Stop(self)
 
-                    #! tmp added for testing
-                    if self.response == "0000|0000|0000|0|0|":
-                        self.message = "0000|0000|0000|0|0|\n"
+                    # response to test message
+                    if self.response.action_code == ActionCode.TESTMESSAGE:
+                        self.EncodeAndSendToClient(ActionCode.TESTMESSAGE, Sender.TEST, Item.TEST)
 
-
-                    #TODO implement real message logic
+                    # clear response var
+                    self.response = ""
 
                 except pywintypes.error as e:
                     if e.winerror in [109, 233]: # ERROR_BROKEN_PIPE, ERROR_PIPE_NOT_CONNECTED
                         print("[PIPE SERVER READ] Client has disconnected")
-                        self.message = "exit"
+                        self.stop_event_read.set()
                     else:
                         print(f"[PIPE SERVER READ] Reading error {e}")
                     break
@@ -90,7 +132,7 @@ class PipeServer:
             self.pipe_read = None
 
     # Run pipe server write logic
-    def write(self):
+    def Write(self):
         print(f"[PIPE SERVER WRITE] Server is running")
 
         # create pipe
@@ -110,19 +152,20 @@ class PipeServer:
             print("[PIPE SERVER WRITE] Client connected")
 
             # send messages
-            while not self.stop_event_write.is_set() and self.response != "exit":
+            while not self.stop_event_write.is_set():
                 try:
 
-                    if self.message != "exit" and len(self.message) > 0:
-                        win32file.WriteFile(self.pipe_write, (self.message).encode('utf-8'))
+                    if len(self.message) > 0:
+                        win32file.WriteFile(self.pipe_write, (self.message + "\n").encode('utf-8'))
                         print(f"[PIPE SERVER WRITE] Sending message: {self.message}")
                         win32file.FlushFileBuffers(self.pipe_write)
+                        print(f"[PIPE SERVER WRITE] Send message: {self.message}")
                         self.message = ''
 
                 except pywintypes.error as e:
                     if e.winerror in [109, 233]: # ERROR_BROKEN_PIPE, ERROR_PIPE_NOT_CONNECTED
                         print("[PIPE SERVER WRITE] Client has disconnected")
-                        self.message = "exit"
+                        self.stop_event_read.set()
                     else:
                         print(f"[PIPE SERVER WRITE] Reading error {e}")
                     break
@@ -132,8 +175,44 @@ class PipeServer:
             win32file.CloseHandle(self.pipe_write)
             self.pipe_write = None
 
+    # get value by key from dict
+    def GetKeyByValue(self, dict, val):
+        for k, v in dict.items():
+            if v == val:
+                return k
+        return None
+
+    # decode message
+    def DecodeMessage(self, encoded_message: str):
+
+        # split message
+        message_split = encoded_message.split("|")
+
+        # get values
+        action_code = self.GetKeyByValue(self.message_data_translations[EnumType.ActionCode], message_split[0])
+        sender = self.GetKeyByValue(self.message_data_translations[EnumType.Sender], message_split[1])
+        item = self.GetKeyByValue(self.message_data_translations[EnumType.Item], message_split[2])
+        quantity = int(message_split[3])
+        price = int(message_split[4])
+        message = message_split[5]
+
+        return Message(action_code, sender, item, quantity, price, message)
+
+    # encode message
+    def EncodeAndSendToClient(self, action_code, sender, item, quantity=0, price=0, message=""):
+
+        # get code values
+        action_code_str = self.message_data_translations[EnumType.ActionCode][action_code]
+        sender_str = self.message_data_translations[EnumType.Sender][sender]
+        item_str = self.message_data_translations[EnumType.Item][item]
+
+        self.message = f"{action_code_str}|{sender_str}|{item_str}|{quantity}|{price}|{message}"
+
+    def EncodeMessageAndSendToClient(self, message:Message):
+        self.EncodeAndSendToClient(message.action_code, message.sender, message.item, message.quantity, message.price, message.message)
+
     # Stop pipe server
-    def stop(self):
+    def Stop(self):
         print("[PIPE SERVER] Stopping pipe server...")
         time.sleep(1)
         self.stop_event_read.set()
@@ -145,7 +224,7 @@ class PipeServer:
 pipe_server = PipeServer()
 pipe_server.start()
 
-while pipe_server.message != "exit":
+while not pipe_server.stop_event_write.is_set():
     time.sleep(0.5)
 
-pipe_server.stop()
+pipe_server.Stop()
