@@ -93,7 +93,7 @@ Michał Dębski <br/>
 | 3 | Poprawa komunikacji pip'a z managerem LLM'ów | Odpalanie skryptu pythona z Unity* | Poprawa komunikacji pip'a z managerem LLM'ów | Odpalanie skryptu pythona z Unity |
 | 4 | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a |
 | 4 | Kodowanie/Dekodowanie wiadomości przez pip'a | Obczajenie możliwości w kwesti usprawnienia procesu aktualizacji ragu dla llma | Menadżer aktualizujący po swojej stronie zawartość eq npc i stanu konta gracza | Poprawa komunikacji controlera ui z pipem |
-|  |  |  |  | |
+|  |  |  |  |  |
 
 
 ## Kamienie milowe

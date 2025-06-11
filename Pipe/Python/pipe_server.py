@@ -1,11 +1,6 @@
 import win32pipe, win32file, pywintypes
 import threading
 import time
-#from npc_manager import NPCManager
-
-def test_message_print(message):
-    print(f"[TEST MESSAGE] Message: {message}")
-
 
 
 class PipeServer:
@@ -14,35 +9,42 @@ class PipeServer:
     _instance = None
 
     # Pipe variables
-    pipe_name = r'\\.\pipe\test_pipe'
-    pipe = None
-    pipe_thread = None
-    stop_event = None
+    pipe_name_read = r'\\.\pipe\write'
+    pipe_name_write = r'\\.\pipe\read'
+    pipe_read = None
+    pipe_write = None
+    pipe_thread_read = None
+    pipe_thread_write = None
+    stop_event_read = None
+    stop_event_write = None
     message = ""
-    npc_manager = None
+    response = ""
 
     # Singleton constructor
     def __new__(cls):
         if not cls._instance:
             cls._instance = super().__new__(cls)
-            cls._instance.stop_event = threading.Event()
-            #cls._instance.npc_manager = NPCManager("../../NPC_template/Data")
+            cls._instance.stop_event_read = threading.Event()
+            cls._instance.stop_event_write = threading.Event()
         return cls._instance
 
     # Start pipe server on new thread
     def start(self):
         print(f"[PIPE SERVER] Starting pipe server on new thread")
-        self.pipe_thread = threading.Thread(target=self.__run, daemon=True)
-        self.pipe_thread.start()
+        self.pipe_thread_read = threading.Thread(target=self.read, daemon=True)
+        self.pipe_thread_write = threading.Thread(target=self.write, daemon=True)
+        self.pipe_thread_read.start()
+        self.pipe_thread_write.start()
 
-    # Run pipe server logic
-    def __run(self):
-        print(f"[PIPE SERVER] Server is running")
+    # Run pipe server read logic
+    def read(self):
+
+        print(f"[PIPE SERVER READ] Server read is running")
 
         # create pipe
-        self.pipe = win32pipe.CreateNamedPipe(
-            self.pipe_name,
-            win32pipe.PIPE_ACCESS_DUPLEX,
+        self.pipe_read = win32pipe.CreateNamedPipe(
+            self.pipe_name_read,
+            win32pipe.PIPE_ACCESS_INBOUND,
             win32pipe.PIPE_TYPE_MESSAGE | win32pipe.PIPE_READMODE_MESSAGE | win32pipe.PIPE_WAIT,
             1, 65536, 65536,
             0,
@@ -51,44 +53,93 @@ class PipeServer:
 
         # connect to client
         try:
-            print("[PIPE SERVER] Waiting for client...")
-            win32pipe.ConnectNamedPipe(self.pipe, None)
-            print("[PIPE SERVER] Client connected")
+            print("[PIPE SERVER READ] Waiting for client...")
+            win32pipe.ConnectNamedPipe(self.pipe_read, None)
+            print("[PIPE SERVER READ] Client connected")
 
             # read messages
-            while not self.stop_event.is_set() and self.message != "exit":
+            while not self.stop_event_read.is_set() and self.message != "exit":
                 try:
-                    _, data = win32file.ReadFile(self.pipe, 1024)
-                    self.message = data.decode()
-                    print(f"[PIPE SERVER] Got message: {self.message}")
-                    if "|" in self.message:
-                        npc_name, msg = map(str.strip, self.message.split(":", 1))
-                        self.npc_manager.talk_to_npc(npc_name, msg)
+                    # get message and decode it
+                    _, data = win32file.ReadFile(self.pipe_read, 1024)
+                    self.response = data.decode().strip()
+                    print(f"[PIPE SERVER READ] Got message: {self.response}")
 
-                    if self.message != "exit":
-                        #TODO implement real message logic
-                        #response = f"Got {self.message}"
-                        response = "0000|0000|0000|0000|0000|Test"
-                        win32file.WriteFile(self.pipe, response.encode('utf-8'))
+                    # check for exit
+                    if self.response == "exit":
+                        self.stop(self)
+
+                    #! tmp added for testing
+                    if self.response == "0000|0000|0000|0|0|":
+                        self.message = "0000|0000|0000|0|0|\n"
+
+
+                    #TODO implement real message logic
+
                 except pywintypes.error as e:
                     if e.winerror in [109, 233]: # ERROR_BROKEN_PIPE, ERROR_PIPE_NOT_CONNECTED
-                        print("[PIPE SERVER] Client has disconnected")
+                        print("[PIPE SERVER READ] Client has disconnected")
                         self.message = "exit"
                     else:
-                        print(f"[PIPE SERVER] Reading error {e}")
+                        print(f"[PIPE SERVER READ] Reading error {e}")
                     break
 
         # close pipe
         finally:
-            win32file.CloseHandle(self.pipe)
-            self.pipe = None
+            win32file.CloseHandle(self.pipe_read)
+            self.pipe_read = None
+
+    # Run pipe server write logic
+    def write(self):
+        print(f"[PIPE SERVER WRITE] Server is running")
+
+        # create pipe
+        self.pipe_write = win32pipe.CreateNamedPipe(
+            self.pipe_name_write,
+            win32pipe.PIPE_ACCESS_OUTBOUND,
+            win32pipe.PIPE_TYPE_MESSAGE | win32pipe.PIPE_READMODE_MESSAGE | win32pipe.PIPE_WAIT,
+            1, 65536, 65536,
+            0,
+            None
+        )
+
+        # connect to client
+        try:
+            print("[PIPE SERVER WRITE] Waiting for client...")
+            win32pipe.ConnectNamedPipe(self.pipe_write, None)
+            print("[PIPE SERVER WRITE] Client connected")
+
+            # send messages
+            while not self.stop_event_write.is_set() and self.response != "exit":
+                try:
+
+                    if self.message != "exit" and len(self.message) > 0:
+                        win32file.WriteFile(self.pipe_write, (self.message).encode('utf-8'))
+                        print(f"[PIPE SERVER WRITE] Sending message: {self.message}")
+                        win32file.FlushFileBuffers(self.pipe_write)
+                        self.message = ''
+
+                except pywintypes.error as e:
+                    if e.winerror in [109, 233]: # ERROR_BROKEN_PIPE, ERROR_PIPE_NOT_CONNECTED
+                        print("[PIPE SERVER WRITE] Client has disconnected")
+                        self.message = "exit"
+                    else:
+                        print(f"[PIPE SERVER WRITE] Reading error {e}")
+                    break
+
+        # close pipe
+        finally:
+            win32file.CloseHandle(self.pipe_write)
+            self.pipe_write = None
 
     # Stop pipe server
     def stop(self):
         print("[PIPE SERVER] Stopping pipe server...")
-        time.sleep(1) #TODO Wait for c# to close connection
-        self.stop_event.set()
-        self.pipe_thread.join()
+        time.sleep(1)
+        self.stop_event_read.set()
+        self.stop_event_write.set()
+        self.pipe_thread_read.join()
+        self.pipe_thread_write.join()
 
 # test
 pipe_server = PipeServer()
