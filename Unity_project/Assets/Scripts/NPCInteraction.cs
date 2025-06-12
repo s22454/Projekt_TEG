@@ -13,7 +13,7 @@ public class NPCInteraction : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && Input.GetKeyDown(KeyCode.E) && DialogueUIController._isReady)
         {
             dialogueUI.OpenDialogue(npcId);
         }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Collections;
 using System.Diagnostics;
 using static PipeSystem;
+using System;
 
 public class DialogueUIController : UIController
 {
@@ -13,19 +14,21 @@ public class DialogueUIController : UIController
     private string npcId;
     public UnityEngine.UI.Image portraitImage;
     public Sprite smithPortrait, merchantPortrait, herbalistPortrait;
-    private PipeSystem pipeSystem;
+    private static PipeSystem _pipeSystem;
+    public static bool _isReady;
+    public static MessageStruct _messageRecived;
 
     void Start()
     {
         StartCoroutine(base.HideAfterOneFrame());
         UnityEngine.Debug.Log("Start DialogueUIController");
-        PipeSystem.OnPipeInitialize += InitializePipeSystem;
     }
 
-    public void InitializePipeSystem(PipeSystem pipeSystem)
+    public static void InitializePipeSystem(PipeSystem pipeSystem)
     {
-        this.pipeSystem = pipeSystem;
-        pipeSystem.OnMessageRecived += UpdateDialogueText;
+        UnityEngine.Debug.Log("xdddddddddd");
+        _pipeSystem = pipeSystem;
+        _isReady = true;
     }
 
     public void OpenDialogue(string npc)
@@ -42,7 +45,7 @@ public class DialogueUIController : UIController
         }
 
         // Send initial greeting through pipe
-        pipeSystem.EncodeAndSendMessageToServer(ActionCode.TXTMESSAGE, Sender.PLAYER, Item.NULL, 0, 0, "Witaj!");
+        _pipeSystem.EncodeAndSendMessageToServer(ActionCode.TXTMESSAGE, Sender.PLAYER, Item.NULL, 0, 0, "Witaj!");
     }
 
     public void OnSendMessage()
@@ -50,16 +53,19 @@ public class DialogueUIController : UIController
         string message = inputField.text.Trim();
         if (!string.IsNullOrEmpty(message))
         {
-            pipeSystem.EncodeAndSendMessageToServer(ActionCode.TXTMESSAGE, Sender.PLAYER, Item.NULL, 0, 0, message);
+            _pipeSystem.EncodeAndSendMessageToServer(ActionCode.TXTMESSAGE, Sender.PLAYER, Item.NULL, 0, 0, message);
             inputField.text = "";
             dialogueText.text = "...";
         }
     }
 
-    void OnDestroy()
+    void Update()
     {
-        if (pipeSystem != null)
-            pipeSystem.OnMessageRecived -= UpdateDialogueText;
+        if (_messageRecived.Ready)
+        {
+            UpdateDialogueText(_messageRecived);
+            _messageRecived.Ready = false;
+        }
     }
 
     void UpdateDialogueText(MessageStruct msg)

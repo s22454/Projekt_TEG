@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class PipeSystem : MonoBehaviour
 {
@@ -30,12 +31,11 @@ public class PipeSystem : MonoBehaviour
     private static Dictionary<EnumType, Dictionary<Enum, string>> MessageDataTranslations;
 
     // Events
-    public event Action<MessageStruct> OnMessageRecived;
-    public static event Action<PipeSystem> OnPipeInitialize;
 
     // Message struct
     public struct MessageStruct
     {
+        public bool Ready { get; set; }
         public ActionCode ActionCode { get; set; }
         public Sender Sender { get; set; }
         public Item Item { get; set; }
@@ -69,7 +69,12 @@ public class PipeSystem : MonoBehaviour
         _pipeThreadRead.Start();
         _pipeThreadWrite.Start();
 
-        OnPipeInitialize?.Invoke(Instance);
+        DialogueUIController.InitializePipeSystem(Instance);
+    }
+
+    void Awake()
+    {
+        DialogueUIController.InitializePipeSystem(Instance);
     }
 
     // Read json config file and init dictionary
@@ -168,7 +173,8 @@ public class PipeSystem : MonoBehaviour
 
                         // call event
                         Debug.Log("Invoking OnMessageRecived");
-                        OnMessageRecived?.Invoke(messageDecoded);
+                        messageDecoded.Ready = true;
+                        DialogueUIController._messageRecived = messageDecoded;
 
                         // create new read task
                         readAsync.Dispose();
