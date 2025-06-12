@@ -7,6 +7,7 @@ using System.Collections;
 public abstract class UIController : MonoBehaviour
 {
     public GameObject infoPanel;
+    public bool _dialogOpened;
 
     void Start()
     {
@@ -23,11 +24,13 @@ public abstract class UIController : MonoBehaviour
     {
         gameObject.SetActive(true);
         infoPanel.SetActive(false);
+        _dialogOpened = true;
     }
 
     public void CloseDialogue()
     {
         gameObject.SetActive(false);
         infoPanel.SetActive(true);
+        _dialogOpened = false;
     }
 }

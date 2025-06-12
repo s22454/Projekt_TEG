@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 public class NPCInteraction : MonoBehaviour
@@ -13,7 +14,7 @@ public class NPCInteraction : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E) && DialogueUIController._isReady)
+        if (playerInRange && Input.GetKeyDown(KeyCode.E) && DialogueUIController._isReady && !dialogueUI._dialogOpened)
         {
             dialogueUI.OpenDialogue(npcId);
         }

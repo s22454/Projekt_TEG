@@ -17,6 +17,7 @@ public class DialogueUIController : UIController
     private static PipeSystem _pipeSystem;
     public static bool _isReady;
     public static MessageStruct _messageRecived;
+    private Sender _currentNPC;
 
     void Start()
     {
@@ -36,16 +37,18 @@ public class DialogueUIController : UIController
         base.OpenDialogue();
         npcId = npc;
 
+        UnityEngine.Debug.Log("WTFFFFFFFFFFFFFFFFFFFF");
+
         switch (npcId)
         {
-            case "Smith": portraitImage.sprite = smithPortrait; break;
-            case "Merchant": portraitImage.sprite = merchantPortrait; break;
-            case "Herbalist": portraitImage.sprite = herbalistPortrait; break;
+            case "Smith": portraitImage.sprite = smithPortrait; _currentNPC = Sender.SMITH; break;
+            case "Merchant": portraitImage.sprite = merchantPortrait; _currentNPC = Sender.BAKER; break;
+            case "Herbalist": portraitImage.sprite = herbalistPortrait; _currentNPC = Sender.HERBALIST; break;
             default: portraitImage.sprite = null; break;
         }
 
         // Send initial greeting through pipe
-        _pipeSystem.EncodeAndSendMessageToServer(ActionCode.TXTMESSAGE, Sender.PLAYER, Item.NULL, 0, 0, "Witaj!");
+        _pipeSystem.EncodeAndSendMessageToServer(ActionCode.TXTMESSAGE, _currentNPC, Item.NULL, 0, 0, "Witaj!");
     }
 
     public void OnSendMessage()
@@ -53,7 +56,7 @@ public class DialogueUIController : UIController
         string message = inputField.text.Trim();
         if (!string.IsNullOrEmpty(message))
         {
-            _pipeSystem.EncodeAndSendMessageToServer(ActionCode.TXTMESSAGE, Sender.PLAYER, Item.NULL, 0, 0, message);
+            _pipeSystem.EncodeAndSendMessageToServer(ActionCode.TXTMESSAGE, _currentNPC, Item.NULL, 0, 0, message);
             inputField.text = "";
             dialogueText.text = "...";
         }

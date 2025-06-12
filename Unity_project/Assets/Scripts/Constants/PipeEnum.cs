@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// [action code] | [sender] | [item] | [quantity] | [price] | [message]
+// [action code] | [sender] | [reciver] | [item] | [quantity] | [price] | [message]
 public enum EnumType
 {
     ActionCode,

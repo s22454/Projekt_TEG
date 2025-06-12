@@ -82,7 +82,7 @@ class NPCManager:
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
         self.npc_data[npc_name] = data
-        self.npc_agents[npc_name].update_npc_data(path)
+        #self.npc_agents[npc_name].update_npc_data(path)
 
     def talk_to_npc(self, npc_name, text):
         self._reload_npc_from_file(npc_name)
