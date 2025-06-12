@@ -1,3 +1,5 @@
+import os
+
 import win32pipe, win32file, pywintypes
 import threading
 import time
@@ -47,7 +49,7 @@ class PipeServer:
 
     # Import code translations
     def ImportEnumCodes(self):
-        with open("./../../Unity_project/Assets/Scripts/Constants/PipeMessageDataTranslations.json") as f:
+        with open("./../Unity_project/Assets/Scripts/Constants/PipeMessageDataTranslations.json") as f:
             js = json.load(f)
 
             for enumTypeStr, codes in js.items():
