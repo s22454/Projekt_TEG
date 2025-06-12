@@ -10,21 +10,27 @@ public enum EnumType
 
 public enum ActionCode
 {
+    TESTMESSAGE,
     TXTMESSAGE,
-    COMMAND
+    SELL,
+    CONFIRMSELL,
+    ENDCONVARSATION
 }
 
 public enum Sender
 {
+    TEST,
     SMITH,
     BAKER,
     HERBALIST,
-    MERCHANT,
-    PLAYER
+    PLAYER,
 }
 public enum Item
 {
+    TEST,
     SWORD,
     BREAD,
-    GOLD
+    WEED,
+    GOLD,
+    NULL
 }

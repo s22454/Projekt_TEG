@@ -1017,6 +1017,7 @@ MonoBehaviour:
   smithPortrait: {fileID: 5402358684229040038, guid: 5885c6eb3039298429fff680ae71efe2, type: 3}
   merchantPortrait: {fileID: -1834691153339498033, guid: 0ed9199168acef84289f155a175801fd, type: 3}
   herbalistPortrait: {fileID: -3337529358647716369, guid: 67bc4ee522a4a4e41855bd2580a5d1e9, type: 3}
+  pipeSystemGO: {fileID: 1401637638}
 --- !u!1 &386072257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,7 +1515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &799730855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1522,7 +1523,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799730854}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a579726ef4d7ba14d8690cbe079266f5, type: 3}
   m_Name: 
@@ -3961,6 +3962,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2055258172}
   - {fileID: 1223367762}
   - {fileID: 1305772770}
   - {fileID: 1121116979}
@@ -3971,4 +3973,3 @@ SceneRoots:
   - {fileID: 5652356305911048731}
   - {fileID: 799730856}
   - {fileID: 1667674630}
-  - {fileID: 2055258172}

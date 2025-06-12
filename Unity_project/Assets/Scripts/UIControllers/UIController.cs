@@ -13,7 +13,7 @@ public abstract class UIController : MonoBehaviour
         StartCoroutine(HideAfterOneFrame());
     }
 
-    System.Collections.IEnumerator HideAfterOneFrame()
+    public System.Collections.IEnumerator HideAfterOneFrame()
     {
         yield return null;
         this.CloseDialogue();

@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine.Networking;
 using System.Text;
 using System.Collections;
+using System.Diagnostics;
+using static PipeSystem;
 
 public class DialogueUIController : UIController
 {
@@ -11,6 +13,20 @@ public class DialogueUIController : UIController
     private string npcId;
     public UnityEngine.UI.Image portraitImage;
     public Sprite smithPortrait, merchantPortrait, herbalistPortrait;
+    private PipeSystem pipeSystem;
+
+    void Start()
+    {
+        StartCoroutine(base.HideAfterOneFrame());
+        UnityEngine.Debug.Log("Start DialogueUIController");
+        PipeSystem.OnPipeInitialize += InitializePipeSystem;
+    }
+
+    public void InitializePipeSystem(PipeSystem pipeSystem)
+    {
+        this.pipeSystem = pipeSystem;
+        pipeSystem.OnMessageRecived += UpdateDialogueText;
+    }
 
     public void OpenDialogue(string npc)
     {
@@ -26,7 +42,7 @@ public class DialogueUIController : UIController
         }
 
         // Send initial greeting through pipe
-        PipeSystem.Instance.SendMessageToServer($"{ActionCode.TXTMESSAGE}|{Sender.PLAYER}|null|0|0|Witaj!");
+        pipeSystem.EncodeAndSendMessageToServer(ActionCode.TXTMESSAGE, Sender.PLAYER, Item.NULL, 0, 0, "Witaj!");
     }
 
     public void OnSendMessage()
@@ -34,14 +50,22 @@ public class DialogueUIController : UIController
         string message = inputField.text.Trim();
         if (!string.IsNullOrEmpty(message))
         {
-            PipeSystem.Instance.SendMessageToServer($"{ActionCode.TXTMESSAGE}|{Sender.PLAYER}|null|0|0|{message}"); //co z odbiorc¹?
+            pipeSystem.EncodeAndSendMessageToServer(ActionCode.TXTMESSAGE, Sender.PLAYER, Item.NULL, 0, 0, message);
             inputField.text = "";
             dialogueText.text = "...";
         }
     }
 
-    public void UpdateDialogueText(string text)
+    void OnDestroy()
     {
-        dialogueText.text = text ?? "No response";
+        if (pipeSystem != null)
+            pipeSystem.OnMessageRecived -= UpdateDialogueText;
+    }
+
+    void UpdateDialogueText(MessageStruct msg)
+    {
+        UnityEngine.Debug.Log("UpdateDialogueText");
+        if (msg.ActionCode == ActionCode.TXTMESSAGE)
+            dialogueText.text = msg.Message;
     }
 }

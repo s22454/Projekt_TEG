@@ -1,39 +1,37 @@
 using UnityEngine;
 using System;
 using System.IO.Pipes;
-using System.Text;
 using System.Threading;
-using UnityEditor;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
-using static UnityEditor.Progress;
-using UnityEditor.ShaderGraph.Internal;
+using System.Linq;
 
 public class PipeSystem : MonoBehaviour
 {
-    // Class variables
-    private Thread _pipeThread;
-    private NamedPipeClientStream _pipeClient;
-    private bool _active;
-    private string _message;
-    private string _response;
-    private PipeState _pipeState;
-    private DialogueUIController dialogueUI;
     public static PipeSystem Instance;
+    // Class variables
+    private Thread _pipeThreadRead;
+    private Thread _pipeThreadWrite;
+    private NamedPipeClientStream _pipeClientRead;
+    private NamedPipeClientStream _pipeClientWrite;
+    private volatile bool _active;
+    private bool _readerActive;
+    private bool _writerActive;
+    private string _messageToSend;
+    private string _messageRecived;
+    private DialogueUIController dialogueUI;
 
     // Config variables
-    public static string pipeName = "test_pipe";
+    public static string pipeNameRead = "read";
+    public static string pipeNameWrite = "write";
     private static readonly int frameRate = 5;
     private static int sleepTime;
-    private static Dictionary<EnumType, Dictionary<string, Enum>> MessageDataTranslations;
+    private static Dictionary<EnumType, Dictionary<Enum, string>> MessageDataTranslations;
 
-    // State enum
-    private enum PipeState
-    {
-        WRITE,
-        READ
-    }
+    // Events
+    public event Action<MessageStruct> OnMessageRecived;
+    public static event Action<PipeSystem> OnPipeInitialize;
 
     // Message struct
     public struct MessageStruct
@@ -49,14 +47,29 @@ public class PipeSystem : MonoBehaviour
     void Start()
     {
         if (Instance == null) Instance = this;
-        _pipeThread = new Thread(PipeWorker);
+        // Initialize variables
+        _pipeThreadRead = new Thread(PipeReader);
+        _pipeThreadWrite = new Thread(PipeWriter);
         _active = true;
-        _message = "";
-        _response = "";
+        _messageToSend = "";
+        _messageRecived = "";
         sleepTime = 1000 / frameRate;
+
+        // Get configuration
         InitConfig();
-        _pipeThread.Start();
-        dialogueUI = FindObjectOfType<DialogueUIController>();
+
+        // Connect to pipe server
+        _pipeClientRead = new NamedPipeClientStream(".", pipeNameRead, PipeDirection.In);
+        _pipeClientRead.Connect(5000);
+        _pipeClientWrite = new NamedPipeClientStream(".", pipeNameWrite, PipeDirection.Out);
+        _pipeClientWrite.Connect(5001);
+        Debug.Log("[PIPESYSTEM] Connected to python pipe");
+
+        // Create and start threads
+        _pipeThreadRead.Start();
+        _pipeThreadWrite.Start();
+
+        OnPipeInitialize?.Invoke(Instance);
     }
 
     // Read json config file and init dictionary
@@ -69,19 +82,19 @@ public class PipeSystem : MonoBehaviour
         var raw = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(json);
 
         // final result
-        MessageDataTranslations = new Dictionary<EnumType, Dictionary<string, Enum>>();
+        MessageDataTranslations = new Dictionary<EnumType, Dictionary<Enum, string>>();
 
         foreach (var (key, innerDict) in raw)
         {
             // Parse enum type
             if (!Enum.TryParse<EnumType>(key, true, out var enumTypeKey))
             {
-                Debug.LogError("PIPESYSTEM | Error while reading PipeMessageDataTranslations");
+                Debug.LogError("[PIPESYSTEM] Error while reading PipeMessageDataTranslations");
                 continue;
             }
 
             // Enum values
-            var mappedDict = new Dictionary<string, Enum>();
+            var mappedDict = new Dictionary<Enum, string>();
 
             // Get enum value
             foreach (var (code, valueStr) in innerDict)
@@ -112,12 +125,12 @@ public class PipeSystem : MonoBehaviour
                 // check enum
                 if (parsedEnum is null)
                 {
-                    Debug.LogError("PIPESYSTEM | Error while translating enum value");
+                    Debug.LogError("[PIPESYSTEM] Error while translating enum value");
                     continue;
                 }
 
                 // add enum code translations to dictionary
-                mappedDict.Add(code, parsedEnum);
+                mappedDict.Add(parsedEnum, code);
             }
 
             // add enum values to dictionary
@@ -126,42 +139,40 @@ public class PipeSystem : MonoBehaviour
     }
 
 
-    void PipeWorker()
+    void PipeReader()
     {
+        _readerActive = true;
+
         try
         {
-            // connect to pipe server
-            _pipeClient = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut);
-            _pipeClient.Connect(5000);
-            Debug.Log("PIPESYSTEM | Connected to python pipe");
-
-            using (var sr = new StreamReader(_pipeClient))
-            using (var sw = new StreamWriter(_pipeClient) { AutoFlush = true })
+            using (var sr = new StreamReader(_pipeClientRead))
             {
+                var readAsync = sr.ReadLineAsync();
+
                 do
                 {
-                    switch (_pipeState)
+                    if (readAsync.IsCompleted)
                     {
-                        // sending message
-                        case PipeState.WRITE:
-                            if (_message.Length > 0)
-                            {
-                                sw.WriteLine(_message);
-                                Debug.Log("PIPESYSTEM | Sending message: " + _message);
-                                _message = "";
-                                _pipeState = PipeState.READ;
-                            }
-                            break;
+                        // decode message
+                        _messageRecived = readAsync.Result;
+                        Debug.Log("[PIPESYSTEM] Got message encoded: " + _messageRecived);
+                        MessageStruct messageDecoded = DecodeMessage(_messageRecived);
+                        Debug.Log("[PIPESYSTEM] Got message decoded: " +
+                            messageDecoded.ActionCode + "|" +
+                            messageDecoded.Sender + "|" +
+                            messageDecoded.Item + "|" +
+                            messageDecoded.Quantity + "|" +
+                            messageDecoded.Price + "|" +
+                            messageDecoded.Message
+                        );
 
-                        case PipeState.READ:
-                            _response = sr.ReadLine();
-                            DecodeMessage(_response);
-                            _pipeState = PipeState.WRITE;
-                            Debug.Log("PIPESYSTEM | Incoming message: " + _response);
-                            break;
+                        // call event
+                        Debug.Log("Invoking OnMessageRecived");
+                        OnMessageRecived?.Invoke(messageDecoded);
 
-                        default:
-                            break;
+                        // create new read task
+                        readAsync.Dispose();
+                        readAsync = sr.ReadLineAsync();
                     }
 
                     // frame rate limiter
@@ -172,19 +183,79 @@ public class PipeSystem : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError("PIPESYSTEM | " + e.Message);
+            Debug.LogError("[PIPESYSTEM] " + e.Message);
         }
+
+        _readerActive = false;
     }
 
-    public bool SendMessageToServer(string message)
+    void PipeWriter()
     {
-        if (_pipeClient is not null && _pipeClient.IsConnected && _active && _pipeState == PipeState.WRITE)
+        _writerActive = true;
+
+        try
         {
-            _message = message;
+            using (var sw = new StreamWriter(_pipeClientWrite) { AutoFlush = true })
+            {
+                do
+                {
+                    if (_messageToSend.Length > 0)
+                    {
+                        Debug.Log("[PIPESYSTEM] Sending message: " + _messageToSend);
+                        sw.WriteLine(_messageToSend);
+                        Debug.Log($"[PIPESYSTEM] {_messageToSend} sent");
+                        _messageToSend = "";
+                    }
+
+                    // frame rate limiter
+                    Thread.Sleep(sleepTime);
+
+                } while (_active && !_messageRecived.Equals("exit"));
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("[PIPESYSTEM] " + e.Message);
+        }
+
+        _writerActive = false;
+    }
+
+    private bool SendMessageToServer(string message)
+    {
+        if (_pipeClientWrite is not null && _pipeClientWrite.IsConnected && _active && _writerActive)
+        {
+            _messageToSend = message;
             return true;
         }
 
         return false;
+    }
+
+    public bool EncodeAndSendMessageToServer(ActionCode code, Sender sender, Item item, int quantity = 0, int price = 0, string message = "")
+    {
+        string encodedMessage =
+            MessageDataTranslations[EnumType.ActionCode][code] + "|" +
+            MessageDataTranslations[EnumType.Sender][sender] + "|" +
+            MessageDataTranslations[EnumType.Item][item] + "|" +
+            quantity.ToString() + "|" +
+            price.ToString() + "|" +
+            message + "\n"
+        ;
+
+        return SendMessageToServer(encodedMessage);
+    }
+
+    public bool EncodeAndSendMessageToServer(MessageStruct messageStruct)
+    {
+        return EncodeAndSendMessageToServer(
+            code: messageStruct.ActionCode,
+            sender: messageStruct.Sender,
+            item: messageStruct.Item,
+            quantity: messageStruct.Quantity,
+            price: messageStruct.Price,
+            message: messageStruct.Message
+        );
     }
 
     private MessageStruct DecodeMessage(string message)
@@ -196,36 +267,29 @@ public class PipeSystem : MonoBehaviour
         // Split message into managable pieces
         string[] messageParts = message.Split("|");
 
+        // Get ActionCode
+        var (actionKey, actionCode) = MessageDataTranslations[EnumType.ActionCode]
+            .SingleOrDefault(a => a.Value.Equals(messageParts[0]));
+
+        // Get Sender
+        var (senderKey, senderCode) = MessageDataTranslations[EnumType.Sender]
+            .SingleOrDefault(s => s.Value.Equals(messageParts[1]));
+
+        // Get Item
+        var (itemKey, itemCode) = MessageDataTranslations[EnumType.Item]
+            .SingleOrDefault(i => i.Value.Equals(messageParts[2]));
+
         MessageStruct msgStruct = new MessageStruct
         {
-            ActionCode = (ActionCode)MessageDataTranslations[EnumType.ActionCode][messageParts[0]],
-            Sender = (Sender)MessageDataTranslations[EnumType.Sender][messageParts[1]],
-            Item = (Item)MessageDataTranslations[EnumType.Item][messageParts[2]],
+            ActionCode = (ActionCode)actionKey,
+            Sender = (Sender)senderKey,
+            Item = (Item)itemKey,
             Quantity = int.Parse(messageParts[3]),
             Price = int.Parse(messageParts[4]),
             Message = messageParts[5]
         };
 
-        if (msgStruct.ActionCode == ActionCode.COMMAND)
-        {
-            InventoryItem goldItem = InventoryManager.Instance.items.Find(i => i.itemType == Item.GOLD);
-
-            if (goldItem != null && goldItem.quantity >= msgStruct.Price)
-            {
-                InventoryManager.Instance.AddItem(msgStruct.Item, msgStruct.Quantity);
-                InventoryManager.Instance.RemoveItem(Item.GOLD, msgStruct.Price);
-
-                dialogueUI.UpdateDialogueText(msgStruct.Message); //chyba ¿e wysy³amy wiadomoœæ "twój klient ma wystarczaj¹c¹ iloœæ z³ota, dokonano zakupu." i wyœwietlamy dopiero kolejn¹ wiadomoœæ
-            }
-            else
-            {
-                SendMessageToServer($"{ActionCode.TXTMESSAGE}|{Sender.PLAYER}|null|0|0|Twój klient nie ma wystarczaj¹cej iloœci z³ota. Transakcja zakoñczy³a siê niepowodzeniem...");
-            }
-        } 
-        else if (msgStruct.ActionCode == ActionCode.TXTMESSAGE)
-        {
-            dialogueUI.UpdateDialogueText(msgStruct.Message);
-        }
+        UnityEngine.Debug.Log("PipeSystem.DecodeMessage");
 
         return msgStruct;
     }
@@ -235,35 +299,37 @@ public class PipeSystem : MonoBehaviour
         try
         {
             // send closing message
-            _message = "exit";
-            _pipeState = PipeState.WRITE;
+            _messageToSend = "exit";
+            _messageRecived = "exit";
+            _active = false;
 
             // wait for message to be sent
-            while (_message.Length > 0)
+            while (_writerActive && _readerActive)
                 Thread.Sleep(100);
 
-            _active = false;
+            // close thread if it still exisits
+            _pipeThreadRead?.Join();
+            _pipeThreadWrite?.Join();
+
             // close clinet if it still exisits
-            _pipeClient?.Close();
+            _pipeClientRead?.Close();
+            _pipeClientWrite?.Close();
         }
         catch (Exception e)
         {
-            Debug.LogError("PIPESYSTEM | Error while closing: " + e.Message);
+            Debug.LogError("[PIPESYSTEM] Error while closing: " + e.Message);
         }
-
-        // close thread if it still exisits
-        _pipeThread?.Join();
     }
 
-    // Test methods
-
+    // Test method
     [ContextMenu("Send test message")]
     private void SendTestMessage()
     {
-        Debug.Log("PIPESYSTEM | Sending test message");
-        if (SendMessageToServer("test"))
-            Debug.Log("PIPESYSTEM | Sending test message successful");
+        Debug.Log("[PIPESYSTEM] Sending test message");
+
+        if (EncodeAndSendMessageToServer(ActionCode.TESTMESSAGE, Sender.TEST, Item.TEST))
+            Debug.Log("[PIPESYSTEM] Sending test message successful");
         else
-            Debug.Log("PIPESYSTEM | Sending test message failed");
+            Debug.Log("[PIPESYSTEM] Sending test message failed");
     }
 }
