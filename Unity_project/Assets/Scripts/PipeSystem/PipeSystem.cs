@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class PipeSystem : MonoBehaviour
 {
+    public static PipeSystem Instance;
     // Class variables
     private Thread _pipeThreadRead;
     private Thread _pipeThreadWrite;
@@ -19,6 +21,7 @@ public class PipeSystem : MonoBehaviour
     private bool _writerActive;
     private string _messageToSend;
     private string _messageRecived;
+    private DialogueUIController dialogueUI;
 
     // Config variables
     public static string pipeNameRead = "read";
@@ -28,11 +31,11 @@ public class PipeSystem : MonoBehaviour
     private static Dictionary<EnumType, Dictionary<Enum, string>> MessageDataTranslations;
 
     // Events
-    public event Action<MessageStruct> OnMessageRecived;
 
     // Message struct
     public struct MessageStruct
     {
+        public bool Ready { get; set; }
         public ActionCode ActionCode { get; set; }
         public Sender Sender { get; set; }
         public Item Item { get; set; }
@@ -43,6 +46,7 @@ public class PipeSystem : MonoBehaviour
 
     void Start()
     {
+        if (Instance == null) Instance = this;
         // Initialize variables
         _pipeThreadRead = new Thread(PipeReader);
         _pipeThreadWrite = new Thread(PipeWriter);
@@ -64,6 +68,13 @@ public class PipeSystem : MonoBehaviour
         // Create and start threads
         _pipeThreadRead.Start();
         _pipeThreadWrite.Start();
+
+        DialogueUIController.InitializePipeSystem(Instance);
+    }
+
+    void Awake()
+    {
+        DialogueUIController.InitializePipeSystem(Instance);
     }
 
     // Read json config file and init dictionary
@@ -161,7 +172,9 @@ public class PipeSystem : MonoBehaviour
                         );
 
                         // call event
-                        OnMessageRecived?.Invoke(messageDecoded);
+                        Debug.Log("Invoking OnMessageRecived");
+                        messageDecoded.Ready = true;
+                        DialogueUIController._messageRecived = messageDecoded;
 
                         // create new read task
                         readAsync.Dispose();
@@ -196,7 +209,7 @@ public class PipeSystem : MonoBehaviour
                     {
                         Debug.Log("[PIPESYSTEM] Sending message: " + _messageToSend);
                         sw.WriteLine(_messageToSend);
-                        Debug.Log($"[PIPESYSTEM] {_messageToSend} send");
+                        Debug.Log($"[PIPESYSTEM] {_messageToSend} sent");
                         _messageToSend = "";
                     }
 
@@ -272,7 +285,7 @@ public class PipeSystem : MonoBehaviour
         var (itemKey, itemCode) = MessageDataTranslations[EnumType.Item]
             .SingleOrDefault(i => i.Value.Equals(messageParts[2]));
 
-        return new MessageStruct
+        MessageStruct msgStruct = new MessageStruct
         {
             ActionCode = (ActionCode)actionKey,
             Sender = (Sender)senderKey,
@@ -281,6 +294,10 @@ public class PipeSystem : MonoBehaviour
             Price = int.Parse(messageParts[4]),
             Message = messageParts[5]
         };
+
+        UnityEngine.Debug.Log("PipeSystem.DecodeMessage");
+
+        return msgStruct;
     }
 
     void OnApplicationQuit()
