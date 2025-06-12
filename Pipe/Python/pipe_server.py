@@ -4,9 +4,14 @@ import win32pipe, win32file, pywintypes
 import threading
 import time
 import json
-from Pipe.Python.message import Message
-from Pipe.Python.pipe_event import Event
-from Pipe.Python.pipe_enums import EnumType, ActionCode, Sender, Item
+
+from message import Message
+from pipe_event import Event
+from pipe_enums import EnumType, ActionCode, Sender, Item
+
+# from Pipe.Python.message import Message
+# from Pipe.Python.pipe_event import Event
+# from Pipe.Python.pipe_enums import EnumType, ActionCode, Sender, Item
 
 class PipeServer:
 

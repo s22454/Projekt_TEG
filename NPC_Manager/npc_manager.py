@@ -4,10 +4,21 @@ import json
 import threading
 from dotenv import load_dotenv
 
-from Pipe.Python.pipe_server import PipeServer
-from Pipe.Python.message import Message
-from Pipe.Python.pipe_enums import ActionCode, Sender, Item
-from NPC_Rag.NPC_Rag import RAG
+import sys
+parent_dir1 = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Pipe/Python'))
+sys.path.append(parent_dir1)
+parent_dir2 = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'NPC_Rag'))
+sys.path.append(parent_dir2)
+
+from pipe_server import PipeServer
+from message import Message
+from pipe_enums import ActionCode, Sender, Item
+from NPC_Rag import RAG
+
+# from Pipe.Python.pipe_server import PipeServer
+# from Pipe.Python.message import Message
+# from Pipe.Python.pipe_enums import ActionCode, Sender, Item
+# from NPC_Rag.NPC_Rag import RAG
 
 class NPCManager:
     def __init__(self, data_folder):
