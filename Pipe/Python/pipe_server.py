@@ -1,10 +1,10 @@
 import win32pipe, win32file, pywintypes
 import threading
 import time
-from pipe_enums import EnumType, ActionCode, Sender, Item
 import json
-from message import Message
-from pipe_event import Event
+from Pipe.Python.message import Message
+from Pipe.Python.pipe_event import Event
+from Pipe.Python.pipe_enums import EnumType, ActionCode, Sender, Item
 
 class PipeServer:
 
@@ -219,12 +219,3 @@ class PipeServer:
         self.stop_event_write.set()
         self.pipe_thread_read.join()
         self.pipe_thread_write.join()
-
-# test
-pipe_server = PipeServer()
-pipe_server.start()
-
-while not pipe_server.stop_event_write.is_set():
-    time.sleep(0.5)
-
-pipe_server.Stop()

@@ -1,5 +1,5 @@
 from enum import Enum
-from pipe_enums import ActionCode, Sender, Item
+from Pipe.Python.pipe_enums import ActionCode, Sender, Item
 from dataclasses import dataclass
 
 @dataclass
