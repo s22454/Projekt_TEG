@@ -30,20 +30,7 @@ class NPCManager:
                 with open(path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 self.npc_data[npc_name] = data
-                text = self._flatten_npc_to_text(data)
-                self.npc_agents[npc_name] = RAG(text)
-
-    def _flatten_npc_to_text(self, data):
-        parts = [
-            f"{data['name']} - {data['role']}",
-            data["description"],
-            f"Attitude towards player: {data.get('attitude_towards_player', 'neutral')}",
-            "Items for sale:" + ''.join(f"\n- {p['name']} ({p['price']})" for p in data["items"]),
-            f"Relations:\n  Likes: {', '.join(data['relations'].get('likes', []))}\n  Dislikes: {', '.join(data['relations'].get('dislikes', []))}",
-            "Rumors:" + ''.join(f"\n- {p}" for p in data["rumors"]),
-            f"Currency: {data['currency']}"
-        ]
-        return "\n".join(parts)
+                self.npc_agents[npc_name] = RAG(path)
 
     def handle_pipe_message(self, message: Message):
         print(f"[NPC MANAGER] Received message from pipe: {message}")
@@ -84,8 +71,7 @@ class NPCManager:
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
         self.npc_data[npc_name] = data
-        text = self._flatten_npc_to_text(data)
-        self.npc_agents[npc_name].update_npc_data(text)
+        self.npc_agents[npc_name].update_npc_data(path)
 
     def talk_to_npc(self, npc_name, text):
         self._reload_npc_from_file(npc_name)
@@ -195,8 +181,7 @@ class NPCManager:
         self.npc_data[to_npc]["attitude_towards_player"] = new_attitude
 
         self._save_npc_to_file(to_npc)
-        text = self._flatten_npc_to_text(self.npc_data[to_npc])
-        self.npc_agents[to_npc].update_npc_data(text)
+        self._reload_npc_from_file(to_npc)
 
     def _adjust_attitude(self, current, sentiment):
         mapping = {

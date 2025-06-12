@@ -89,32 +89,32 @@ class RAG:
 def npc_json_to_text(npc_data: dict) -> str:
     lines = [
         "Poniżej znajduje się opis postaci którą ty jesteś "
-        f"Twoje IMIĘ: {npc_data['imie']}",
-        f"Twoja ROLA: {npc_data['rola']}\n",
-        f"Twój OPIS:\n{npc_data['opis']}",
-        f"Twoje nastawienie do gracza: {npc_data['nastawienie_do_gracza']}\n",
+        f"Twoje IMIĘ: {npc_data['name']}",
+        f"Twoja ROLA: {npc_data['role']}\n",
+        f"Twój OPIS:\n{npc_data['description']}",
+        f"Twoje nastawienie do gracza: {npc_data['attitude_towards_player']}\n",
         "PRZEDMIOTY które masz NA SPRZEDAŻ:",
     ]
 
-    for item in npc_data['przedmioty']:
-        lines.append(f"- {item['nazwa']} – {item['cena']}")
+    for item in npc_data['items']:
+        lines.append(f"- {item['name']} – {item['price']}")
 
     lines.extend([
         "\nRELACJE które masz z innymi mieszkańcami:",
-        f"- Lubi: {', '.join(npc_data['relacje']['lubi'])}",
-        f"- Nie lubi: {', '.join(npc_data['relacje']['nie_lubi'])}\n",
+        f"- Lubi: {', '.join(npc_data['relations']['likes'])}",
+        f"- Nie lubi: {', '.join(npc_data['relations']['dislikes'])}\n",
         "PLOTKI KRĄŻĄCE o tobie:",
     ])
 
-    for plotka in npc_data['plotki']:
+    for plotka in npc_data['rumors']:
         lines.append(f"- {plotka}")
 
-    lines.append(f"\nWALUTA wykorzystywana w twoim świecie: {npc_data['waluta']}")
+    lines.append(f"\nWALUTA wykorzystywana w twoim świecie: {npc_data['currency']}")
 
     return "\n".join(lines)
 
 if __name__ == "__main__":
-    json_path = r"NPC_Rag\Data\kupiec.json"
+    json_path = r"NPC_Rag\Data\baker.json"
 
     rag = RAG(json_path)
 
