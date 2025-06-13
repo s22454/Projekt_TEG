@@ -78,11 +78,12 @@ public class DialogueUIController : UIController
     {
         Item item = _currentNPC switch
         {
-            Sender.TEST         => Item.TEST,
-            Sender.BAKER        => Item.BREAD,
-            Sender.HERBALIST    => Item.WEED,
-            Sender.PLAYER       => Item.GOLD,
-            _                   => Item.NULL
+            Sender.TEST => Item.TEST,
+            Sender.BAKER => Item.BREAD,
+            Sender.HERBALIST => Item.WEED,
+            Sender.SMITH => Item.SWORD,
+            Sender.PLAYER => Item.GOLD,
+            _ => Item.NULL
         };
 
         MessageStruct message = new()
@@ -114,5 +115,14 @@ public class DialogueUIController : UIController
         UnityEngine.Debug.Log("UpdateDialogueText");
         if (msg.ActionCode == ActionCode.TXTMESSAGE)
             dialogueText.text = msg.Message;
+    }
+
+    public void CloseDialogue()
+    {
+        gameObject.SetActive(false);
+        infoPanel.SetActive(true);
+        _dialogOpened = false;
+        inputField.text = "";
+        dialogueText.text = "...";
     }
 }
