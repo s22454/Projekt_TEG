@@ -48,7 +48,6 @@ class NPCManager:
         sender_npc = message.sender.name.lower()
         player_input = message.message.strip()
         quantity = message.quantity
-        response_message : Message
 
         if message.action_code == ActionCode.TXTMESSAGE:
             response = self.talk_to_npc(sender_npc, player_input)
@@ -59,11 +58,11 @@ class NPCManager:
                 item=Item.TEST,
                 message=response
             )
+            self.pipe_server.EncodeMessageAndSendToClient(response_message)
 
         if message.action_code == ActionCode.SELL:
-            response_message = self.sell_item(sender_npc, message.item, quantity)
-
-        self.pipe_server.EncodeMessageAndSendToClient(response_message)
+            response_message = self.sell_item(sender_npc, message.item, quantity, message.price)
+            self.pipe_server.EncodeMessageAndSendToClient(response_message)
 
     def share_info(self, from_npc, to_npc, message):
         if "rumors" not in self.npc_data[to_npc]:
@@ -82,7 +81,7 @@ class NPCManager:
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
         self.npc_data[npc_name] = data
-        self.npc_agents[npc_name].update_npc_data(path)
+        self.npc_agents[npc_name] = RAG(path)
 
     def talk_to_npc(self, npc_name, text):
         self._reload_npc_from_file(npc_name)
@@ -101,7 +100,7 @@ class NPCManager:
 
         return answer
 
-    def sell_item(self, npc_name, item, quantity=1):
+    def sell_item(self, npc_name, item, quantity=1, budget=0):
         if npc_name not in self.npc_data:
             return Message(
                 action_code=ActionCode.TXTMESSAGE,
@@ -128,6 +127,16 @@ class NPCManager:
 
                 price = self._extract_price_value(it["price"])
                 total_price = price * quantity
+
+                if budget < total_price:
+                    prompt = f"Player tried to buy {quantity}x {it['name']}, but he doesn't have enough money."
+                    _, response = self.npc_agents[npc_name].answer(prompt)
+                    return Message(
+                        action_code=ActionCode.TXTMESSAGE,
+                        sender=Sender.PLAYER,
+                        item=Item.TEST,
+                        message=response
+                    )
 
                 self._save_npc_to_file(npc_name)
                 self._reload_npc_from_file(npc_name)
@@ -165,8 +174,8 @@ class NPCManager:
         return [name for name in all_npcs if name.lower() in words and name.lower() != text.lower()]
 
     def _analyze_sentiment(self, text):
-        positive_keywords = ["like", "helped", "nice", "kind", "good", "respect", "smart"]
-        negative_keywords = ["hate", "bad", "mean", "cheated", "unfriendly", "stupid"]
+        positive_keywords = ["lubię", "pomógł", "fajny", "miły", "dobry", "szanuję", "mądry"]
+        negative_keywords = ["nienawidzę", "zły", "wredny", "oszukał", "niefajny", "głupi"]
 
         text_lower = text.lower()
         score = 0
