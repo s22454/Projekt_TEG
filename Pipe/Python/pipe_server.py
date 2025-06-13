@@ -163,10 +163,11 @@ class PipeServer:
                 try:
 
                     if len(self.message) > 0:
-                        win32file.WriteFile(self.pipe_write, (self.message + "\n").encode('utf-8'))
-                        print(f"[PIPE SERVER WRITE] Sending message: {self.message}")
+                        message = self.message.replace("\n", ' ').replace('\r', ' ')
+                        win32file.WriteFile(self.pipe_write, (message + "\n").encode('utf-8'))
+                        print(f"[PIPE SERVER WRITE] Sending message: {message}")
                         win32file.FlushFileBuffers(self.pipe_write)
-                        print(f"[PIPE SERVER WRITE] Send message: {self.message}")
+                        print(f"[PIPE SERVER WRITE] Send message: {message}")
                         self.message = ''
 
                 except pywintypes.error as e:
