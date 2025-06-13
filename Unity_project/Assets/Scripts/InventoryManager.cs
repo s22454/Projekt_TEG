@@ -5,7 +5,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
 
-    public List<InventoryItem> items = new List<InventoryItem>();
+    public static List<InventoryItem> items = new List<InventoryItem>();
 
     void Awake()
     {
@@ -15,7 +15,7 @@ public class InventoryManager : MonoBehaviour
         items.Add(new InventoryItem(Item.GOLD, 100));
     }
 
-    public void AddItem(Item item, int amount = 1)
+    public static void AddItem(Item item, int amount = 1)
     {
         InventoryItem existing = items.Find(i => i.itemType == item);
         if (existing != null)
@@ -30,7 +30,7 @@ public class InventoryManager : MonoBehaviour
         Debug.Log($"Added {amount}x {"itemName"}");
     }
 
-    public void RemoveItem(Item item, int amount = 1)
+    public static void RemoveItem(Item item, int amount = 1)
     {
         InventoryItem existing = items.Find(i => i.itemType == item);
         if (existing != null)

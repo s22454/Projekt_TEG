@@ -295,7 +295,13 @@ public class PipeSystem : MonoBehaviour
             Message = messageParts[5]
         };
 
-        UnityEngine.Debug.Log("PipeSystem.DecodeMessage");
+        Debug.Log("[PIPESYSTEM] Decoding message");
+
+        if (msgStruct.Item != Item.NULL && msgStruct.Item != Item.TEST && msgStruct.Item != Item.GOLD)
+        {
+            InventoryManager.AddItem(msgStruct.Item);
+            InventoryManager.RemoveItem(Item.GOLD, DialogueUIController._itemCosts[msgStruct.Item]);
+        }
 
         return msgStruct;
     }

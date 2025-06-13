@@ -6,6 +6,9 @@ using System.Collections;
 using System.Diagnostics;
 using static PipeSystem;
 using System;
+using System.Collections.Generic;
+using UnityEditor.VersionControl;
+using Unity.VisualScripting;
 
 public class DialogueUIController : UIController
 {
@@ -18,16 +21,26 @@ public class DialogueUIController : UIController
     public static bool _isReady;
     public static MessageStruct _messageRecived;
     private Sender _currentNPC;
+    public static Dictionary<Item, int> _itemCosts;
 
     void Start()
     {
         StartCoroutine(base.HideAfterOneFrame());
         UnityEngine.Debug.Log("Start DialogueUIController");
+
+        _itemCosts = new()
+        {
+            {Item.TEST, 0},
+            {Item.SWORD, 20},
+            {Item.BREAD, 40},
+            {Item.WEED, 60},
+            {Item.GOLD, 0},
+            {Item.NULL, 0},
+        };
     }
 
     public static void InitializePipeSystem(PipeSystem pipeSystem)
     {
-        UnityEngine.Debug.Log("xdddddddddd");
         _pipeSystem = pipeSystem;
         _isReady = true;
     }
@@ -37,7 +50,6 @@ public class DialogueUIController : UIController
         base.OpenDialogue();
         npcId = npc;
 
-        UnityEngine.Debug.Log("WTFFFFFFFFFFFFFFFFFFFF");
 
         switch (npcId)
         {
@@ -60,6 +72,32 @@ public class DialogueUIController : UIController
             inputField.text = "";
             dialogueText.text = "...";
         }
+    }
+
+    public void BuyItem()
+    {
+        Item item = _currentNPC switch
+        {
+            Sender.TEST         => Item.TEST,
+            Sender.BAKER        => Item.BREAD,
+            Sender.HERBALIST    => Item.WEED,
+            Sender.PLAYER       => Item.GOLD,
+            _                   => Item.NULL
+        };
+
+        MessageStruct message = new()
+        {
+            ActionCode = ActionCode.SELL,
+            Sender = _currentNPC,
+            Item = item,
+            Quantity = 1,
+            Price = _itemCosts[item],
+            Message = $"Chciałbym kupić {item.HumanName()} za {_itemCosts[item]}"
+        };
+
+        _pipeSystem.EncodeAndSendMessageToServer(message);
+        inputField.text = "";
+        dialogueText.text = "...";
     }
 
     void Update()
