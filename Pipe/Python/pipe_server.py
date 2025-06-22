@@ -8,6 +8,8 @@ import json
 from message import Message
 from pipe_event import Event
 from pipe_enums import EnumType, ActionCode, Sender, Item
+from message_enums import MessageType as mt
+from utils import Log
 
 # from Pipe.Python.message import Message
 # from Pipe.Python.pipe_event import Event
@@ -17,6 +19,7 @@ class PipeServer:
 
     # Singleton instance
     _instance = None
+    class_name = "PIPE SERVER"
 
     # Pipe variables
     pipe_name_read = r'\\.\pipe\write'
@@ -45,7 +48,7 @@ class PipeServer:
 
     # Start pipe server on new thread
     def start(self):
-        print(f"[PIPE SERVER] Starting pipe server on new thread")
+        Log(self.class_name, mt.LOG, "Starting pipe server on new thread")
         self.ImportEnumCodes()
         self.pipe_thread_read = threading.Thread(target=self.Read, daemon=True)
         self.pipe_thread_write = threading.Thread(target=self.Write, daemon=True)
@@ -61,7 +64,7 @@ class PipeServer:
 
                 # check if enum type is correct
                 if not enumTypeStr in EnumType.__members__:
-                    print(f"[PIPE SERVER] Bad enum type {enumTypeStr}")
+                    Log(self.class_name, mt.ERROR, f"Bad enum type {enumTypeStr}")
                     continue
 
                 enumType = EnumType[enumTypeStr]
@@ -69,9 +72,8 @@ class PipeServer:
                 # get enum inner translation values
                 inner_ditc = {}
                 for code, enumValue in codes.items():
-                    #print(f"{enumValue} | {code}")
                     if not enumValue in enumType.value.__members__:
-                        print(f"[PIPE SERVER] Bad enum value {enumValue}")
+                        Log(self.class_name, mt.ERROR, f"Bad enum value {enumValue}")
                         continue
 
                     inner_ditc[enumType.value[enumValue]] = code
@@ -81,7 +83,8 @@ class PipeServer:
     # Run pipe server read logic
     def Read(self):
 
-        print(f"[PIPE SERVER READ] Server read is running")
+        fun_name = self.class_name + " READ"
+        Log(fun_name, mt.LOG, "Server read is running")
 
         # create pipe
         self.pipe_read = win32pipe.CreateNamedPipe(
@@ -95,9 +98,9 @@ class PipeServer:
 
         # connect to client
         try:
-            print("[PIPE SERVER READ] Waiting for client...")
+            Log(fun_name, mt.LOG, "Waiting for client...")
             win32pipe.ConnectNamedPipe(self.pipe_read, None)
-            print("[PIPE SERVER READ] Client connected")
+            Log(fun_name, mt.LOG, "Client connected")
 
             # read messages
             while not self.stop_event_read.is_set() and self.message != "exit":
@@ -105,11 +108,11 @@ class PipeServer:
                     # get message and decode it
                     _, data = win32file.ReadFile(self.pipe_read, 1024)
                     encoded_response = data.decode().strip()
-                    print(f"[PIPE SERVER READ] Got encoded message: {encoded_response}")
+                    Log(fun_name, mt.LOG, f"Got encoded message: {encoded_response}")
 
                     # decode message
                     self.response = self.DecodeMessage(encoded_response)
-                    print(f"[PIPE SERVER READ] Got decoded message: {self.response}")
+                    Log(fun_name, mt.LOG, f"Got decoded message: {self.response}")
 
                     # fire event
                     self.OnMessageRecived.fire(self.response)
@@ -127,10 +130,10 @@ class PipeServer:
 
                 except pywintypes.error as e:
                     if e.winerror in [109, 233]: # ERROR_BROKEN_PIPE, ERROR_PIPE_NOT_CONNECTED
-                        print("[PIPE SERVER READ] Client has disconnected")
+                        Log(fun_name, mt.WARNING, "Client has disconnected")
                         self.stop_event_read.set()
                     else:
-                        print(f"[PIPE SERVER READ] Reading error {e}")
+                        Log(fun_name, mt.ERROR, f"Reading error {e}")
                     break
 
         # close pipe
@@ -140,7 +143,9 @@ class PipeServer:
 
     # Run pipe server write logic
     def Write(self):
-        print(f"[PIPE SERVER WRITE] Server is running")
+
+        fun_name = self.class_name + " WRITE"
+        Log(fun_name, mt.LOG, "Server is running")
 
         # create pipe
         self.pipe_write = win32pipe.CreateNamedPipe(
@@ -154,9 +159,9 @@ class PipeServer:
 
         # connect to client
         try:
-            print("[PIPE SERVER WRITE] Waiting for client...")
+            Log(fun_name, mt.LOG, "Waiting for client...")
             win32pipe.ConnectNamedPipe(self.pipe_write, None)
-            print("[PIPE SERVER WRITE] Client connected")
+            Log(fun_name, mt.LOG, "Client connected")
 
             # send messages
             while not self.stop_event_write.is_set():
@@ -165,17 +170,20 @@ class PipeServer:
                     if len(self.message) > 0:
                         message = self.message.replace("\n", ' ').replace('\r', ' ')
                         win32file.WriteFile(self.pipe_write, (message + "\n").encode('utf-8'))
-                        print(f"[PIPE SERVER WRITE] Sending message: {message}")
+                        Log(fun_name, mt.LOG, f"Sending message: {message}")
+
                         win32file.FlushFileBuffers(self.pipe_write)
-                        print(f"[PIPE SERVER WRITE] Send message: {message}")
+                        Log(fun_name, mt.LOG, f"Send message: {message}")
                         self.message = ''
 
                 except pywintypes.error as e:
-                    if e.winerror in [109, 233]: # ERROR_BROKEN_PIPE, ERROR_PIPE_NOT_CONNECTED
-                        print("[PIPE SERVER WRITE] Client has disconnected")
+                    # 109 = ERROR_BROKEN_PIPE
+                    # 233 = ERROR_PIPE_NOT_CONNECTED
+                    if e.winerror in [109, 233]:
+                        Log(fun_name, mt.WARNING, f"Client has disconnected")
                         self.stop_event_read.set()
                     else:
-                        print(f"[PIPE SERVER WRITE] Reading error {e}")
+                        Log(fun_name, mt.ERROR, f"Reading error {e}")
                     break
 
         # close pipe
@@ -221,7 +229,7 @@ class PipeServer:
 
     # Stop pipe server
     def Stop(self):
-        print("[PIPE SERVER] Stopping pipe server...")
+        Log(self.class_name, mt.LOG, f"Stopping pipe server...")
         time.sleep(1)
         self.stop_event_read.set()
         self.stop_event_write.set()
