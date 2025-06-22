@@ -10,7 +10,7 @@ def Log(sender:str, type:mt, msg:str):
     message_color_end = ""
 
     # construct message
-    now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    now = datetime.now().strftime("%H:%M:%S")
     message = f"[{now}] [{sender}] | {msg}"
 
     # print message to console

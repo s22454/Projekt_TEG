@@ -131,7 +131,7 @@ class PipeServer:
                     # 233 = ERROR_PIPE_NOT_CONNECTED
                     if e.winerror in [109, 233]:
                         Log(fun_name, mt.WARNING, "Client has disconnected")
-                        self.stop_event_read.set()
+                        self.Stop()
                     else:
                         Log(fun_name, mt.ERROR, f"Reading error {e}")
                     break
@@ -170,10 +170,8 @@ class PipeServer:
                     if len(self.message) > 0:
                         message = self.message.replace("\n", ' ').replace('\r', ' ')
                         win32file.WriteFile(self.pipe_write, (message + "\n").encode('utf-8'))
-                        Log(fun_name, mt.LOG, f"Sending message: {message}")
-
                         win32file.FlushFileBuffers(self.pipe_write)
-                        Log(fun_name, mt.LOG, f"Send message: {message}")
+                        Log(fun_name, mt.LOG, f"Sending message: {message}")
                         self.message = ''
 
                 except pywintypes.error as e:
@@ -181,7 +179,7 @@ class PipeServer:
                     # 233 = ERROR_PIPE_NOT_CONNECTED
                     if e.winerror in [109, 233]:
                         Log(fun_name, mt.WARNING, f"Client has disconnected")
-                        self.stop_event_read.set()
+                        self.Stop()
                     else:
                         Log(fun_name, mt.ERROR, f"Reading error {e}")
                     break
