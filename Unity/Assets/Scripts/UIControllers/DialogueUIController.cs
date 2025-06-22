@@ -12,6 +12,7 @@ using Unity.VisualScripting;
 
 public class DialogueUIController : UIController
 {
+    private static readonly string _className = "DIALOGUE UI CONTROLLER";
     public TMP_InputField inputField;
     public TMP_Text dialogueText;
     private string npcId;
@@ -26,7 +27,7 @@ public class DialogueUIController : UIController
     void Start()
     {
         StartCoroutine(base.HideAfterOneFrame());
-        UnityEngine.Debug.Log("Start DialogueUIController");
+        LogManager.Log(_className, LogType.LOG, "Started");
 
         _itemCosts = new()
         {
@@ -112,7 +113,6 @@ public class DialogueUIController : UIController
 
     void UpdateDialogueText(MessageStruct msg)
     {
-        UnityEngine.Debug.Log("UpdateDialogueText");
         if (msg.ActionCode == ActionCode.TXTMESSAGE)
             dialogueText.text = msg.Message;
     }

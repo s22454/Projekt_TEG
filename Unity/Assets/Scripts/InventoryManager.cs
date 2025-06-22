@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    private static readonly string _className = "INVENTORY MANAGER";
     public static InventoryManager Instance;
 
     public static List<InventoryItem> items = new List<InventoryItem>();
@@ -27,7 +28,7 @@ public class InventoryManager : MonoBehaviour
             items.Add(new InventoryItem(item, amount));
         }
 
-        Debug.Log($"Added {amount}x {"itemName"}");
+        LogManager.Log(_className, LogType.LOG, $"Added {amount}x {"itemName"}");
     }
 
     public static void RemoveItem(Item item, int amount = 1)
@@ -39,7 +40,7 @@ public class InventoryManager : MonoBehaviour
             if (existing.quantity <= 0 && existing.itemType != Item.GOLD)
                 items.Remove(existing);
 
-            Debug.Log($"Removed {amount}x {"itemName"}");
+            LogManager.Log(_className, LogType.LOG, $"Removed {amount}x {"itemName"}");
         }
     }
 }

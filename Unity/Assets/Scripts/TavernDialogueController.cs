@@ -3,6 +3,8 @@ using System.Collections;
 
 public class TavernDialogueController : MonoBehaviour
 {
+    private static readonly string _className = "TAVERN DIALOGUE CONTROLLER";
+
     void Start()
     {
         StartCoroutine(SendEndDayMessage());
@@ -20,11 +22,11 @@ public class TavernDialogueController : MonoBehaviour
 
         if (!success)
         {
-            Debug.LogError("[TAVERN] Failed to send ENDDAY message through pipe.");
+            LogManager.Log(_className, LogType.ERROR, "Failed to send ENDDAY message through pipe.");
             yield break;
         }
 
-        Debug.Log("[TAVERN] ENDDAY message sent.");
+        LogManager.Log(_className, LogType.LOG, "ENDDAY message sent.");
 
         yield return new WaitForSeconds(5);
         GameManager.Instance.StartNewDay();
