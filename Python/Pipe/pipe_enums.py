@@ -19,6 +19,8 @@ class Item(Enum):
     SWORD = auto()
     BREAD = auto()
     WEED = auto()
+    GOLD = auto()
+    NULL = auto()
 
 class EnumType(Enum):
     ActionCode = ActionCode

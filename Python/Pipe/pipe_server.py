@@ -101,7 +101,7 @@ class PipeServer:
             Log(fun_name, mt.LOG, "Client connected")
 
             # read messages
-            while not self.stop_event_read.is_set() and self.message != "exit":
+            while not self.stop_event_read.is_set():
                 try:
                     # get message and decode it
                     _, data = win32file.ReadFile(self.pipe_read, 1024)
@@ -230,8 +230,21 @@ class PipeServer:
     # Stop pipe server
     def Stop(self):
         Log(self.class_name, mt.LOG, f"Stopping pipe server...")
-        time.sleep(1)
+
+        # set close event
         self.stop_event_read.set()
         self.stop_event_write.set()
+        time.sleep(1)
+
+        # force close if still active
+        if self.pipe_read:
+            win32file.CloseHandle(self.pipe_read)
+
+        if self.pipe_write:
+            win32file.CloseHandle(self.pipe_write)
+
+        # join threads
         self.pipe_thread_read.join()
         self.pipe_thread_write.join()
+
+        Log(self.class_name, mt.LOG, f"Pipe server stopped")

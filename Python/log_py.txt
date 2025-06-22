@@ -2,3 +2,45 @@
 ---------------------------------------
 STARTING PROJECT - 22/06/2025 15:53:04
 ---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 16:08:33
+---------------------------------------
+[22/06/2025 16:08:57] [PIPE SERVER] | Starting pipe server on new thread
+[22/06/2025 16:08:57] [PIPE SERVER] | Bad enum value GOLD
+[22/06/2025 16:08:57] [PIPE SERVER] | Bad enum value NULL
+[22/06/2025 16:08:57] [PIPE SERVER READ] | Server read is running
+[22/06/2025 16:08:57] [PIPE SERVER WRITE] | Server is running
+[22/06/2025 16:08:57] [PIPE SERVER READ] | Waiting for client...
+[22/06/2025 16:08:57] [PIPE SERVER WRITE] | Waiting for client...
+[22/06/2025 16:09:42] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 16:11:43
+---------------------------------------
+[22/06/2025 16:12:08] [PIPE SERVER] | Starting pipe server on new thread
+[22/06/2025 16:12:08] [PIPE SERVER READ] | Server read is running
+[22/06/2025 16:12:08] [PIPE SERVER WRITE] | Server is running
+[22/06/2025 16:12:08] [PIPE SERVER READ] | Waiting for client...
+[22/06/2025 16:12:08] [PIPE SERVER WRITE] | Waiting for client...
+[22/06/2025 16:12:22] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 16:19:40
+---------------------------------------
+[22/06/2025 16:20:05] [PIPE SERVER] | Starting pipe server on new thread
+[22/06/2025 16:20:05] [PIPE SERVER READ] | Server read is running
+[22/06/2025 16:20:05] [PIPE SERVER WRITE] | Server is running
+[22/06/2025 16:20:05] [PIPE SERVER READ] | Waiting for client...
+[22/06/2025 16:20:05] [PIPE SERVER WRITE] | Waiting for client...
+[22/06/2025 16:20:18] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 16:21:23
+---------------------------------------
+[22/06/2025 16:21:48] [PIPE SERVER] | Starting pipe server on new thread
+[22/06/2025 16:21:48] [PIPE SERVER READ] | Server read is running
+[22/06/2025 16:21:48] [PIPE SERVER WRITE] | Server is running
+[22/06/2025 16:21:48] [PIPE SERVER READ] | Waiting for client...
+[22/06/2025 16:21:48] [PIPE SERVER WRITE] | Waiting for client...
+[22/06/2025 16:21:52] [PIPE SERVER] | Stopping pipe server...
