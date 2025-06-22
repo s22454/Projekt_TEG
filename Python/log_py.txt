@@ -96,3 +96,111 @@ STARTING PROJECT - 22/06/2025 16:33:51
 [16:34:29] [PIPE SERVER READ] | Client connected
 [16:34:35] [PIPE SERVER READ] | Client has disconnected
 [16:34:35] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 17:16:00
+---------------------------------------
+[17:16:28] [PIPE SERVER] | Starting pipe server on new thread
+[17:16:28] [PIPE SERVER READ] | Server read is running
+[17:16:28] [PIPE SERVER WRITE] | Server is running
+[17:16:28] [PIPE SERVER READ] | Waiting for client...
+[17:16:28] [PIPE SERVER WRITE] | Waiting for client...
+[17:16:39] [PIPE SERVER WRITE] | Client connected
+[17:16:42] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|Witaj!
+[17:16:43] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:16:52] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Witaj, podró¿niku! Jakie wieœci przynosisz z dala od mojego skromnego zacisza? Mo¿e pragniesz spróbowaæ moich zió³ lub eliksirów? Albo masz inne potrzeby, które mogê zaspokoiæ? Mów œmia³o!
+[17:18:43] [PIPE SERVER READ] | Client has disconnected
+[17:18:43] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 17:19:02
+---------------------------------------
+[17:19:28] [PIPE SERVER] | Starting pipe server on new thread
+[17:19:28] [PIPE SERVER READ] | Server read is running
+[17:19:28] [PIPE SERVER WRITE] | Server is running
+[17:19:28] [PIPE SERVER READ] | Waiting for client...
+[17:19:28] [PIPE SERVER WRITE] | Waiting for client...
+[17:21:26] [PIPE SERVER WRITE] | Client connected
+[17:21:26] [PIPE SERVER READ] | Client connected
+[17:21:38] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|Witaj!
+[17:21:38] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:21:46] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Witaj, wêdrowcze! Co ciê sprowadza do mojej skromnej chatki na skraju lasu? Czy pragniesz zakupiæ jakiœ eliksir, czy mo¿e szukasz zió³ do swoich przygód? Mówi¹, ¿e mam dobry urok w swych miksturach. Jak mogê ci pomóc?
+[17:22:16] [PIPE SERVER READ] | Client has disconnected
+[17:22:16] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 17:23:23
+---------------------------------------
+[17:23:52] [PIPE SERVER] | Starting pipe server on new thread
+[17:23:52] [PIPE SERVER READ] | Server read is running
+[17:23:52] [PIPE SERVER WRITE] | Server is running
+[17:23:52] [PIPE SERVER READ] | Waiting for client...
+[17:23:52] [PIPE SERVER WRITE] | Waiting for client...
+[17:24:02] [PIPE SERVER READ] | Client connected
+
+[17:24:12] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|Witaj!
+[17:24:12] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:24:21] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Witaj, podró¿niku! Jakie wiatry ciê tutaj przywia³y, w te skromne progi mego domostwa? Có¿, mogê ci w czymœ pomóc? Mo¿e eliksir zdrowia lub zio³a na boleœci serca? Mówi¹, i¿ las skrywa wiele tajemnic, a ja potrafiê je odkrywaæ. W coñ siê nie wahaj, pytaj œmia³o!
+[17:24:54] [PIPE SERVER READ] | Client has disconnected
+[17:24:54] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 17:26:48
+---------------------------------------
+[17:27:15] [PIPE SERVER] | Starting pipe server on new thread
+[17:27:15] [PIPE SERVER READ] | Server read is running
+[17:27:15] [PIPE SERVER WRITE] | Server is running
+[17:27:15] [PIPE SERVER READ] | Waiting for client...
+[17:27:15] [PIPE SERVER WRITE] | Waiting for client...
+[17:27:23] [PIPE SERVER WRITE] | Client connected
+[17:27:23] [PIPE SERVER READ] | Client connected
+[17:27:42] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|Witaj!
+[17:27:42] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:27:51] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Witaj, podró¿niku! Có¿ za niespodzianka, ¿e otworzy³eœ drzwi do mego skromnego domostwa. Jakie sprawy ciê tu przywiod³y? Czy potrzebujesz eliksirów, zió³, czy mo¿e chcesz siê ze mn¹ podzieliæ opowieœciami z dalekich krain?
+[17:28:00] [PIPE SERVER READ] | Client has disconnected
+[17:28:01] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 17:28:36
+---------------------------------------
+[17:29:01] [PIPE SERVER] | Starting pipe server on new thread
+[17:29:01] [PIPE SERVER READ] | Server read is running
+[17:29:01] [PIPE SERVER WRITE] | Server is running
+[17:29:01] [PIPE SERVER READ] | Waiting for client...
+[17:29:01] [PIPE SERVER WRITE] | Waiting for client...
+[17:29:20] [PIPE SERVER WRITE] | Client connected
+[17:29:20] [PIPE SERVER READ] | Client connected
+[17:29:48] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|Witaj!
+[17:29:48] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:29:57] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Witaj, podró¿niku! Co ciê sprowadza na skraj tego leœnego ¿ycia? Czy pragniesz zakupiæ jakieœ zio³a lub eliksiry, b¹dŸ mo¿e szukasz rad dotycz¹cych przeciwnoœci, jakie napotykasz? S³ucham ciê uwa¿nie.
+[17:30:19] [PIPE SERVER READ] | Client has disconnected
+[17:30:19] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 17:30:58
+---------------------------------------
+[17:31:23] [PIPE SERVER] | Starting pipe server on new thread
+[17:31:23] [PIPE SERVER READ] | Server read is running
+[17:31:23] [PIPE SERVER WRITE] | Server is running
+[17:31:23] [PIPE SERVER READ] | Waiting for client...
+[17:31:23] [PIPE SERVER WRITE] | Waiting for client...
+[17:31:45] [PIPE SERVER WRITE] | Client connected
+[17:31:45] [PIPE SERVER READ] | Client connected
+[17:31:49] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|Witaj!
+[17:31:49] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:31:58] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Witaj, przybyszu! Co ciê sprowadza w te okolice? Jak¿e mi³o mi ujrzeæ now¹ twarz. Czy mo¿e pragniesz zakupiæ coœ z moich skarbów? Mam dla ciebie zio³a, chleb na strawê, a tak¿e tajemniczy napój, który przyby³ do mnie z g³êbi lasu. Jakie s¹ twoje zamiary?
+[17:32:14] [PIPE SERVER READ] | Client has disconnected
+[17:32:14] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 17:34:57
+---------------------------------------
+[17:35:23] [PIPE SERVER] | Starting pipe server on new thread
+[17:35:23] [PIPE SERVER READ] | Server read is running
+[17:35:23] [PIPE SERVER WRITE] | Server is running
+[17:35:23] [PIPE SERVER READ] | Waiting for client...
+[17:35:23] [PIPE SERVER WRITE] | Waiting for client...
+[17:35:49] [PIPE SERVER READ] | Client connected
+
+[17:35:57] [PIPE SERVER READ] | Client has disconnected
+[17:35:57] [PIPE SERVER] | Stopping pipe server...

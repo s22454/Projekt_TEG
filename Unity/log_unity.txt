@@ -1,0 +1,16 @@
+
+---------------------------------------
+GAME STARTED 17:31:44
+---------------------------------------
+[17:31:45] [PIPE SYSTEM] | Connected to python pipe
+[17:31:49] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|Witaj!
+[17:31:49] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|Witaj! sent
+[17:31:58] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj, przybyszu! Co cię sprowadza w te okolice? Jakże miło mi ujrzeć nową twarz. Czy może pragniesz zakupić coś z moich skarbów? Mam dla ciebie zioła, chleb na strawę, a także tajemniczy napój, który przybył do mnie z głębi lasu. Jakie są twoje zamiary?
+[17:31:58] [PIPE SYSTEM] | Decoding message
+[17:31:58] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj, przybyszu! Co cię sprowadza w te okolice? Jakże miło mi ujrzeć nową twarz. Czy może pragniesz zakupić coś z moich skarbów? Mam dla ciebie zioła, chleb na strawę, a także tajemniczy napój, który przybył do mnie z głębi lasu. Jakie są twoje zamiary?
+[17:31:58] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+
+---------------------------------------
+GAME STARTED 22.35.2025 17:35:49
+---------------------------------------
+[17:35:49] [PIPE SYSTEM] | Connected to python pipe
