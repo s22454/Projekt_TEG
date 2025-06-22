@@ -6,6 +6,7 @@ class ActionCode(Enum):
     SELL = auto()
     CONFIRMSELL = auto()
     ENDCONVARSATION = auto()
+    ENDDAY = auto()
 
 class Sender(Enum):
     TEST = auto()
@@ -13,6 +14,7 @@ class Sender(Enum):
     BAKER = auto()
     HERBALIST = auto()
     PLAYER = auto()
+    SYSTEM = auto()
 
 class Item(Enum):
     TEST = auto()

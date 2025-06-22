@@ -63,6 +63,15 @@ class NPCManager:
         if message.action_code == ActionCode.SELL:
             response_message = self.sell_item(sender_npc, message.item, quantity)
 
+        if message.action_code == ActionCode.ENDDAY:
+            # tu niech sie dzieje po stronie pythona co ma sie dziac
+            response_message = Message(
+                action_code=ActionCode.ENDDAY,
+                sender=Sender.PLAYER,
+                item=Item.TEST,
+                message="EndDay received"
+            )
+
         self.pipe_server.EncodeMessageAndSendToClient(response_message)
 
     def share_info(self, from_npc, to_npc, message):
