@@ -19,7 +19,7 @@ Michał Dębski
 
 ## TODO
 
-<details open>
+<details>
   <summary>16.05.2025</summary>
 
   - [x] Fill out Jira
@@ -30,7 +30,7 @@ Michał Dębski
 
 </details>
 
-<details open>
+<details>
   <summary>20.05.2025</summary>
 
   - [x] Unity model
@@ -42,7 +42,7 @@ Michał Dębski
 
 </details>
 
-<details open>
+<details>
   <summary>03.06.2025</summary>
 
   - [x] Create a second agent and design interactions between them
@@ -56,7 +56,7 @@ Michał Dębski
 
 </details>
 
-<details open>
+<details>
   <summary>08.06.2025</summary>
 
   - [x] Call methods from the LLM
@@ -80,7 +80,7 @@ Michał Dębski
 
 </details>
 
-<details open>
+<details>
   <summary>Next</summary>
 
   - [ ] Prepare presentation
