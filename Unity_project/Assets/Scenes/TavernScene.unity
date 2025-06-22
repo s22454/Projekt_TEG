@@ -2435,8 +2435,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bb964dd4f7ccf4f964f4f9ab3c2edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infoPanel: {fileID: 0}
+  _dialogOpened: 0
   inputField: {fileID: 118475897}
   dialogueText: {fileID: 1139139604}
+  portraitImage: {fileID: 0}
+  smithPortrait: {fileID: 0}
+  merchantPortrait: {fileID: 0}
+  herbalistPortrait: {fileID: 0}
 --- !u!114 &1954580751
 MonoBehaviour:
   m_ObjectHideFlags: 0
