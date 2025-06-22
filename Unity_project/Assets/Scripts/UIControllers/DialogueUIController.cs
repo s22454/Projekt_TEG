@@ -117,11 +117,9 @@ public class DialogueUIController : UIController
             dialogueText.text = msg.Message;
     }
 
-    public void CloseDialogue()
+    public new void CloseDialogue()
     {
-        gameObject.SetActive(false);
-        infoPanel.SetActive(true);
-        _dialogOpened = false;
+        base.CloseDialogue();
         inputField.text = "";
         dialogueText.text = "...";
     }

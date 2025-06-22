@@ -30,14 +30,4 @@ public class PythonServerLauncher : MonoBehaviour
             UnityEngine.Debug.LogError("Failed to start pipe server: " + ex.Message);
         }
     }
-
-    /*    void OnApplicationQuit()
-        {
-            if (pipeProcess != null && !pipeProcess.HasExited)
-            {
-                pipeProcess.Kill();
-                pipeProcess.Dispose();
-                UnityEngine.Debug.Log("[Unity] Pipe server terminated.");
-            }
-        }*/
 }
