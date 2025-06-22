@@ -1,0 +1,98 @@
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 15:53:04
+---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 16:08:33
+---------------------------------------
+[22/06/2025 16:08:57] [PIPE SERVER] | Starting pipe server on new thread
+[22/06/2025 16:08:57] [PIPE SERVER] | Bad enum value GOLD
+[22/06/2025 16:08:57] [PIPE SERVER] | Bad enum value NULL
+[22/06/2025 16:08:57] [PIPE SERVER READ] | Server read is running
+[22/06/2025 16:08:57] [PIPE SERVER WRITE] | Server is running
+[22/06/2025 16:08:57] [PIPE SERVER READ] | Waiting for client...
+[22/06/2025 16:08:57] [PIPE SERVER WRITE] | Waiting for client...
+[22/06/2025 16:09:42] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 16:11:43
+---------------------------------------
+[22/06/2025 16:12:08] [PIPE SERVER] | Starting pipe server on new thread
+[22/06/2025 16:12:08] [PIPE SERVER READ] | Server read is running
+[22/06/2025 16:12:08] [PIPE SERVER WRITE] | Server is running
+[22/06/2025 16:12:08] [PIPE SERVER READ] | Waiting for client...
+[22/06/2025 16:12:08] [PIPE SERVER WRITE] | Waiting for client...
+[22/06/2025 16:12:22] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 16:19:40
+---------------------------------------
+[22/06/2025 16:20:05] [PIPE SERVER] | Starting pipe server on new thread
+[22/06/2025 16:20:05] [PIPE SERVER READ] | Server read is running
+[22/06/2025 16:20:05] [PIPE SERVER WRITE] | Server is running
+[22/06/2025 16:20:05] [PIPE SERVER READ] | Waiting for client...
+[22/06/2025 16:20:05] [PIPE SERVER WRITE] | Waiting for client...
+[22/06/2025 16:20:18] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 16:21:23
+---------------------------------------
+[22/06/2025 16:21:48] [PIPE SERVER] | Starting pipe server on new thread
+[22/06/2025 16:21:48] [PIPE SERVER READ] | Server read is running
+[22/06/2025 16:21:48] [PIPE SERVER WRITE] | Server is running
+[22/06/2025 16:21:48] [PIPE SERVER READ] | Waiting for client...
+[22/06/2025 16:21:48] [PIPE SERVER WRITE] | Waiting for client...
+[22/06/2025 16:21:52] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 16:26:49
+---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 16:28:30
+---------------------------------------
+[16:28:56] [PIPE SERVER] | Starting pipe server on new thread
+[16:28:56] [PIPE SERVER READ] | Server read is running
+[16:28:56] [PIPE SERVER WRITE] | Server is running
+[16:28:56] [PIPE SERVER READ] | Waiting for client...
+[16:28:56] [PIPE SERVER WRITE] | Waiting for client...
+[16:29:32] [PIPE SERVER WRITE] | Client connected
+[16:29:32] [PIPE SERVER READ] | Client connected
+[16:29:36] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|Witaj!
+[16:29:36] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[16:29:45] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Witaj, wêdrowcze! Co ciê sprowadza na skraj lasu, gdzie zio³a szepc¹ tajemnice? Czy szukasz eliksiru, czy mo¿e chcesz podzieliæ siê nowinami? Mam wiele zió³, które mogê ci zaoferowaæ, jeœli tylko w twoim sercu znajdzie siê chêæ wymiany.
+[16:29:45] [PIPE SERVER WRITE] | Send message: 0001|0004|0000|0|0|Witaj, wêdrowcze! Co ciê sprowadza na skraj lasu, gdzie zio³a szepc¹ tajemnice? Czy szukasz eliksiru, czy mo¿e chcesz podzieliæ siê nowinami? Mam wiele zió³, które mogê ci zaoferowaæ, jeœli tylko w twoim sercu znajdzie siê chêæ wymiany.
+[16:30:34] [PIPE SERVER READ] | Client has disconnected
+[16:30:40] [PIPE SERVER] | Stopping pipe server...
+[16:30:41] [PIPE SERVER] | Pipe server stopped
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 16:30:57
+---------------------------------------
+[16:31:24] [PIPE SERVER] | Starting pipe server on new thread
+[16:31:24] [PIPE SERVER READ] | Server read is running
+[16:31:24] [PIPE SERVER WRITE] | Server is running
+[16:31:24] [PIPE SERVER READ] | Waiting for client...
+[16:31:24] [PIPE SERVER WRITE] | Waiting for client...
+[16:31:42] [PIPE SERVER WRITE] | Client connected
+[16:31:42] [PIPE SERVER READ] | Client connected
+[16:31:51] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|Witaj!
+[16:31:51] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[16:31:59] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Witaj, podró¿ny! Có¿ za niespodziewane spotkanie wœród drzew i zió³. Czym mogê ci s³u¿yæ? Czy potrzebujesz eliksiru, zió³ na dolegliwoœci, czy mo¿e chcesz nabyæ coœ z moich skromnych zapasów?
+[16:32:12] [PIPE SERVER READ] | Client has disconnected
+[16:33:30] [PIPE SERVER] | Stopping pipe server...
+[16:33:31] [PIPE SERVER] | Pipe server stopped
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 16:33:51
+---------------------------------------
+[16:34:16] [PIPE SERVER] | Starting pipe server on new thread
+[16:34:16] [PIPE SERVER READ] | Server read is running
+[16:34:16] [PIPE SERVER WRITE] | Server is running
+[16:34:16] [PIPE SERVER READ] | Waiting for client...
+[16:34:16] [PIPE SERVER WRITE] | Waiting for client...
+[16:34:29] [PIPE SERVER WRITE] | Client connected
+[16:34:29] [PIPE SERVER READ] | Client connected
+[16:34:35] [PIPE SERVER READ] | Client has disconnected
+[16:34:35] [PIPE SERVER] | Stopping pipe server...
