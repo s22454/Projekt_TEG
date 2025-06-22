@@ -1,12 +1,13 @@
 from .message_enums import MessageType as mt
 from rich import print
 from datetime import datetime
+import config
 
-log_path = "./../log_py.txt"
+log_path = config.LOG_PATH
 
 def Log(sender:str, type:mt, msg:str):
-    message_colour_start = ""
-    message_colour_end = ""
+    message_color_start = ""
+    message_color_end = ""
 
     # construct message
     now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
@@ -15,18 +16,18 @@ def Log(sender:str, type:mt, msg:str):
     # print message to console
     match type:
         case mt.LOG:
-            message_colour_start = "[white]"
-            message_colour_end = "[/white]"
+            message_color_start = "[white]"
+            message_color_end = "[/white]"
 
         case mt.WARNING:
-            message_colour_start = "[yellow]"
-            message_colour_end = "[/yellow]"
+            message_color_start = "[yellow]"
+            message_color_end = "[/yellow]"
 
         case mt.ERROR:
-            message_colour_start = "[red]"
-            message_colour_end = "[/red]"
+            message_color_start = "[red]"
+            message_color_end = "[/red]"
 
-    print(f"{message_colour_start}{message}{message_colour_end}")
+    print(f"{message_color_start}{message}{message_color_end}")
 
     # save message to log
     with open(log_path, "a") as file:
