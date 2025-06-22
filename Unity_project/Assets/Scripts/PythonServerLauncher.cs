@@ -31,13 +31,13 @@ public class PythonServerLauncher : MonoBehaviour
         }
     }
 
-/*    void OnApplicationQuit()
-    {
-        if (pipeProcess != null && !pipeProcess.HasExited)
+    /*    void OnApplicationQuit()
         {
-            pipeProcess.Kill();
-            pipeProcess.Dispose();
-            UnityEngine.Debug.Log("[Unity] Pipe server terminated.");
-        }
-    }*/
+            if (pipeProcess != null && !pipeProcess.HasExited)
+            {
+                pipeProcess.Kill();
+                pipeProcess.Dispose();
+                UnityEngine.Debug.Log("[Unity] Pipe server terminated.");
+            }
+        }*/
 }

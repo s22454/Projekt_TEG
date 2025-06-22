@@ -93,6 +93,11 @@ Michał Dębski <br/>
 | 3 | Poprawa komunikacji pip'a z managerem LLM'ów | Odpalanie skryptu pythona z Unity* | Poprawa komunikacji pip'a z managerem LLM'ów | Odpalanie skryptu pythona z Unity |
 | 4 | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a | Wywoływanie metod z poziomu LLM'a |
 | 4 | Kodowanie/Dekodowanie wiadomości przez pip'a | Obczajenie możliwości w kwesti usprawnienia procesu aktualizacji ragu dla llma | Menadżer aktualizujący po swojej stronie zawartość eq npc i stanu konta gracza | Poprawa komunikacji controlera ui z pipem |
+| 5 | Log |  | manager configu | przygotowanie następnego dnia (tawerna) |
+| 5 | pipe złożone przypadki użycia |  | przygotowanie managera na bardziej złożone przypadki użycia | przygotowanie systemu eq na bardziej złożone przypadki użycia |
+| 5 | przepisanie reamdme |  |  |  |
+| 5 | ujednolicenie nazw |  |  |  |
+| 5 | poczyszczenie kodu/angielskie nazwy | poczyszczenie kodu/angielskie nazwy | poczyszczenie kodu/angielskie nazwy | poczyszczenie kodu/angielskie nazwy |
 |  |  |  |  |  |
 
 
