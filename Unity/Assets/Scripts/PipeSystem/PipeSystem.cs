@@ -6,11 +6,12 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using System.Linq;
-using UnityEngine.EventSystems;
 
 public class PipeSystem : MonoBehaviour
 {
     public static PipeSystem Instance;
+    private static readonly string _className = "PIPE SYSTEM";
+
     // Class variables
     private Thread _pipeThreadRead;
     private Thread _pipeThreadWrite;
@@ -47,6 +48,7 @@ public class PipeSystem : MonoBehaviour
     void Start()
     {
         if (Instance == null) Instance = this;
+
         // Initialize variables
         _pipeThreadRead = new Thread(PipeReader);
         _pipeThreadWrite = new Thread(PipeWriter);
@@ -63,7 +65,7 @@ public class PipeSystem : MonoBehaviour
         _pipeClientRead.Connect(5000);
         _pipeClientWrite = new NamedPipeClientStream(".", pipeNameWrite, PipeDirection.Out);
         _pipeClientWrite.Connect(5001);
-        Debug.Log("[PIPESYSTEM] Connected to python pipe");
+        LogManager.Log(_className, LogType.LOG, "Connected to python pipe");
 
         // Create and start threads
         _pipeThreadRead.Start();
@@ -94,7 +96,7 @@ public class PipeSystem : MonoBehaviour
             // Parse enum type
             if (!Enum.TryParse<EnumType>(key, true, out var enumTypeKey))
             {
-                Debug.LogError("[PIPESYSTEM] Error while reading PipeMessageDataTranslations");
+                LogManager.Log(_className, LogType.WARNING, "Error while reading PipeMessageDataTranslations");
                 continue;
             }
 
@@ -130,7 +132,7 @@ public class PipeSystem : MonoBehaviour
                 // check enum
                 if (parsedEnum is null)
                 {
-                    Debug.LogError("[PIPESYSTEM] Error while translating enum value");
+                    LogManager.Log(_className, LogType.WARNING, "Error while translating enum value");
                     continue;
                 }
 
@@ -147,6 +149,7 @@ public class PipeSystem : MonoBehaviour
     void PipeReader()
     {
         _readerActive = true;
+        string methodName = _className + " READ";
 
         try
         {
@@ -160,19 +163,20 @@ public class PipeSystem : MonoBehaviour
                     {
                         // decode message
                         _messageRecived = readAsync.Result;
-                        Debug.Log("[PIPESYSTEM] Got message encoded: " + _messageRecived);
+                        LogManager.Log(methodName, LogType.LOG, $"Got message encoded: {_messageRecived}");
                         MessageStruct messageDecoded = DecodeMessage(_messageRecived);
-                        Debug.Log("[PIPESYSTEM] Got message decoded: " +
+                        string messageDecodedLog = "Got message decoded: " +
                             messageDecoded.ActionCode + "|" +
                             messageDecoded.Sender + "|" +
                             messageDecoded.Item + "|" +
                             messageDecoded.Quantity + "|" +
                             messageDecoded.Price + "|" +
-                            messageDecoded.Message
-                        );
+                            messageDecoded.Message;
+
+                        LogManager.Log(methodName, LogType.LOG, messageDecodedLog);
 
                         // call event
-                        Debug.Log("Invoking OnMessageRecived");
+                        LogManager.Log(methodName, LogType.LOG, "Invoking OnMessageRecived");
                         messageDecoded.Ready = true;
                         DialogueUIController._messageRecived = messageDecoded;
 
@@ -189,7 +193,7 @@ public class PipeSystem : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError("[PIPESYSTEM] " + e.Message);
+            LogManager.Log(methodName, LogType.ERROR, e.Message);
         }
 
         _readerActive = false;
@@ -198,6 +202,7 @@ public class PipeSystem : MonoBehaviour
     void PipeWriter()
     {
         _writerActive = true;
+        string methodName = _className + " WRITE";
 
         try
         {
@@ -207,9 +212,9 @@ public class PipeSystem : MonoBehaviour
                 {
                     if (_messageToSend.Length > 0)
                     {
-                        Debug.Log("[PIPESYSTEM] Sending message: " + _messageToSend);
+                        LogManager.Log(methodName, LogType.LOG, $"Sending message: {_messageToSend}");
                         sw.WriteLine(_messageToSend);
-                        Debug.Log($"[PIPESYSTEM] {_messageToSend} sent");
+                        LogManager.Log(methodName, LogType.LOG, $"{_messageToSend} sent");
                         _messageToSend = "";
                     }
 
@@ -221,7 +226,7 @@ public class PipeSystem : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError("[PIPESYSTEM] " + e.Message);
+            LogManager.Log(methodName, LogType.ERROR, e.Message);
         }
 
         _writerActive = false;
@@ -295,7 +300,7 @@ public class PipeSystem : MonoBehaviour
             Message = messageParts[5]
         };
 
-        Debug.Log("[PIPESYSTEM] Decoding message");
+        LogManager.Log(_className, LogType.LOG, "Decoding message");
 
         if (msgStruct.Item != Item.NULL && msgStruct.Item != Item.TEST && msgStruct.Item != Item.GOLD)
         {
@@ -329,7 +334,7 @@ public class PipeSystem : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError("[PIPESYSTEM] Error while closing: " + e.Message);
+            LogManager.Log(_className, LogType.ERROR, $"Error while closing: {e.Message}");
         }
     }
 
@@ -337,11 +342,11 @@ public class PipeSystem : MonoBehaviour
     [ContextMenu("Send test message")]
     private void SendTestMessage()
     {
-        Debug.Log("[PIPESYSTEM] Sending test message");
+        LogManager.Log(_className, LogType.LOG, "Sending test message");
 
         if (EncodeAndSendMessageToServer(ActionCode.TESTMESSAGE, Sender.TEST, Item.TEST))
-            Debug.Log("[PIPESYSTEM] Sending test message successful");
+            LogManager.Log(_className, LogType.LOG, "Sending test message successful");
         else
-            Debug.Log("[PIPESYSTEM] Sending test message failed");
+            LogManager.Log(_className, LogType.LOG, "Sending test message failed");
     }
 }
