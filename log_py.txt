@@ -1,3 +1,45 @@
 [22/06/2025 11:54:42] [test] | test1
 [22/06/2025 11:54:42] [test] | test2
 [22/06/2025 11:54:42] [test] | test3
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 15:35:11
+---------------------------------------
+[22/06/2025 15:35:41] [PIPE SERVER] | Starting pipe server on new thread
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 15:37:18
+---------------------------------------
+[22/06/2025 15:37:42] [PIPE SERVER] | Starting pipe server on new thread
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 15:38:13
+---------------------------------------
+[22/06/2025 15:38:37] [PIPE SERVER] | Starting pipe server on new thread
+[22/06/2025 15:38:37] [PIPE SERVER] | Bad enum value GOLD
+[22/06/2025 15:38:37] [PIPE SERVER] | Bad enum value NULL
+[22/06/2025 15:38:37] [PIPE SERVER READ] | Server read is running
+[22/06/2025 15:38:37] [PIPE SERVER WRITE] | Server is running
+[22/06/2025 15:39:35] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 15:39:42
+---------------------------------------
+[22/06/2025 15:40:06] [PIPE SERVER] | Starting pipe server on new thread
+[22/06/2025 15:40:06] [PIPE SERVER] | Bad enum value GOLD
+[22/06/2025 15:40:06] [PIPE SERVER] | Bad enum value NULL
+[22/06/2025 15:40:06] [PIPE SERVER READ] | Server read is running
+[22/06/2025 15:40:06] [PIPE SERVER WRITE] | Server is running
+[22/06/2025 15:42:48] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 22/06/2025 15:42:56
+---------------------------------------
+[22/06/2025 15:43:21] [PIPE SERVER] | Starting pipe server on new thread
+[22/06/2025 15:43:21] [PIPE SERVER] | Bad enum value GOLD
+[22/06/2025 15:43:21] [PIPE SERVER] | Bad enum value NULL
+[22/06/2025 15:43:21] [PIPE SERVER READ] | Server read is running
+[22/06/2025 15:43:21] [PIPE SERVER WRITE] | Server is running
+[22/06/2025 15:43:21] [PIPE SERVER READ] | Waiting for client...
+[22/06/2025 15:43:21] [PIPE SERVER WRITE] | Waiting for client...
+[22/06/2025 15:43:27] [PIPE SERVER] | Stopping pipe server...
