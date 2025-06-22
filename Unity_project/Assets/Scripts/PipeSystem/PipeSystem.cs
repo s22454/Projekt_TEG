@@ -30,8 +30,6 @@ public class PipeSystem : MonoBehaviour
     private static int sleepTime;
     private static Dictionary<EnumType, Dictionary<Enum, string>> MessageDataTranslations;
 
-    // Events
-
     // Message struct
     public struct MessageStruct
     {
@@ -46,7 +44,16 @@ public class PipeSystem : MonoBehaviour
 
     void Start()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         // Initialize variables
         _pipeThreadRead = new Thread(PipeReader);
         _pipeThreadWrite = new Thread(PipeWriter);

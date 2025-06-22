@@ -14,7 +14,8 @@ public enum ActionCode
     TXTMESSAGE,
     SELL,
     CONFIRMSELL,
-    ENDCONVARSATION
+    ENDCONVARSATION,
+    ENDDAY
 }
 
 public enum Sender
@@ -24,6 +25,7 @@ public enum Sender
     BAKER,
     HERBALIST,
     PLAYER,
+    SYSTEM
 }
 public enum Item
 {
