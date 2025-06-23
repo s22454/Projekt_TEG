@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 
 from Pipe import PipeServer, Message, ActionCode, Sender, Item
 from NPC_Rag import RAG
+from intent_interpreter import IntentInterpreter
+from Utils import Log, MessageType as mt
 
 
 class NPCManager:
@@ -13,6 +15,8 @@ class NPCManager:
         self.data_folder = data_folder
         self.npc_data = {}
         self.npc_agents = {}
+        self.intent_agent = IntentInterpreter(RAG())
+        self.class_name = "NPC Manager"
 
         load_dotenv()
         self.load_all_npcs()
@@ -32,25 +36,45 @@ class NPCManager:
                 self.npc_agents[npc_name] = RAG(path)
 
     def handle_pipe_message(self, message: Message):
-        print(f"[NPC MANAGER] Received message from pipe: {message}")
-        sender_npc = message.sender.name.lower()
+        Log(self.class_name, mt.LOG, "Received message from pipe: {message}")
         player_input = message.message.strip()
-        quantity = message.quantity
-        response_message : Message
+        response_message: Message
 
-        if message.action_code == ActionCode.TXTMESSAGE:
-            response = self.talk_to_npc(sender_npc, player_input)
+        intent_data = self.intent_agent.interpret(player_input)
+        npc_name = message.sender.name.lower()
 
-            response_message = Message(
-                action_code=ActionCode.TXTMESSAGE,
-                sender=Sender.PLAYER,
-                item=Item.TEST,
-                message=response
-            )
+        match intent_data["intent"]:
+            case "talk":
+                response = self.talk_to_npc(npc_name, player_input)
+            case "buy":
+                response_message = self.sell_item(
+                    npc_name,
+                    item=Item(intent_data["item"]),
+                    quantity=intent_data["quantity"]
+                )
+                self.pipe_server.EncodeMessageAndSendToClient(response_message)
+                return
+            
+            case "insult" | "praise":
+                sentiment = intent_data["sentiment"]
+                target = intent_data["target_npc"] or npc_name
 
-        if message.action_code == ActionCode.SELL:
-            response_message = self.sell_item(sender_npc, message.item, quantity)
+                self._update_attitude_and_share_plotka(
+                    from_npc=npc_name,
+                    to_npc=target,
+                    message=player_input,
+                    sentiment=sentiment
+                )
+                response = self.talk_to_npc(npc_name, player_input)
+            case _:
+                response = self.talk_to_npc(npc_name, player_input)
 
+        response_message = Message(
+            action_code=ActionCode.TXTMESSAGE,
+            sender=Sender.PLAYER,
+            item=Item.TEST,
+            message=response
+        )
         self.pipe_server.EncodeMessageAndSendToClient(response_message)
 
     def share_info(self, from_npc, to_npc, message):
@@ -172,7 +196,7 @@ class NPCManager:
         return "neutral"
 
     def _update_attitude_and_share_plotka(self, from_npc, to_npc, message, sentiment):
-        print(f"\n→ Mentioned NPC '{to_npc}' with sentiment: {sentiment}")
+        Log(self.class_name, mt.LOG, "\n→ Mentioned NPC '{to_npc}' with sentiment: {sentiment}")
         self.share_info(from_npc, to_npc, f"The main character mentioned you: '{message}'")
 
         current = self.npc_data[to_npc].get("attitude_towards_player", "neutral")
