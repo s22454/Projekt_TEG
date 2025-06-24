@@ -1,6 +1,7 @@
 import json
 from Utils import Log, MessageType as mt
 import re
+from langsmith import traceable
 
 class IntentInterpreter:
 
@@ -9,6 +10,7 @@ class IntentInterpreter:
     def __init__(self, llm_agent):
         self.agent = llm_agent
 
+    @traceable(name="Analising message intent")
     def interpret(self, message):
 
         #todo move some parts to config

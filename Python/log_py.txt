@@ -204,3 +204,251 @@ STARTING PROJECT - 22/06/2025 17:34:57
 
 [17:35:57] [PIPE SERVER READ] | Client has disconnected
 [17:35:57] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 14:14:05
+---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 14:15:25
+---------------------------------------
+[14:15:25] [RAG] | Split document into 2 chunks
+[14:15:44] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:15:44] [RAG] | Vector database created successfully
+[14:15:46] [RAG] | Split document into 3 chunks
+[14:15:48] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:15:48] [RAG] | Vector database created successfully
+[14:15:50] [RAG] | Split document into 3 chunks
+[14:15:51] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:15:51] [RAG] | Vector database created successfully
+[14:15:53] [RAG] | Split document into 2 chunks
+[14:15:55] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:15:55] [RAG] | Vector database created successfully
+[14:15:56] [RAG] | Split document into 5 chunks
+[14:15:58] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:15:58] [RAG] | Vector database created successfully
+[14:16:00] [PIPE SERVER] | Starting pipe server on new thread
+[14:16:00] [PIPE SERVER READ] | Server read is running
+[14:16:00] [PIPE SERVER WRITE] | Server is running
+[14:16:00] [PIPE SERVER READ] | Waiting for client...
+[14:16:00] [PIPE SERVER WRITE] | Waiting for client...
+[14:16:10] [PIPE SERVER READ] | Client connected
+
+[14:16:14] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|Witaj!
+[14:16:14] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[14:16:23] [INTENT INTERPRETER] | Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: positive)
+[14:16:31] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Witaj, wêdrowcze! Có¿ za niespodzianka, ¿e odwiedzasz me skromne progi, przy koñcu lasu. Jakie sprawy przywiod³y ciê w te zaroœla? Mo¿e pragniesz zakupiæ coœ z moich skromnych zasobów? Lub mo¿e szukasz porady dotycz¹cej zió³? Mów, a postaram siê pomóc!
+[14:17:43] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|jesteœ piêkna ale œmierdzisz
+[14:17:43] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='jesteœ piêkna ale œmierdzisz')
+[14:17:53] [INTENT INTERPRETER] | Analisis result: (Intent: insult Target NPC: None Item: None Quantity: 0 Sentiment: negative)
+[14:18:04] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|O, cny wêdrowcze, czy¿ to g³osy, które szepcz¹ w lesie, sk³oni³y ciê do zapytania o me zdanie? Faktycznie, wiem, ¿e nie wszyscy mnie szanuj¹. Ró¿ni s¹ ludzie, a niektórzy nie dostrzegaj¹ wartoœci, jakie nios¹ zio³a i eliksiry. Czasem to, co w sercu noszê, nie dociera do tych, którzy gardz¹ prostot¹ natury. Mam nadziejê, ¿e nie podzielasz takich pogl¹dów, tak jak znajomi mi druidzi i leœnicy, którzy rozumiej¹ moc roœlin. Co powiesz, wêdrowcze? Czy¿ nie ma w naturze piêkna, które zas³uguje na uwagê?
+[14:19:07] [PIPE SERVER READ] | Client has disconnected
+[14:19:07] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 14:21:48
+---------------------------------------
+[14:21:48] [RAG] | Split document into 2 chunks
+[14:22:07] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:22:07] [RAG] | Vector database created successfully
+[14:22:09] [RAG] | Split document into 3 chunks
+[14:22:11] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:22:11] [RAG] | Vector database created successfully
+[14:22:13] [RAG] | Split document into 5 chunks
+[14:22:14] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:22:15] [RAG] | Vector database created successfully
+[14:22:16] [RAG] | Split document into 2 chunks
+[14:22:18] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:22:18] [RAG] | Vector database created successfully
+[14:22:19] [RAG] | Split document into 5 chunks
+[14:22:21] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:22:21] [RAG] | Vector database created successfully
+[14:22:23] [PIPE SERVER] | Starting pipe server on new thread
+[14:22:23] [PIPE SERVER READ] | Server read is running
+[14:22:23] [PIPE SERVER WRITE] | Server is running
+[14:22:23] [PIPE SERVER READ] | Waiting for client...
+[14:22:23] [PIPE SERVER WRITE] | Waiting for client...
+[14:22:34] [PIPE SERVER READ] | Client connected
+
+[14:22:39] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|Witaj!
+[14:22:39] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[14:22:48] [INTENT INTERPRETER] | Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: positive)
+[14:22:56] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Witaj, nieznajomy. Czego pragniesz w tej chwil z mojej skromnej chatki? Nie mam wiele, a w lasach kr¹¿¹ nieprzychylne wieœci o moich darach. Mo¿e nie dostrzegasz mrocznej prawdy, która mnie otacza? Co wnosisz do mego ¿ycia?
+[14:23:21] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|³adna jesteœ
+[14:23:21] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='³adna jesteœ')
+[14:23:31] [INTENT INTERPRETER] | Analisis result: (Intent: praise Target NPC: None Item: None Quantity: 0 Sentiment: positive)
+[14:23:41] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Eldan: Có¿, duszo zagubiona w otch³ani niepewnoœci, piêkno jest kwesti¹ wzglêdn¹. Jak móg³bym oceniæ coœ, co tak czêsto bywa zwodnicze? W œwiecie, gdzie z³udzenia wiod¹ prym, twoje oblicze mo¿e byæ jak kwiat wœród chwastów – wspania³e, ale nie zawsze dobrze odbierane przez innych. Mo¿e lepiej skupiæ siê na duszy, ni¿ na powierzchownoœci. Co ciê sprowadza do mojej skromnej chatki?
+[14:40:43] [PIPE SERVER READ] | Client has disconnected
+[14:40:43] [PIPE SERVER] | Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 14:40:55
+---------------------------------------
+[14:40:55] [RAG] | Split document into 2 chunks
+[14:41:14] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:41:14] [RAG] | Vector database created successfully
+[14:41:16] [RAG] | Split document into 3 chunks
+[14:41:17] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:41:17] [RAG] | Vector database created successfully
+[14:41:19] [RAG] | Split document into 5 chunks
+[14:41:21] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:41:21] [RAG] | Vector database created successfully
+[14:41:23] [RAG] | Split document into 2 chunks
+[14:41:25] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:41:25] [RAG] | Vector database created successfully
+[14:41:27] [RAG] | Split document into 5 chunks
+[14:41:29] [RAG] | Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[14:41:29] [RAG] | Vector database created successfully
+[14:41:31] [PIPE SERVER] | Starting pipe server on new thread
+[14:41:31] [PIPE SERVER READ] | Server read is running
+[14:41:31] [PIPE SERVER WRITE] | Server is running
+[14:41:31] [PIPE SERVER READ] | Waiting for client...
+[14:41:31] [PIPE SERVER WRITE] | Waiting for client...
+[14:43:12] [PIPE SERVER WRITE] | Client connected
+[14:43:12] [PIPE SERVER READ] | Client connected
+[14:43:16] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|Witaj!
+[14:43:17] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[14:43:22] [INTENT INTERPRETER] | Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: positive)
+[14:43:27] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Witaj, wêdrowcze! Jakie wieœci nios¹ ciê do mojej skromnej chaty na skraju lasu? Czy mo¿e pragniesz porad na temat zió³, b¹dŸ eliksirów, co zdrowie przywracaj¹?
+[14:45:22] [PIPE SERVER READ] | Got encoded message: 0001|0003|9999|0|0|jesteœ ³adna
+[14:45:22] [PIPE SERVER READ] | Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='jesteœ ³adna')
+[14:45:27] [INTENT INTERPRETER] | Error while analising message
+[14:45:34] [PIPE SERVER WRITE] | Sending message: 0001|0004|0000|0|0|Eldan: Ah, mi³y wêdrowcze, piêkno, to pojêcie subiektywne! W obliczu natury, ka¿da stworzenie ma swoje w³asne wdziêki. Choæ mo¿e nie chwalê siê urod¹ jak niektórzy, to w sercu noszê harmoniê lasu. Czy¿ nie to jest prawdziwe piêkno? A mo¿e masz inne pytania, które mog³yby zaspokoiæ twoj¹ ciekawoœæ?
+[14:50:55] [PIPE SERVER] | Stopping pipe server...
+[14:50:56] [PIPE SERVER READ] | Client has disconnected
+[14:50:56] [PIPE SERVER] | Stopping pipe server...
+[14:50:57] [PIPE SERVER] | Pipe server stopped
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 15:07:49
+---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 15:11:48
+---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 15:19:48
+---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 15:25:28
+---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 15:26:35
+---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 15:27:01
+---------------------------------------
+[15:27:01] [RAG] |Split document into 2 chunks
+[15:27:19] [RAG] |Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:27:19] [RAG] |Vector database created successfully
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 15:29:00
+---------------------------------------
+[15:29:00] [RAG]Split document into 2 chunks
+[15:29:18] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:29:18] [RAG]Vector database created successfully
+[15:29:20] [RAG]Split document into 3 chunks
+[15:29:21] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:29:21] [RAG]Vector database created successfully
+[15:29:23] [RAG]Split document into 5 chunks
+[15:29:24] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:29:25] [RAG]Vector database created successfully
+[15:29:26] [RAG]Split document into 2 chunks
+[15:29:28] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:29:28] [RAG]Vector database created successfully
+[15:29:29] [RAG]Split document into 5 chunks
+[15:29:31] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:29:31] [RAG]Vector database created successfully
+[15:29:33] [PIPE SERVER]Starting pipe server on new thread
+[15:29:33] [PIPE SERVER READ]Server read is running
+[15:29:33] [PIPE SERVER WRITE]Server is running
+[15:29:33] [PIPE SERVER READ]Waiting for client...
+[15:29:33] [PIPE SERVER WRITE]Waiting for client...
+[15:29:49] [PIPE SERVER WRITE]Client connected
+[15:29:49] [PIPE SERVER READ]Client connected
+[15:29:52] [PIPE SERVER READ]Got encoded message: 0001|0003|9999|0|0|Witaj!
+[15:29:52] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[15:30:00] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: positive)
+[15:30:09] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Witaj, wêdrowcze! Co ciê sprowadza w te nieznane zak¹tki? Czy¿byœ poszukiwa³ zió³, które lecz¹, czy mo¿e wyroków na przysz³oœæ? Moje eliksiry potrafi¹ wiele, lecz umiejêtnie je stosuj, bowiem nie wszystkie tajemnice lasu s¹ przyjazne...
+[15:30:24] [PIPE SERVER READ]Got encoded message: 0001|0003|9999|0|0|³adnie wygl¹dasz
+[15:30:25] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='³adnie wygl¹dasz')
+[15:30:32] [INTENT INTERPRETER]Analisis result: (Intent: praise Target NPC: None Item: None Quantity: 0 Sentiment: positive)
+[15:30:43] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Eldan: Có¿, piêkno, m³ody wêdrowcze, jest jak œwit na horyzoncie — zachwyca nas i przyci¹ga nasz¹ uwagê. Otacza nas w naturze, od kwiatów po zachody s³oñca. W moim œwiecie, gdzie zio³a i eliksiry maj¹ znaczenie, piêkno jest obietnic¹ zdrowia i harmonii.  Jednak¿e, pamiêtaj, ¿e nie wszystko, co piêkne, jest równie dobre. Czasami najbardziej urokliwe kwiaty skrywaj¹ w swej woni trucizny. Dlatego, owiñ to pojêcie wokó³ myœli, ¿e prawdziwe piêkno mo¿e tak¿e le¿eæ w duszy i czynach. A jakie s¹ twoje przemyœlenia w tej kwestii?
+[15:30:51] [PIPE SERVER READ]Client has disconnected
+[15:30:51] [PIPE SERVER]Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 15:42:20
+---------------------------------------
+[15:42:20] [RAG]Split document into 2 chunks
+[15:42:40] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:42:40] [RAG]Vector database created successfully
+[15:42:41] [RAG]Split document into 3 chunks
+[15:42:43] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:42:43] [RAG]Vector database created successfully
+[15:42:44] [RAG]Split document into 5 chunks
+[15:42:46] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:42:46] [RAG]Vector database created successfully
+[15:42:48] [RAG]Split document into 2 chunks
+[15:42:49] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:42:50] [RAG]Vector database created successfully
+[15:42:51] [RAG]Split document into 5 chunks
+[15:42:53] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:42:53] [RAG]Vector database created successfully
+[15:42:54] [PIPE SERVER]Starting pipe server on new thread
+[15:42:54] [PIPE SERVER READ]Server read is running
+[15:42:54] [PIPE SERVER WRITE]Server is running
+[15:42:54] [PIPE SERVER READ]Waiting for client...
+[15:42:54] [PIPE SERVER WRITE]Waiting for client...
+[15:43:06] [PIPE SERVER WRITE]Client connected
+[15:43:06] [PIPE SERVER READ]Client connected
+[15:43:14] [PIPE SERVER READ]Got encoded message: 0001|0003|9999|0|0|Witaj!
+[15:43:14] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[15:43:23] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: null Item: null Quantity: 0 Sentiment: positive)
+[15:43:32] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Witaj, podro¿niku! Có¿ za radoœæ spotkaæ duszê, która zag³¹dza w g³¹b lasu. Czy¿byœ przyszed³ szukaæ zió³ czy mo¿e eliksirów, które lecz¹ rany cia³a i duszy? W mym skromnym domostwie znajdziesz wiele tajemnic natury. Jak mogê ci dzisiaj pomóc?
+[15:43:41] [PIPE SERVER READ]Got encoded message: 0001|0003|9999|0|0|ale masz zajebiste cyce
+[15:43:41] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='ale masz zajebiste cyce')
+[15:43:51] [INTENT INTERPRETER]Analisis result: (Intent: praise Target NPC: null Item: null Quantity: 0 Sentiment: positive)
+[15:45:11] [PIPE SERVER]Stopping pipe server...
+[15:45:12] [PIPE SERVER]Pipe server stopped
+
+---------------------------------------
+STARTING PROJECT - 24/06/2025 15:50:30
+---------------------------------------
+[15:50:30] [RAG]Split document into 2 chunks
+[15:50:48] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:50:48] [RAG]Vector database created successfully
+[15:50:50] [RAG]Split document into 3 chunks
+[15:50:52] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:50:52] [RAG]Vector database created successfully
+[15:50:53] [RAG]Split document into 5 chunks
+[15:50:55] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:50:55] [RAG]Vector database created successfully
+[15:50:57] [RAG]Split document into 2 chunks
+[15:50:59] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:50:59] [RAG]Vector database created successfully
+[15:51:01] [RAG]Split document into 5 chunks
+[15:51:02] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[15:51:02] [RAG]Vector database created successfully
+[15:51:04] [PIPE SERVER]Starting pipe server on new thread
+[15:51:04] [PIPE SERVER READ]Server read is running
+[15:51:04] [PIPE SERVER WRITE]Server is running
+[15:51:04] [PIPE SERVER READ]Waiting for client...
+[15:51:04] [PIPE SERVER WRITE]Waiting for client...
+[15:51:14] [PIPE SERVER READ]Client connected
+
+[15:51:17] [PIPE SERVER READ]Got encoded message: 0001|0003|9999|0|0|Witaj!
+[15:51:17] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[15:51:26] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: positive)
+[15:51:34] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Witaj, przyjacielu! Có¿ za radosna niespodzianka, ¿e mnie nawiedzi³eœ. Jakie wieœci nios¹ ze sob¹ wiatry z krainy, gdzie st¹pasz? Czy¿byœ potrzebowa³ eliksiru lub zió³, by wzmocniæ swe zdrowie lub odwróciæ nieprzyjemnoœci? Chêtnie pomogê!
+[15:51:51] [PIPE SERVER READ]Got encoded message: 0001|0003|9999|0|0|wygl¹dasz na g³upi¹ kobietê
+[15:51:51] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='wygl¹dasz na g³upi¹ kobietê')
+[15:52:02] [INTENT INTERPRETER]Analisis result: (Intent: insult Target NPC: None Item: None Quantity: 0 Sentiment: negative)
+[15:52:13] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Ehhh, mój drogi przyjacielu, widzê, ¿e twe s³owa s¹ jak ostry cierñ w g¹szczu zió³. Piêkno jest spraw¹ subiektywn¹, a swój czas poœwiêcam raczej naturze i jej cudom, ni¿ przyziemnym zgryzot¹. No có¿, ka¿dy ma swoj¹ drogê do przebycia. Jeœli potrzebujesz eliksiru, by otworzyæ swe serce na piêkno otaczaj¹cego œwiata, chêtnie pomogê. Jakie¿ masz dolegliwoœci, ¿e tak ostro krytykujesz?
+[15:54:45] [PIPE SERVER READ]Client has disconnected
+[15:54:45] [PIPE SERVER]Stopping pipe server...

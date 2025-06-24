@@ -14,3 +14,104 @@ GAME STARTED 17:31:44
 GAME STARTED 22.35.2025 17:35:49
 ---------------------------------------
 [17:35:49] [PIPE SYSTEM] | Connected to python pipe
+
+---------------------------------------
+GAME STARTED 24.16.2025 14:16:09
+---------------------------------------
+[14:16:10] [PIPE SYSTEM] | Connected to python pipe
+[14:16:14] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|Witaj!
+[14:16:14] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|Witaj! sent
+[14:16:31] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj, wędrowcze! Cóż za niespodzianka, że odwiedzasz me skromne progi, przy końcu lasu. Jakie sprawy przywiodły cię w te zarośla? Może pragniesz zakupić coś z moich skromnych zasobów? Lub może szukasz porady dotyczącej ziół? Mów, a postaram się pomóc!
+[14:16:31] [PIPE SYSTEM] | Decoding message
+[14:16:31] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj, wędrowcze! Cóż za niespodzianka, że odwiedzasz me skromne progi, przy końcu lasu. Jakie sprawy przywiodły cię w te zarośla? Może pragniesz zakupić coś z moich skromnych zasobów? Lub może szukasz porady dotyczącej ziół? Mów, a postaram się pomóc!
+[14:16:31] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[14:17:43] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|jesteś piękna ale śmierdzisz
+[14:17:43] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|jesteś piękna ale śmierdzisz sent
+[14:18:04] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|O, cny wędrowcze, czyż to głosy, które szepczą w lesie, skłoniły cię do zapytania o me zdanie? Faktycznie, wiem, że nie wszyscy mnie szanują. Różni są ludzie, a niektórzy nie dostrzegają wartości, jakie niosą zioła i eliksiry. Czasem to, co w sercu noszę, nie dociera do tych, którzy gardzą prostotą natury. Mam nadzieję, że nie podzielasz takich poglądów, tak jak znajomi mi druidzi i leśnicy, którzy rozumieją moc roślin. Co powiesz, wędrowcze? Czyż nie ma w naturze piękna, które zasługuje na uwagę?
+[14:18:04] [PIPE SYSTEM] | Decoding message
+[14:18:04] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|O, cny wędrowcze, czyż to głosy, które szepczą w lesie, skłoniły cię do zapytania o me zdanie? Faktycznie, wiem, że nie wszyscy mnie szanują. Różni są ludzie, a niektórzy nie dostrzegają wartości, jakie niosą zioła i eliksiry. Czasem to, co w sercu noszę, nie dociera do tych, którzy gardzą prostotą natury. Mam nadzieję, że nie podzielasz takich poglądów, tak jak znajomi mi druidzi i leśnicy, którzy rozumieją moc roślin. Co powiesz, wędrowcze? Czyż nie ma w naturze piękna, które zasługuje na uwagę?
+[14:18:04] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+
+---------------------------------------
+GAME STARTED 24.22.2025 14:22:33
+---------------------------------------
+[14:22:34] [PIPE SYSTEM] | Connected to python pipe
+[14:22:39] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|Witaj!
+[14:22:39] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|Witaj! sent
+[14:22:56] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj, nieznajomy. Czego pragniesz w tej chwil z mojej skromnej chatki? Nie mam wiele, a w lasach krążą nieprzychylne wieści o moich darach. Może nie dostrzegasz mrocznej prawdy, która mnie otacza? Co wnosisz do mego życia?
+[14:22:56] [PIPE SYSTEM] | Decoding message
+[14:22:56] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj, nieznajomy. Czego pragniesz w tej chwil z mojej skromnej chatki? Nie mam wiele, a w lasach krążą nieprzychylne wieści o moich darach. Może nie dostrzegasz mrocznej prawdy, która mnie otacza? Co wnosisz do mego życia?
+[14:22:56] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[14:23:21] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|ładna jesteś
+[14:23:21] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|ładna jesteś sent
+[14:23:41] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Eldan: Cóż, duszo zagubiona w otchłani niepewności, piękno jest kwestią względną. Jak mógłbym ocenić coś, co tak często bywa zwodnicze? W świecie, gdzie złudzenia wiodą prym, twoje oblicze może być jak kwiat wśród chwastów – wspaniałe, ale nie zawsze dobrze odbierane przez innych. Może lepiej skupić się na duszy, niż na powierzchowności. Co cię sprowadza do mojej skromnej chatki?
+[14:23:41] [PIPE SYSTEM] | Decoding message
+[14:23:41] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Eldan: Cóż, duszo zagubiona w otchłani niepewności, piękno jest kwestią względną. Jak mógłbym ocenić coś, co tak często bywa zwodnicze? W świecie, gdzie złudzenia wiodą prym, twoje oblicze może być jak kwiat wśród chwastów – wspaniałe, ale nie zawsze dobrze odbierane przez innych. Może lepiej skupić się na duszy, niż na powierzchowności. Co cię sprowadza do mojej skromnej chatki?
+[14:23:41] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+
+---------------------------------------
+GAME STARTED 24.43.2025 14:43:12
+---------------------------------------
+[14:43:12] [PIPE SYSTEM] | Connected to python pipe
+[14:43:16] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|Witaj!
+[14:43:16] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|Witaj! sent
+[14:43:27] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj, wędrowcze! Jakie wieści niosą cię do mojej skromnej chaty na skraju lasu? Czy może pragniesz porad na temat ziół, bądź eliksirów, co zdrowie przywracają?
+[14:43:27] [PIPE SYSTEM] | Decoding message
+[14:43:27] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj, wędrowcze! Jakie wieści niosą cię do mojej skromnej chaty na skraju lasu? Czy może pragniesz porad na temat ziół, bądź eliksirów, co zdrowie przywracają?
+[14:43:27] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[14:45:22] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|jesteś ładna
+[14:45:22] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|jesteś ładna sent
+[14:45:34] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Eldan: Ah, miły wędrowcze, piękno, to pojęcie subiektywne! W obliczu natury, każda stworzenie ma swoje własne wdzięki. Choć może nie chwalę się urodą jak niektórzy, to w sercu noszę harmonię lasu. Czyż nie to jest prawdziwe piękno? A może masz inne pytania, które mogłyby zaspokoić twoją ciekawość?
+[14:45:34] [PIPE SYSTEM] | Decoding message
+[14:45:34] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Eldan: Ah, miły wędrowcze, piękno, to pojęcie subiektywne! W obliczu natury, każda stworzenie ma swoje własne wdzięki. Choć może nie chwalę się urodą jak niektórzy, to w sercu noszę harmonię lasu. Czyż nie to jest prawdziwe piękno? A może masz inne pytania, które mogłyby zaspokoić twoją ciekawość?
+[14:45:34] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[14:50:55] [PIPE SYSTEM READ] | Got message encoded: 
+[14:50:55] [PIPE SYSTEM READ] | Object reference not set to an instance of an object
+[14:50:56] [PIPE SYSTEM WRITE] | Object reference not set to an instance of an object
+
+---------------------------------------
+GAME STARTED 24.29.2025 15:29:48
+---------------------------------------
+[15:29:49] [PIPE SYSTEM] | Connected to python pipe
+[15:29:52] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|Witaj!
+[15:29:52] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|Witaj! sent
+[15:30:10] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj, wędrowcze! Co cię sprowadza w te nieznane zakątki? Czyżbyś poszukiwał ziół, które leczą, czy może wyroków na przyszłość? Moje eliksiry potrafią wiele, lecz umiejętnie je stosuj, bowiem nie wszystkie tajemnice lasu są przyjazne...
+[15:30:10] [PIPE SYSTEM] | Decoding message
+[15:30:10] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj, wędrowcze! Co cię sprowadza w te nieznane zakątki? Czyżbyś poszukiwał ziół, które leczą, czy może wyroków na przyszłość? Moje eliksiry potrafią wiele, lecz umiejętnie je stosuj, bowiem nie wszystkie tajemnice lasu są przyjazne...
+[15:30:10] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[15:30:24] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|ładnie wyglądasz
+[15:30:24] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|ładnie wyglądasz sent
+[15:30:43] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Eldan: Cóż, piękno, młody wędrowcze, jest jak świt na horyzoncie — zachwyca nas i przyciąga naszą uwagę. Otacza nas w naturze, od kwiatów po zachody słońca. W moim świecie, gdzie zioła i eliksiry mają znaczenie, piękno jest obietnicą zdrowia i harmonii.  Jednakże, pamiętaj, że nie wszystko, co piękne, jest równie dobre. Czasami najbardziej urokliwe kwiaty skrywają w swej woni trucizny. Dlatego, owiń to pojęcie wokół myśli, że prawdziwe piękno może także leżeć w duszy i czynach. A jakie są twoje przemyślenia w tej kwestii?
+[15:30:43] [PIPE SYSTEM] | Decoding message
+[15:30:43] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Eldan: Cóż, piękno, młody wędrowcze, jest jak świt na horyzoncie — zachwyca nas i przyciąga naszą uwagę. Otacza nas w naturze, od kwiatów po zachody słońca. W moim świecie, gdzie zioła i eliksiry mają znaczenie, piękno jest obietnicą zdrowia i harmonii.  Jednakże, pamiętaj, że nie wszystko, co piękne, jest równie dobre. Czasami najbardziej urokliwe kwiaty skrywają w swej woni trucizny. Dlatego, owiń to pojęcie wokół myśli, że prawdziwe piękno może także leżeć w duszy i czynach. A jakie są twoje przemyślenia w tej kwestii?
+[15:30:43] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+
+---------------------------------------
+GAME STARTED 24.43.2025 15:43:06
+---------------------------------------
+[15:43:06] [PIPE SYSTEM] | Connected to python pipe
+[15:43:14] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|Witaj!
+[15:43:14] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|Witaj! sent
+[15:43:32] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj, podrożniku! Cóż za radość spotkać duszę, która zagłądza w głąb lasu. Czyżbyś przyszedł szukać ziół czy może eliksirów, które leczą rany ciała i duszy? W mym skromnym domostwie znajdziesz wiele tajemnic natury. Jak mogę ci dzisiaj pomóc?
+[15:43:32] [PIPE SYSTEM] | Decoding message
+[15:43:32] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj, podrożniku! Cóż za radość spotkać duszę, która zagłądza w głąb lasu. Czyżbyś przyszedł szukać ziół czy może eliksirów, które leczą rany ciała i duszy? W mym skromnym domostwie znajdziesz wiele tajemnic natury. Jak mogę ci dzisiaj pomóc?
+[15:43:32] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[15:43:41] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|ale masz zajebiste cyce
+[15:43:41] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|ale masz zajebiste cyce sent
+
+---------------------------------------
+GAME STARTED 24.51.2025 15:51:13
+---------------------------------------
+[15:51:14] [PIPE SYSTEM] | Connected to python pipe
+[15:51:17] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|Witaj!
+[15:51:17] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|Witaj! sent
+[15:51:34] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj, przyjacielu! Cóż za radosna niespodzianka, że mnie nawiedziłeś. Jakie wieści niosą ze sobą wiatry z krainy, gdzie stąpasz? Czyżbyś potrzebował eliksiru lub ziół, by wzmocnić swe zdrowie lub odwrócić nieprzyjemności? Chętnie pomogę!
+[15:51:34] [PIPE SYSTEM] | Decoding message
+[15:51:34] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj, przyjacielu! Cóż za radosna niespodzianka, że mnie nawiedziłeś. Jakie wieści niosą ze sobą wiatry z krainy, gdzie stąpasz? Czyżbyś potrzebował eliksiru lub ziół, by wzmocnić swe zdrowie lub odwrócić nieprzyjemności? Chętnie pomogę!
+[15:51:34] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[15:51:51] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|wyglądasz na głupią kobietę
+[15:51:51] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|wyglądasz na głupią kobietę sent
+[15:52:13] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Ehhh, mój drogi przyjacielu, widzę, że twe słowa są jak ostry cierń w gąszczu ziół. Piękno jest sprawą subiektywną, a swój czas poświęcam raczej naturze i jej cudom, niż przyziemnym zgryzotą. No cóż, każdy ma swoją drogę do przebycia. Jeśli potrzebujesz eliksiru, by otworzyć swe serce na piękno otaczającego świata, chętnie pomogę. Jakież masz dolegliwości, że tak ostro krytykujesz?
+[15:52:13] [PIPE SYSTEM] | Decoding message
+[15:52:13] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Ehhh, mój drogi przyjacielu, widzę, że twe słowa są jak ostry cierń w gąszczu ziół. Piękno jest sprawą subiektywną, a swój czas poświęcam raczej naturze i jej cudom, niż przyziemnym zgryzotą. No cóż, każdy ma swoją drogę do przebycia. Jeśli potrzebujesz eliksiru, by otworzyć swe serce na piękno otaczającego świata, chętnie pomogę. Jakież masz dolegliwości, że tak ostro krytykujesz?
+[15:52:13] [PIPE SYSTEM READ] | Invoking OnMessageRecived

@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import re
 import json
@@ -9,14 +10,26 @@ from NPC_Rag import RAG
 from .intent_interpreter import IntentInterpreter
 from Utils import Log, MessageType as mt
 import config
+from langsmith import Client
+from langchain_core.tracers import LangChainTracer
 
 
 class NPCManager:
     def __init__(self, data_folder):
+
+        # create langsmith tracer
+        self.langsmith_tracer = LangChainTracer()
+        now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        self.session_tag = f"Session - {now}"
+
         self.data_folder = data_folder
         self.npc_data = {}
         self.npc_agents = {}
-        self.intent_agent = IntentInterpreter(RAG(config.NPC_INTERPRETER_DATA))
+        self.intent_agent = IntentInterpreter(RAG(
+            json_path = config.NPC_INTERPRETER_DATA,
+            tracer = self.langsmith_tracer,
+            session_tag = self.session_tag
+            ))
         self.class_name = "NPC Manager"
 
         load_dotenv()
@@ -34,7 +47,11 @@ class NPCManager:
                 with open(path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 self.npc_data[npc_name] = data
-                self.npc_agents[npc_name] = RAG(path)
+                self.npc_agents[npc_name] = RAG(
+                    json_path = path,
+                    tracer = self.langsmith_tracer,
+                    session_tag = self.session_tag
+                    )
 
     def handle_pipe_message(self, message: Message):
         print(f"[NPC MANAGER] Received message from pipe: {message}")

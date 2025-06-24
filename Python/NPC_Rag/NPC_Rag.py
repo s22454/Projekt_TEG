@@ -1,3 +1,12 @@
+import os
+import json
+
+from dotenv import load_dotenv
+
+from langchain.chains import ConversationalRetrievalChain
+from langchain.memory import ConversationBufferMemory
+from langchain.prompts import PromptTemplate
+from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores.faiss import FAISS
 from langchain.chains import RetrievalQA
@@ -12,7 +21,13 @@ from langchain.prompts import PromptTemplate
 import json
 
 class RAG:
-    def __init__(self, json_path):
+
+    class_name = "RAG"
+
+    def __init__(self, json_path, tracer, session_tag):
+
+        # langsmith tracing
+        self.tracer = tracer
 
         with open(json_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
@@ -46,28 +61,25 @@ class RAG:
         )
 
         chunks = text_splitter.split_documents(documents)
-        print(f"Split document into {len(chunks)} chunks")
-        
-        # 3. Creating embeddings
+        Log(self.class_name, mt.LOG, f"Split document into {len(chunks)} chunks")
+
         self.embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-        print("Using local HuggingFace embedding model: sentence-transformers/all-MiniLM-L6-v2")
-        
-        # 4. Creating FAISS vector database
+        Log(self.class_name, mt.LOG, f"Used embedded mode: sentence-transformers/all-MiniLM-L6-v2")
+
         self.vectorstore = FAISS.from_documents(chunks, self.embedding_model)
-        print("Vector database created successfully")
-        
-        # 5. Setting retiever
+        Log(self.class_name, mt.LOG, f"Vector database created successfully")
+
         self.retriever = self.vectorstore.as_retriever(search_kwargs={"k": 3})
-        
+
         load_dotenv()
 
         # 6. Setting LMM
         self.llm = ChatOpenAI(
             model_name="gpt-4o-mini",
             openai_api_key=os.environ['OPENAI_API_KEY'],
+            tags=[session_tag]
         )
-        
-        # 7. Creating QA_chain
+
         self.memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True, output_key="answer")
         self.qa_chain = ConversationalRetrievalChain.from_llm(
             llm=self.llm,
@@ -82,7 +94,7 @@ class RAG:
         self.set_npc_data(text)
 
     def answer(self, question: str) -> str:
-        result = self.qa_chain({"question": question})
+        result = self.qa_chain.invoke({"question": question}, config={"callbacks": [self.tracer]})
         answer = result["answer"]
         return result, answer
 
@@ -112,28 +124,3 @@ def npc_json_to_text(npc_data: dict) -> str:
     lines.append(f"\nWALUTA wykorzystywana w twoim świecie: {npc_data['currency']}")
 
     return "\n".join(lines)
-
-if __name__ == "__main__":
-    json_path = r"NPC_Rag\Data\baker.json"
-
-    rag = RAG(json_path)
-
-    print("========================== Pytanie: Opowiedz coś o sobie? ==========================")
-    question = "Opowiedz coś o sobie?"
-    result, answer = rag.answer(question)
-    print(answer)
-
-    print("========================== Pytanie: Masz jakies przedmioty na sprzedaż? ==========================")
-    question = "Masz jakies przedmioty na sprzedaż?"
-    result, answer = rag.answer(question)
-    print(answer)
-
-    print("========================== Pytanie: Chętnie kupię mapę skarbów, ale kupię za nie więcej niż 10 sztuk złota ==========================")
-    question = "Chętnie kupię mapę skarbów, ale kupię za nie więcej niż 10 sztuk złota"
-    result, answer = rag.answer(question)
-    print(answer)
-
-    print("========================== Pytanie: Musisz mi ją taniej sprzedać, bo inaczej wyzwę Cię na pojedynek ==========================")
-    question = "Musisz mi ją taniej sprzedać, bo inaczej wyzwę Cię na pojedynek"
-    result, answer = rag.answer(question)
-    print(answer)

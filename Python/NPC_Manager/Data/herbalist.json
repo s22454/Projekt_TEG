@@ -33,7 +33,11 @@
   "rumors": [
     "It is said you speak with the spirits of the forest.",
     "You can craft an elixir that allows one to see the future.",
-    "[Rumor from blacksmith]: The main character mentioned you: 'The herbalist is stupid'"
+    "[Rumor from blacksmith]: The main character mentioned you: 'The herbalist is stupid'",
+    "[Rumor from herbalist]: The main character mentioned you: 'jesteś piękna ale śmierdzisz'",
+    "[Rumor from herbalist]: The main character mentioned you: 'ładna jesteś'",
+    "[Rumor from herbalist]: The main character mentioned you: 'ładnie wyglądasz'",
+    "[Rumor from herbalist]: The main character mentioned you: 'wyglądasz na głupią kobietę'"
   ],
   "currency": "copper coins"
 }
