@@ -1,91 +1,116 @@
-# Projekt TEG
+# TEG Project
 
-## Spis tresci
-- [Ogólna koncepcja](#ogólna-koncepcja)
-- [Członkowie](#członkowie)
+## Table of Contents
+- [General Concept](#general-concept)
+- [Team Members](#team-members)
 - [TODO](#todo)
-- [Podział zadań](#podział-zadań)
-- [Plan spotkań](#plan-spotkań)
-- [Kamienie milowe](#kamienie-milowe)
-- [Struktura git](#struktura-git)
+- [Task Division](#task-division)
+- [Git Structure](#git-structure)
 
-## Ogólna koncepcja
-Projekt ma polegać na stworzeniu systemu wieloagentowego obsługującego interakcje gracza z postaciami NPC na podstawie prostego demo w Unity. Postacie NPC mają mieć możliwość komunikacji zarówno z graczem jak w między sobą. Każdy z nich ma odgrywać określoną rolę oraz przekazywać graczowi tylko informacje związane z jego rolą w grze. Dodatkowo interakcje gracza z NPC mają wpływać na interakcje z pozostałymi NPC.
+## General Concept
+The goal of the project is to create a multi-agent system handling player interactions with NPC characters based on a simple Unity demo. NPCs should be able to communicate both with the player and among themselves. Each NPC will play a specific role and provide the player only with information related to that role. Additionally, player interactions with one NPC should affect interactions with other NPCs.
 
-## Członkowie
+## Team Members
 
-Mateusz Sasor-Adamczyk <br/>
-Błażej Bartkiewicz <br/>
-Cezary Daniłowski <br/>
-Michał Dębski <br/>
+Mateusz Sasor-Adamczyk
+Błażej Bartkiewicz
+Cezary Daniłowski
+Michał Dębski
 
 ## TODO
 
-<details open>
-  <summary>Na 16.05.2025r.</summary>
+<details>
+  <summary>16.05.2025</summary>
 
-  - [x] Wypełcić jire
-  - [x] Sprawdzić czy w unity da się opdalać pythona
-  - [x] Rozpoczęcie projektu w pythonie
-  - [x] Podstawowe diagramy
-  - [ ] Stworzenie koncepcji miasta
+  - [x] Fill out Jira
+  - [x] Check if Python can be run from Unity
+  - [x] Start the Python project
+  - [x] Basic diagrams
+  - [x] Create the concept of the city
+
+</details>
+
+<details>
+  <summary>20.05.2025</summary>
+
+  - [x] Unity model
+  - [x] Basic agent working in the console
+  - [x] Create a manager to synchronize agent actions
+  - [x] Create Unity-side API working with NPC models
+  - [x] Create Python-side API working with the LLM
+  - [x] Develop a PDF (or alternative) format for RAG for the LLM
+
+</details>
+
+<details>
+  <summary>03.06.2025</summary>
+
+  - [x] Create a second agent and design interactions between them
+  - [ ] Call methods from the LLM
+  - [x] Develop method call scheme in Unity / equipment update transfer
+  - [x] Multithreading for the pipe
+  - [x] Agent testing
+  - [x] Improve pipe communication with the LLM manager
+  - [x] Run Python scripts from Unity
+  - [x] Develop equipment system
+
+</details>
+
+<details>
+  <summary>08.06.2025</summary>
+
+  - [x] Call methods from the LLM
+  - [x] Encode/Decode messages via the pipe
+  - [x] Improve UI controller communication with the pipe
+  - [x] Manager updating local NPC equipment and player account status
+  - [ ] Explore ways to streamline the RAG update process for the LLM
+  - [x] Prepare presentation
 
 </details>
 
 <details open>
-  <summary>20.05.2025r.</summary>
+  <summary>22.06.2025</summary>
 
-  - [ ] Model w Unity
-  - [ ] Podstawowy agent działający w konsoli
-  - [ ] Stworzenie menadżera który będzie synchronizował działanie agentów
-  - [ ] Stworzenie API od strony Unity działającego z modelami NPC
-  - [ ] Stworzenie API w pythonie działającego z LLM'em
-  - [ ] Opracowanie formatu pdf (lub czegoś innego) dla RAG'u dla LLM'a
+  - [ ] Log
+  - [ ] Manager configuration
+  - [ ] Prepare more complex use cases (without AI for now)
+  - [ ] Clean up the code
+  - [ ] English naming
+  - [ ] Unify naming conventions
 
 </details>
 
-<details open>
+<details>
   <summary>Next</summary>
 
-  - [ ] Stworzenie drugiego agenta oraz zaprojektowanie interakcji między nimi
-  - [ ] Opracowanie prezentacji
-  - [ ] Wywoływanie metod z poziomu LLM'a
+  - [ ] Prepare presentation
 
 </details>
 
-## Plan spotkań
 
-1. *12.05.2025r.* - omówienie założeń i opracowanie planu dalszego rozwoju projektu
-2. *16.05.2025r.* - prezentacja dotychczasowych postępów oraz podział zadań związanych z implementacją elementów potrzebnych do demo
+## Task Division
 
-## Podział zadań
-| Mateusz Sasor-Adamczyk | Błażej Bartkiewicz | Cezary Daniłowski | Michał Dębski |
-| -- | -- | -- | -- |
-| Wypełnić jire | Rozpoczęcie projektu w pythonie | Podstawowe diagramy | Stworzenie koncepcji miasta |
-| Sprawdzić czy w unity da się opdalać pythona | | |
-| Stworzenie API od strony Unity | Podstawowy agent działający | Opracowanie formatu pdf (lub czegoś innego) dla RAG'u dla LLM'a | Model w Unity |
-| Stworzenie API w pythonie |  | Stworzenie menadżera |  |
+| Sprint | Mateusz Sasor-Adamczyk | Błażej Bartkiewicz | Cezary Daniłowski | Michał Dębski |
+| :--: | ------------------------ | ------------------ | ------------------ | -------------- |
+| 1 | Fill out Jira | Start Python project | Basic diagrams | Create city concept |
+| 1 | Check if Python can be run from Unity | | | |
+| 2 | Create Unity-side API | Basic agent functionality | Develop PDF format (or alternative) for LLM RAG | Unity model |
+| 2 | Create Python-side API | | Create the manager | |
+| 3 | Call methods from LLM | Call methods from LLM | Call methods from LLM | Call methods from LLM |
+| 3 | Multithreading for pipe | Agent testing | Develop method call/update equipment scheme in Unity | Develop equipment system |
+| 3 | Improve pipe communication with LLM manager | Run Python script from Unity | Improve pipe communication with LLM manager | Run Python script from Unity |
+| 4 | Call methods from LLM | Call methods from LLM | Call methods from LLM | Call methods from LLM |
+| 4 | Encode/Decode messages via pipe | Explore ways to improve RAG update for LLM | Manager updating NPC equipment and player balance | Improve UI controller communication with pipe |
+| 5 | Log | | Manager config | Next-day preparation (tavern) |
+| 5 | Pipe – advanced use cases | | Manager prep for complex use cases | Equipment system for advanced cases |
+| 5 | Rewrite README | | | |
+| 5 | Standardize names | | | |
+| 5 | Clean up code / English names | Clean up code / English names | Clean up code / English names | Clean up code / English names |
 
-## Kamienie milowe
-1. Rozpoczęcie projektu
-   1. Diagramy
-   2. Dalszy plan działania
-   3. Elementy organizacyjne
-      1. Podział zadań
-      2. Jira
-      3. Readme
-   4. Szablon projektu w pythonie
-   5. Plan na integracje z Unity
-2. Demo
-   1. Współpraca agenta z RAG
-   2. Menadżer nadzorujący agenta
-   3. Agent wykorzystujący przekazany mu kontekst
-   4. Agent komunikujący się za pośrednictwem konsoli
-3. System wieloagentowy w Unity
+## Git Structure
 
-## Struktura git
-main - środowisko produkcyjne zawierające wersje projektu gotowe do prezentacji <br/>
-dev - środowisko deweloperskie zawierające wersje proejektu z zaimplementowanymi poszczególnymi funkcjonalnościami <br/>
-imienne - środowiska deweloperskie w których poszczególni członkowie zespołu zajmują się implementacją poszczególnych funkcjonalności
+- `main` – production environment with versions ready for presentation
+- `dev` – development environment with integrated features
+- `[named branches]` – individual environments where each team member implements specific features
 
-![diagram-struktury-git](./readme_img/diagram_struktury_git.drawio.png)
+![git-structure-diagram](./readme_img/diagram_struktury_git.drawio.png)
