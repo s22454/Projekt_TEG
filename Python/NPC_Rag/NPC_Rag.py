@@ -78,9 +78,6 @@ class RAG:
             output_key="answer"
         )
 
-    def update_npc_data(self, text):
-        self.set_npc_data(text)
-
     def answer(self, question: str) -> str:
         result = self.qa_chain({"question": question})
         answer = result["answer"]
