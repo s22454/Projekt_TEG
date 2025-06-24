@@ -71,12 +71,12 @@ class NPCManager:
             case _:
                 response = self.talk_to_npc(npc_name, player_input)
 
-            response_message = Message(
-                action_code=ActionCode.TXTMESSAGE,
-                sender=Sender.PLAYER,
-                item=Item.TEST,
-                message=response
-            )
+        response_message = Message(
+            action_code=ActionCode.TXTMESSAGE,
+            sender=Sender.PLAYER,
+            item=Item.TEST,
+            message=response
+        )
 
         if message.action_code == ActionCode.SELL:
             response_message = self.sell_item(sender_npc, message.item, quantity)
