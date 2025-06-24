@@ -1,7 +1,4 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.Networking;
-using System.Text;
 using System.Collections;
 
 public abstract class UIController : MonoBehaviour
@@ -14,7 +11,7 @@ public abstract class UIController : MonoBehaviour
         StartCoroutine(HideAfterOneFrame());
     }
 
-    public System.Collections.IEnumerator HideAfterOneFrame()
+    public IEnumerator HideAfterOneFrame()
     {
         yield return null;
         this.CloseDialogue();

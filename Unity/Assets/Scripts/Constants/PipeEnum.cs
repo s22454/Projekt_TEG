@@ -1,5 +1,3 @@
-using UnityEngine;
-
 // [action code] | [sender] | [reciver] | [item] | [quantity] | [price] | [message]
 public enum EnumType
 {

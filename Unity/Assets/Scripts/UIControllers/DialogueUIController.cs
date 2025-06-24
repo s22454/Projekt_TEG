@@ -1,13 +1,7 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.Networking;
-using System.Text;
-using System.Collections;
-using System.Diagnostics;
 using static PipeSystem;
-using System;
 using System.Collections.Generic;
-using UnityEditor.VersionControl;
 using Unity.VisualScripting;
 
 public class DialogueUIController : UIController
@@ -61,7 +55,10 @@ public class DialogueUIController : UIController
         }
 
         // Send initial greeting through pipe
-        _pipeSystem.EncodeAndSendMessageToServer(ActionCode.TXTMESSAGE, _currentNPC, Item.NULL, 0, 0, "Witaj!");
+        if (_pipeSystem != null)
+            _pipeSystem.EncodeAndSendMessageToServer(ActionCode.TXTMESSAGE, _currentNPC, Item.NULL, 0, 0, "Witaj!");
+        else
+            LogManager.Log(_className, LogType.ERROR, "_pipeSystem is null in OpenDialogue");
     }
 
     public void OnSendMessage()

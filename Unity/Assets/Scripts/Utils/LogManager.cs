@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using UnityEngine;
 
-
 public class LogManager
 {
     private static readonly string LogFilePath = "./log_unity.txt";

@@ -18,6 +18,8 @@ public class InventoryManager : MonoBehaviour
 
     public static void AddItem(Item item, int amount = 1)
     {
+        if (amount <= 0) return;
+
         InventoryItem existing = items.Find(i => i.itemType == item);
         if (existing != null)
         {
@@ -28,11 +30,13 @@ public class InventoryManager : MonoBehaviour
             items.Add(new InventoryItem(item, amount));
         }
 
-        LogManager.Log(_className, LogType.LOG, $"Added {amount}x {"itemName"}");
+        LogManager.Log(_className, LogType.LOG, $"Added {amount}x {item}");
     }
 
     public static void RemoveItem(Item item, int amount = 1)
     {
+        if (amount <= 0) return;
+
         InventoryItem existing = items.Find(i => i.itemType == item);
         if (existing != null)
         {
@@ -40,7 +44,13 @@ public class InventoryManager : MonoBehaviour
             if (existing.quantity <= 0 && existing.itemType != Item.GOLD)
                 items.Remove(existing);
 
-            LogManager.Log(_className, LogType.LOG, $"Removed {amount}x {"itemName"}");
+            LogManager.Log(_className, LogType.LOG, $"Removed {amount}x {item}");
         }
+        else
+        {
+            LogManager.Log(_className, LogType.WARNING, $"Tried to remove {item}, but not found in inventory.");
+            return;
+        }
+
     }
 }
