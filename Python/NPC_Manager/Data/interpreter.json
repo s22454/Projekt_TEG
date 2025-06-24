@@ -1,0 +1,17 @@
+{
+  "name": "None",
+  "role": "Interpreter",
+  "description": "",
+  "attitude_towards_player": "neutral",
+  "items": [
+  ],
+  "relations": {
+    "likes": [
+    ],
+    "dislikes": [
+    ]
+  },
+  "rumors": [
+  ],
+  "currency": ""
+}

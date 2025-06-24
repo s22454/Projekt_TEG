@@ -6,8 +6,9 @@ from dotenv import load_dotenv
 
 from Pipe import PipeServer, Message, ActionCode, Sender, Item
 from NPC_Rag import RAG
-from intent_interpreter import IntentInterpreter
+from .intent_interpreter import IntentInterpreter
 from Utils import Log, MessageType as mt
+import config
 
 
 class NPCManager:
@@ -15,7 +16,7 @@ class NPCManager:
         self.data_folder = data_folder
         self.npc_data = {}
         self.npc_agents = {}
-        self.intent_agent = IntentInterpreter(RAG())
+        self.intent_agent = IntentInterpreter(RAG(config.NPC_INTERPRETER_DATA))
         self.class_name = "NPC Manager"
 
         load_dotenv()
@@ -36,7 +37,8 @@ class NPCManager:
                 self.npc_agents[npc_name] = RAG(path)
 
     def handle_pipe_message(self, message: Message):
-        Log(self.class_name, mt.LOG, "Received message from pipe: {message}")
+        print(f"[NPC MANAGER] Received message from pipe: {message}")
+        sender_npc = message.sender.name.lower()
         player_input = message.message.strip()
         response_message: Message
 
@@ -54,7 +56,7 @@ class NPCManager:
                 )
                 self.pipe_server.EncodeMessageAndSendToClient(response_message)
                 return
-            
+
             case "insult" | "praise":
                 sentiment = intent_data["sentiment"]
                 target = intent_data["target_npc"] or npc_name
@@ -75,6 +77,10 @@ class NPCManager:
             item=Item.TEST,
             message=response
         )
+
+        if message.action_code == ActionCode.SELL:
+            response_message = self.sell_item(sender_npc, message.item, quantity)
+
         self.pipe_server.EncodeMessageAndSendToClient(response_message)
 
     def share_info(self, from_npc, to_npc, message):
@@ -94,7 +100,6 @@ class NPCManager:
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
         self.npc_data[npc_name] = data
-        #self.npc_agents[npc_name].update_npc_data(path)
 
     def talk_to_npc(self, npc_name, text):
         self._reload_npc_from_file(npc_name)
@@ -196,7 +201,7 @@ class NPCManager:
         return "neutral"
 
     def _update_attitude_and_share_plotka(self, from_npc, to_npc, message, sentiment):
-        Log(self.class_name, mt.LOG, "\n→ Mentioned NPC '{to_npc}' with sentiment: {sentiment}")
+        print(f"\n→ Mentioned NPC '{to_npc}' with sentiment: {sentiment}")
         self.share_info(from_npc, to_npc, f"The main character mentioned you: '{message}'")
 
         current = self.npc_data[to_npc].get("attitude_towards_player", "neutral")
