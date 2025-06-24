@@ -1,15 +1,19 @@
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores.faiss import FAISS
-from langchain.chains import RetrievalQA
-from langchain_openai import ChatOpenAI
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
-from dotenv import load_dotenv
-from langchain.schema import Document
 import os
 import json
+
+from dotenv import load_dotenv
+
+from langchain.chains import RetrievalQA, ConversationalRetrievalChain
+from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
+from langchain.schema import Document
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+from langchain_community.vectorstores.faiss import FAISS
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_openai import ChatOpenAI
+
+from Utils import Log, MessageType as mt
 
 class RAG:
     def __init__(self, json_path):
@@ -45,13 +49,16 @@ class RAG:
         )
 
         chunks = text_splitter.split_documents(documents)
-        print(f"Split document into {len(chunks)} chunks")
+        #print(f"Split document into {len(chunks)} chunks")
+        Log(self.class_name, mt.LOG, f"Split document into {len(chunks)} chunks")
 
         self.embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-        print("Using local HuggingFace embedding model: sentence-transformers/all-MiniLM-L6-v2")
+        #print("Using local HuggingFace embedding model: sentence-transformers/all-MiniLM-L6-v2")
+        Log(self.class_name, mt.LOG, f"Used embedded mode: sentence-transformers/all-MiniLM-L6-v2")
         
         self.vectorstore = FAISS.from_documents(chunks, self.embedding_model)
-        print("Vector database created successfully")
+        #print("Vector database created successfully")
+        Log(self.class_name, mt.LOG, f"Vector database created successfully")
 
         self.retriever = self.vectorstore.as_retriever(search_kwargs={"k": 3})
         
@@ -103,3 +110,28 @@ def npc_json_to_text(npc_data: dict) -> str:
     lines.append(f"\nWALUTA wykorzystywana w twoim świecie: {npc_data['currency']}")
 
     return "\n".join(lines)  
+
+if __name__ == "__main__":
+    json_path = r"../NPC_Rag/Data/baker.json"
+
+    rag = RAG(json_path)
+
+    print("========================== Pytanie: Opowiedz coś o sobie? ==========================")
+    question = "Opowiedz coś o sobie?"
+    result, answer = rag.answer(question)
+    print(answer)
+
+    print("========================== Pytanie: Masz jakies przedmioty na sprzedaż? ==========================")
+    question = "Masz jakies przedmioty na sprzedaż?"
+    result, answer = rag.answer(question)
+    print(answer)
+
+    print("========================== Pytanie: Chętnie kupię mapę skarbów, ale kupię za nie więcej niż 10 sztuk złota ==========================")
+    question = "Chętnie kupię mapę skarbów, ale kupię za nie więcej niż 10 sztuk złota"
+    result, answer = rag.answer(question)
+    print(answer)
+
+    print("========================== Pytanie: Musisz mi ją taniej sprzedać, bo inaczej wyzwę Cię na pojedynek ==========================")
+    question = "Musisz mi ją taniej sprzedać, bo inaczej wyzwę Cię na pojedynek"
+    result, answer = rag.answer(question)
+    print(answer)
