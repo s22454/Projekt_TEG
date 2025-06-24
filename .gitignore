@@ -161,3 +161,4 @@ cython_debug/
 Unity_project/.vscode/extensions.json
 Unity_project/.vscode/launch.json
 Unity_project/.vscode/settings.json
+Python/log_py.txt
