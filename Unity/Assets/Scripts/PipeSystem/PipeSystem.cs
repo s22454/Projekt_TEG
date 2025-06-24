@@ -31,8 +31,6 @@ public class PipeSystem : MonoBehaviour
     private static int sleepTime;
     private static Dictionary<EnumType, Dictionary<Enum, string>> MessageDataTranslations;
 
-    // Events
-
     // Message struct
     public struct MessageStruct
     {
@@ -61,11 +59,19 @@ public class PipeSystem : MonoBehaviour
         InitConfig();
 
         // Connect to pipe server
-        _pipeClientRead = new NamedPipeClientStream(".", pipeNameRead, PipeDirection.In);
-        _pipeClientRead.Connect(5000);
-        _pipeClientWrite = new NamedPipeClientStream(".", pipeNameWrite, PipeDirection.Out);
-        _pipeClientWrite.Connect(5001);
-        LogManager.Log(_className, LogType.LOG, "Connected to python pipe");
+        try
+        {
+            _pipeClientRead = new NamedPipeClientStream(".", pipeNameRead, PipeDirection.In);
+            _pipeClientRead.Connect(5000);
+            _pipeClientWrite = new NamedPipeClientStream(".", pipeNameWrite, PipeDirection.Out);
+            _pipeClientWrite.Connect(5001);
+            LogManager.Log(_className, LogType.LOG, "Connected to python pipe");
+        }
+        catch (Exception e)
+        {
+            LogManager.Log(_className, LogType.ERROR, $"Pipe connection failed: {e}");
+            throw;
+        }
 
         // Create and start threads
         _pipeThreadRead.Start();

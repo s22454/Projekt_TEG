@@ -1,17 +1,15 @@
 using System.Diagnostics;
-using System.IO;
 using UnityEngine;
 
 public class PythonServerLauncher : MonoBehaviour
 {
+    private static readonly string _className = "PYTHON LAUNCHER";
     public string pythonExePath = @"C:\Path\To\python.exe";
     public string pythonScriptPath;
     private Process pipeProcess;
 
     void Start()
     {
-        UnityEngine.Debug.Log(pythonScriptPath);
-
         ProcessStartInfo startInfo = new ProcessStartInfo();
         startInfo.FileName = pythonExePath;
         startInfo.Arguments = $"\"{pythonScriptPath}\"";
@@ -23,21 +21,11 @@ public class PythonServerLauncher : MonoBehaviour
         try
         {
             pipeProcess = Process.Start(startInfo);
-            UnityEngine.Debug.Log("[Unity] Started " + pythonScriptPath);
+            LogManager.Log(_className, LogType.LOG, "Started script: " + pythonScriptPath);
         }
         catch (System.Exception ex)
         {
-            UnityEngine.Debug.LogError("Failed to start pipe server: " + ex.Message);
+            LogManager.Log(_className, LogType.ERROR, "Failed to start pipe server: " + ex.Message);
         }
     }
-
-    /*    void OnApplicationQuit()
-        {
-            if (pipeProcess != null && !pipeProcess.HasExited)
-            {
-                pipeProcess.Kill();
-                pipeProcess.Dispose();
-                UnityEngine.Debug.Log("[Unity] Pipe server terminated.");
-            }
-        }*/
 }

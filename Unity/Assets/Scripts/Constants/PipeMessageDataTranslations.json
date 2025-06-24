@@ -5,7 +5,8 @@
         "0001": "TXTMESSAGE",
         "0002": "SELL",
         "0003": "CONFIRMSELL",
-        "0004": "ENDCONVARSATION"
+        "0004": "ENDCONVARSATION",
+        "0005": "ENDDAY"
     },
     "Sender":
     {
@@ -13,7 +14,8 @@
         "0001": "SMITH",
         "0002": "BAKER",
         "0003": "HERBALIST",
-        "0004": "PLAYER"
+        "0004": "PLAYER",
+        "0005": "SYSTEM"
     },
     "Item":
     {

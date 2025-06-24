@@ -3,43 +3,58 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    private static readonly string _className = "INVENTORY MANAGER";
     public static InventoryManager Instance;
 
-    public static List<InventoryItem> items = new List<InventoryItem>();
+    private static List<InventoryItem> _items = new List<InventoryItem>();
 
     void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        items.Add(new InventoryItem(Item.GOLD, 100));
+        _items.Add(new InventoryItem(Item.GOLD, 100));
     }
 
     public static void AddItem(Item item, int amount = 1)
     {
-        InventoryItem existing = items.Find(i => i.itemType == item);
+        if (amount <= 0) return;
+
+        InventoryItem existing = _items.Find(i => i.itemType == item);
         if (existing != null)
         {
             existing.quantity += amount;
         }
         else
         {
-            items.Add(new InventoryItem(item, amount));
+            _items.Add(new InventoryItem(item, amount));
         }
 
-        Debug.Log($"Added {amount}x {"itemName"}");
+        LogManager.Log(_className, LogType.LOG, $"Added {amount}x {item}");
     }
 
     public static void RemoveItem(Item item, int amount = 1)
     {
-        InventoryItem existing = items.Find(i => i.itemType == item);
+        if (amount <= 0) return;
+
+        InventoryItem existing = _items.Find(i => i.itemType == item);
         if (existing != null)
         {
             existing.quantity -= amount;
             if (existing.quantity <= 0 && existing.itemType != Item.GOLD)
-                items.Remove(existing);
+                _items.Remove(existing);
 
-            Debug.Log($"Removed {amount}x {"itemName"}");
+            LogManager.Log(_className, LogType.LOG, $"Removed {amount}x {item}");
         }
+        else
+        {
+            LogManager.Log(_className, LogType.WARNING, $"Tried to remove {item}, but not found in inventory.");
+            return;
+        }
+    }
+
+    public static List<InventoryItem> GetItems()
+    {
+        return _items;
     }
 }
