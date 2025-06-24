@@ -3,8 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-*log_py.txt
-
 # C extensions
 *.so
 
@@ -164,4 +162,3 @@ Unity_project/.vscode/extensions.json
 Unity_project/.vscode/launch.json
 Unity_project/.vscode/settings.json
 Python/log_py.txt
-Unity/log_unity.txt
