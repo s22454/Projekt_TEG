@@ -22,8 +22,8 @@ class IntentInterpreter:
             Return JSON like:
             {{
                 "intent": "buy/sell/talk/insult/praise/unknown",
-                "target_npc": "name or null",
-                "item": "name or null",
+                "target_npc": "HEARBALIST/SMITH/BAKER or null",
+                "item": "BREAD/SWORD/WEED or null",
                 "quantity": number,
                 "sentiment": "positive/negative/neutral"
             }}

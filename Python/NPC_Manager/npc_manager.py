@@ -63,12 +63,14 @@ class NPCManager:
         npc_name = message.sender.name.lower()
 
         match intent_data["intent"]:
+
             case "talk":
                 response = self.talk_to_npc(npc_name, player_input)
+
             case "buy":
                 response_message = self.sell_item(
                     npc_name,
-                    item=Item(intent_data["item"]),
+                    item=Item[intent_data["item"]],
                     quantity=intent_data["quantity"]
                 )
                 self.pipe_server.EncodeMessageAndSendToClient(response_message)
@@ -84,7 +86,9 @@ class NPCManager:
                     message=player_input,
                     sentiment=sentiment
                 )
+
                 response = self.talk_to_npc(npc_name, player_input)
+
             case _:
                 response = self.talk_to_npc(npc_name, player_input)
 
