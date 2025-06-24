@@ -10,6 +10,7 @@ from .pipe_event import Event
 from .pipe_enums import EnumType, ActionCode, Sender, Item
 from Utils import Log, MessageType as mt
 import config
+from langsmith import traceable
 
 
 class PipeServer:
@@ -213,6 +214,7 @@ class PipeServer:
         return Message(action_code, sender, item, quantity, price, message)
 
     # encode message
+    @traceable(name="Encoding agent message and seding to player")
     def EncodeAndSendToClient(self, action_code, sender, item, quantity=0, price=0, message=""):
 
         # get code values
