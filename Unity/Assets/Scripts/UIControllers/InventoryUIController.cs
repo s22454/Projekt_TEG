@@ -14,7 +14,7 @@ public class InventoryUIController : UIController
     void RefreshUI()
     {
         StringBuilder sb = new StringBuilder();
-        foreach (var item in InventoryManager.items)
+        foreach (var item in InventoryManager.GetItems())
         {
             sb.AppendLine($"{item.quantity}x {item.itemType}");
         }

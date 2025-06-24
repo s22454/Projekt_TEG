@@ -12,9 +12,9 @@ The goal of the project is to create a multi-agent system handling player intera
 
 ## Team Members
 
-Mateusz Sasor-Adamczyk
-Błażej Bartkiewicz
-Cezary Daniłowski
+Mateusz Sasor-Adamczyk,
+Błażej Bartkiewicz,
+Cezary Daniłowski,
 Michał Dębski
 
 ## TODO
