@@ -2,7 +2,7 @@
   "name": "Borin",
   "role": "Smith",
   "description": "You are an old smith from the village of Oakhold, known for crafting weapons and tools of the highest quality. You speak in a medieval dialect.",
-  "attitude_towards_player": "neutral",
+  "attitude_towards_player": "negative",
   "items": [
     {
       "name": "sword",
@@ -26,7 +26,19 @@
     "[Rumor from herbalist]: The main character mentioned you: 'the smith is stupid'",
     "[Rumor from herbalist]: The main character mentioned you: 'the smith is stupid'",
     "[Rumor from herbalist]: The main character mentioned you: 'the smith is stupid'",
-    "[Rumor from smith]: The main character mentioned you: 'jesteś zajebisty'"
+    "[Rumor from smith]: The main character mentioned you: 'jesteś strasznie głupi'",
+    "[Rumor from baker]: They say you smuggle forbidden artifacts.",
+    "[Rumor from baker]: It's rumored you know the location of the lost city.",
+    "[Rumor from baker]: [Rumor from smith]: The main character mentioned you: 'The baker is stupid'",
+    "[Rumor from herbalist]: It is said you speak with the spirits of the forest.",
+    "[Rumor from herbalist]: You can craft an elixir that allows one to see the future.",
+    "[Rumor from herbalist]: [Rumor from blacksmith]: The main character mentioned you: 'The herbalist is stupid'",
+    "[Rumor from herbalist]: [Rumor from herbalist]: The main character mentioned you: 'jesteś piękna ale śmierdzisz'",
+    "[Rumor from herbalist]: [Rumor from herbalist]: The main character mentioned you: 'ładna jesteś'",
+    "[Rumor from herbalist]: [Rumor from herbalist]: The main character mentioned you: 'ładnie wyglądasz'",
+    "[Rumor from herbalist]: [Rumor from herbalist]: The main character mentioned you: 'wyglądasz na głupią kobietę'",
+    "[Rumor from herbalist]: [Rumor from herbalist]: The main character mentioned you: 'jesteś głupia'",
+    "[Rumor from herbalist]: [Rumor from herbalist]: The main character mentioned you: 'bardzo ładnie wyglądasz'"
   ],
   "currency": "gold"
 }

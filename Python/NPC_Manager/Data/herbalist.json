@@ -2,7 +2,7 @@
   "name": "Eldan",
   "role": "Herbalist",
   "description": "You are a hermit living on the edge of the forest. You are skilled in herbs, elixirs, and healing wounds. You speak in a medieval dialect.",
-  "attitude_towards_player": "negative",
+  "attitude_towards_player": "neutral",
   "items": [
     {
       "name": "weed",
@@ -28,7 +28,26 @@
     "[Rumor from herbalist]: The main character mentioned you: 'ładna jesteś'",
     "[Rumor from herbalist]: The main character mentioned you: 'ładnie wyglądasz'",
     "[Rumor from herbalist]: The main character mentioned you: 'wyglądasz na głupią kobietę'",
-    "[Rumor from herbalist]: The main character mentioned you: 'jesteś głupia'"
+    "[Rumor from herbalist]: The main character mentioned you: 'jesteś głupia'",
+    "[Rumor from herbalist]: The main character mentioned you: 'bardzo ładnie wyglądasz'",
+    "[Rumor from baker]: They say you smuggle forbidden artifacts.",
+    "[Rumor from baker]: It's rumored you know the location of the lost city.",
+    "[Rumor from baker]: [Rumor from smith]: The main character mentioned you: 'The baker is stupid'",
+    "[Rumor from smith]: You once fought in the great dwarven war.",
+    "[Rumor from smith]: You know the secret technique of forging enchanted blades.",
+    "[Rumor from smith]: [Rumor from herbalist]: The main character mentioned you: 'the smith is stupid'",
+    "[Rumor from smith]: [Rumor from herbalist]: The main character mentioned you: 'the smith is stupid'",
+    "[Rumor from smith]: [Rumor from herbalist]: The main character mentioned you: 'the smith is stupid'",
+    "[Rumor from smith]: [Rumor from smith]: The main character mentioned you: 'jesteś strasznie głupi'",
+    "[Rumor from smith]: [Rumor from herbalist]: It is said you speak with the spirits of the forest.",
+    "[Rumor from smith]: [Rumor from herbalist]: You can craft an elixir that allows one to see the future.",
+    "[Rumor from smith]: [Rumor from herbalist]: [Rumor from blacksmith]: The main character mentioned you: 'The herbalist is stupid'",
+    "[Rumor from smith]: [Rumor from herbalist]: [Rumor from herbalist]: The main character mentioned you: 'jesteś piękna ale śmierdzisz'",
+    "[Rumor from smith]: [Rumor from herbalist]: [Rumor from herbalist]: The main character mentioned you: 'ładna jesteś'",
+    "[Rumor from smith]: [Rumor from herbalist]: [Rumor from herbalist]: The main character mentioned you: 'ładnie wyglądasz'",
+    "[Rumor from smith]: [Rumor from herbalist]: [Rumor from herbalist]: The main character mentioned you: 'wyglądasz na głupią kobietę'",
+    "[Rumor from smith]: [Rumor from herbalist]: [Rumor from herbalist]: The main character mentioned you: 'jesteś głupia'",
+    "[Rumor from smith]: [Rumor from herbalist]: [Rumor from herbalist]: The main character mentioned you: 'bardzo ładnie wyglądasz'"
   ],
   "currency": "copper coins"
 }

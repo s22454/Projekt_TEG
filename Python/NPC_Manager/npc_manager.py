@@ -2,7 +2,6 @@ from datetime import datetime
 import os
 import re
 import json
-import threading
 from dotenv import load_dotenv
 
 from Pipe import PipeServer, Message, ActionCode, Sender, Item
@@ -10,7 +9,6 @@ from NPC_Rag import RAG
 from .intent_interpreter import IntentInterpreter
 from Utils import Log, MessageType as mt
 import config
-from langsmith import Client
 from langchain_core.tracers import LangChainTracer
 
 
@@ -46,9 +44,12 @@ class NPCManager:
             if file.endswith(".json") and file != "interpreter.json":
                 npc_name = file[:-5]
                 path = os.path.join(self.data_folder, file)
+
                 with open(path, "r", encoding="utf-8") as f:
                     data = json.load(f)
+
                 self.npc_data[npc_name] = data
+
                 self.npc_agents[npc_name] = RAG(
                     json_path = path,
                     tracer = self.langsmith_tracer,
@@ -68,6 +69,14 @@ class NPCManager:
                 item=Item.TEST,
                 message="EndDay received"
             )
+
+            for agent1 in self.npc_agents:
+                for agent2 in self.npc_agents:
+                    if agent1 != agent2:
+                        for rumor in self.npc_data[agent1]["rumors"]:
+                            self.share_info(agent1, agent2, rumor)
+
+            self.load_all_npcs()
 
             self.pipe_server.EncodeMessageAndSendToClient(response_message)
             return
@@ -97,7 +106,7 @@ class NPCManager:
                 sentiment = intent_data["sentiment"]
                 target = intent_data["target_npc"] or npc_name
 
-                self._update_attitude_and_share_plotka(
+                self._update_attitude_and_share_rumors(
                     from_npc=npc_name,
                     to_npc=target,
                     message=player_input,
@@ -116,17 +125,15 @@ class NPCManager:
             message=response
         )
 
-        if message.action_code == ActionCode.SELL:
-            response_message = self.sell_item(sender_npc, message.item, quantity)
-
         self.pipe_server.EncodeMessageAndSendToClient(response_message)
 
     def share_info(self, from_npc, to_npc, message):
         if "rumors" not in self.npc_data[to_npc]:
             self.npc_data[to_npc]["rumors"] = []
 
-        self.npc_data[to_npc]["rumors"].append(f"[Rumor from {from_npc}]: {message}")
-        self._save_npc_to_file(to_npc)
+        if message not in self.npc_data[to_npc]["rumors"]:
+            self.npc_data[to_npc]["rumors"].append(f"[Rumor from {from_npc}]: {message}")
+            self._save_npc_to_file(to_npc)
 
     def _save_npc_to_file(self, npc_name):
         path = os.path.join(self.data_folder, f"{npc_name}.json")
@@ -153,7 +160,7 @@ class NPCManager:
         for mentioned in mentioned_npcs:
             if mentioned in self.npc_data:
                 sentiment = self._analyze_sentiment(text)
-                self._update_attitude_and_share_plotka(npc_name, mentioned, text, sentiment)
+                self._update_attitude_and_share_rumors(npc_name, mentioned, text, sentiment)
 
         return answer
 
@@ -241,7 +248,7 @@ class NPCManager:
             return "negative"
         return "neutral"
 
-    def _update_attitude_and_share_plotka(self, from_npc, to_npc, message, sentiment):
+    def _update_attitude_and_share_rumors(self, from_npc, to_npc, message, sentiment):
         Log(self.class_name, mt.LOG, f"Mentioned NPC '{to_npc}' with sentiment: {sentiment}")
         self.share_info(from_npc, to_npc, f"The main character mentioned you: '{message}'")
 
