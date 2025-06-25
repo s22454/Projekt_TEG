@@ -321,7 +321,7 @@ public class PipeSystem : MonoBehaviour
 
         if (msgStruct.Item != Item.NULL && msgStruct.Item != Item.TEST && msgStruct.Item != Item.GOLD)
         {
-            InventoryManager.AddItem(msgStruct.Item);
+            InventoryManager.AddItem(msgStruct.Item, msgStruct.Quantity);
             InventoryManager.RemoveItem(Item.GOLD, DialogueUIController._itemCosts[msgStruct.Item]);
         }
 
