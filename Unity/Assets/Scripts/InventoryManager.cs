@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -10,10 +11,13 @@ public class InventoryManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            _items.Add(new InventoryItem(Item.GOLD, 100));
+            DontDestroyOnLoad(gameObject);
+        }
         else Destroy(gameObject);
-
-        _items.Add(new InventoryItem(Item.GOLD, 100));
     }
 
     public static void AddItem(Item item, int amount = 1)

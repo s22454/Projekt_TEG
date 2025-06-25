@@ -82,6 +82,17 @@ public class PipeSystem : MonoBehaviour
 
     void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         DialogueUIController.InitializePipeSystem(Instance);
     }
 

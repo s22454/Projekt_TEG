@@ -92,15 +92,6 @@ class NPCManager:
             case _:
                 response = self.talk_to_npc(npc_name, player_input)
 
-        if message.action_code == ActionCode.ENDDAY:
-            # tu niech sie dzieje po stronie pythona co ma sie dziac
-            response_message = Message(
-                action_code=ActionCode.ENDDAY,
-                sender=Sender.PLAYER,
-                item=Item.TEST,
-                message="EndDay received"
-            )
-
         response_message = Message(
             action_code=ActionCode.TXTMESSAGE,
             sender=Sender.PLAYER,
@@ -110,6 +101,16 @@ class NPCManager:
 
         if message.action_code == ActionCode.SELL:
             response_message = self.sell_item(sender_npc, message.item, quantity)
+
+        if message.action_code == ActionCode.ENDDAY:
+            # tu niech sie dzieje po stronie pythona co ma sie dziac
+            Log("gowno", mt.LOG, f"ENDDAY")
+            response_message = Message(
+                action_code=ActionCode.ENDDAY,
+                sender=Sender.PLAYER,
+                item=Item.TEST,
+                message="EndDay received"
+            )
 
         self.pipe_server.EncodeMessageAndSendToClient(response_message)
 
