@@ -2,6 +2,7 @@ import json
 from Utils import Log, MessageType as mt
 import re
 from langsmith import traceable
+from Pipe import Item
 
 class IntentInterpreter:
 
@@ -9,6 +10,12 @@ class IntentInterpreter:
 
     def __init__(self, llm_agent):
         self.agent = llm_agent
+
+        # get items list
+        self.items:str = ""
+        for item in Item.__members__:
+            self.items += item + "/"
+        self.items = self.items[:-1]
 
     @traceable(name="Analising message intent")
     def interpret(self, message):
@@ -23,7 +30,7 @@ class IntentInterpreter:
             {{
                 "intent": "buy/sell/talk/insult/praise/unknown",
                 "target_npc": "HEARBALIST/SMITH/BAKER or null",
-                "item": "BREAD/SWORD/WEED or null",
+                "item": "{self.items}",
                 "quantity": number,
                 "sentiment": "positive/negative/neutral"
             }}
@@ -31,7 +38,7 @@ class IntentInterpreter:
             Remember:
             - If the player compliments the NPC, it's "praise" with "positive" sentiment.
             - If they insult them, it's "insult" with "negative" sentiment.
-            - If they try to buy/sell, include item and quantity.
+            - If they try to buy/sell, include item and quantity but if they dont then set it to 0.
             """
         )
         _, raw_response = self.agent.answer(prompt)

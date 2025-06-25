@@ -15,12 +15,15 @@ from langchain_core.tracers import LangChainTracer
 
 
 class NPCManager:
+
     def __init__(self, data_folder):
 
         # create langsmith tracer
         self.langsmith_tracer = LangChainTracer()
         now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
         self.session_tag = f"Session - {now}"
+
+        self.class_name = "NPC Manager"
 
         self.data_folder = data_folder
         self.npc_data = {}
@@ -30,7 +33,6 @@ class NPCManager:
             tracer = self.langsmith_tracer,
             session_tag = self.session_tag
             ))
-        self.class_name = "NPC Manager"
 
         load_dotenv()
         self.load_all_npcs()
@@ -41,7 +43,7 @@ class NPCManager:
 
     def load_all_npcs(self):
         for file in os.listdir(self.data_folder):
-            if file.endswith(".json"):
+            if file.endswith(".json") and file != "interpreter.json":
                 npc_name = file[:-5]
                 path = os.path.join(self.data_folder, file)
                 with open(path, "r", encoding="utf-8") as f:
@@ -54,7 +56,22 @@ class NPCManager:
                     )
 
     def handle_pipe_message(self, message: Message):
-        print(f"[NPC MANAGER] Received message from pipe: {message}")
+
+        Log(self.class_name, mt.LOG, f"Received message from pipe: {message}")
+
+        if message.action_code == ActionCode.ENDDAY:
+            Log(self.class_name, mt.LOG, f"Ending day")
+
+            response_message = Message(
+                action_code=ActionCode.ENDDAY,
+                sender=Sender.PLAYER,
+                item=Item.TEST,
+                message="EndDay received"
+            )
+
+            self.pipe_server.EncodeMessageAndSendToClient(response_message)
+            return
+
         sender_npc = message.sender.name.lower()
         player_input = message.message.strip()
         response_message: Message
@@ -102,16 +119,6 @@ class NPCManager:
         if message.action_code == ActionCode.SELL:
             response_message = self.sell_item(sender_npc, message.item, quantity)
 
-        if message.action_code == ActionCode.ENDDAY:
-            # tu niech sie dzieje po stronie pythona co ma sie dziac
-            Log("gowno", mt.LOG, f"ENDDAY")
-            response_message = Message(
-                action_code=ActionCode.ENDDAY,
-                sender=Sender.PLAYER,
-                item=Item.TEST,
-                message="EndDay received"
-            )
-
         self.pipe_server.EncodeMessageAndSendToClient(response_message)
 
     def share_info(self, from_npc, to_npc, message):
@@ -131,6 +138,7 @@ class NPCManager:
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
         self.npc_data[npc_name] = data
+
 
     def talk_to_npc(self, npc_name, text):
         self._reload_npc_from_file(npc_name)
@@ -190,6 +198,8 @@ class NPCManager:
                     action_code=ActionCode.TXTMESSAGE,
                     sender=Sender.PLAYER,
                     item=item,
+                    quantity=quantity,
+                    price=total_price,
                     message=response
                 )
 
@@ -232,7 +242,7 @@ class NPCManager:
         return "neutral"
 
     def _update_attitude_and_share_plotka(self, from_npc, to_npc, message, sentiment):
-        print(f"\n→ Mentioned NPC '{to_npc}' with sentiment: {sentiment}")
+        Log(self.class_name, mt.LOG, f"Mentioned NPC '{to_npc}' with sentiment: {sentiment}")
         self.share_info(from_npc, to_npc, f"The main character mentioned you: '{message}'")
 
         current = self.npc_data[to_npc].get("attitude_towards_player", "neutral")
@@ -249,11 +259,3 @@ class NPCManager:
             "negative": {"positive": "neutral"}
         }
         return mapping.get(current, {}).get(sentiment, current)
-
-if __name__ == "__main__":
-    npc_manager = NPCManager(data_folder="./Data")
-    try:
-        while not npc_manager.pipe_server.stop_event_write.is_set():
-            threading.Event().wait(0.5)
-    except KeyboardInterrupt:
-        npc_manager.pipe_server.Stop()

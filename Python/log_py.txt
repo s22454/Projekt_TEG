@@ -452,3 +452,498 @@ STARTING PROJECT - 24/06/2025 15:50:30
 [15:52:13] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Ehhh, mój drogi przyjacielu, widzê, ¿e twe s³owa s¹ jak ostry cierñ w g¹szczu zió³. Piêkno jest spraw¹ subiektywn¹, a swój czas poœwiêcam raczej naturze i jej cudom, ni¿ przyziemnym zgryzot¹. No có¿, ka¿dy ma swoj¹ drogê do przebycia. Jeœli potrzebujesz eliksiru, by otworzyæ swe serce na piêkno otaczaj¹cego œwiata, chêtnie pomogê. Jakie¿ masz dolegliwoœci, ¿e tak ostro krytykujesz?
 [15:54:45] [PIPE SERVER READ]Client has disconnected
 [15:54:45] [PIPE SERVER]Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 17:21:45
+---------------------------------------
+[17:21:45] [RAG]Split document into 2 chunks
+[17:22:36] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:22:36] [RAG]Vector database created successfully
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 17:23:07
+---------------------------------------
+[17:23:07] [RAG]Split document into 2 chunks
+[17:23:24] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:23:24] [RAG]Vector database created successfully
+[17:23:26] [RAG]Split document into 3 chunks
+[17:23:28] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:23:28] [RAG]Vector database created successfully
+[17:23:29] [RAG]Split document into 6 chunks
+[17:23:31] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:23:31] [RAG]Vector database created successfully
+[17:23:33] [RAG]Split document into 2 chunks
+[17:23:35] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:23:35] [RAG]Vector database created successfully
+[17:23:36] [RAG]Split document into 5 chunks
+[17:23:38] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:23:38] [RAG]Vector database created successfully
+[17:23:40] [PIPE SERVER]Starting pipe server on new thread
+[17:23:40] [PIPE SERVER READ]Server read is running
+[17:23:40] [PIPE SERVER WRITE]Server is running
+[17:23:40] [PIPE SERVER READ]Waiting for client...
+[17:23:40] [PIPE SERVER WRITE]Waiting for client...
+[17:26:50] [PIPE SERVER WRITE]Client connected
+[17:26:50] [PIPE SERVER READ]Client connected
+[17:26:54] [PIPE SERVER READ]Got encoded message: 0001|0003|9999|0|0|Witaj!
+[17:26:54] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:27:13] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: positive)
+[17:27:21] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Witaj, podró¿niku! Co ciê sprowadza w te strony? Czasem zio³a i eliksiry potrafi¹ zdzia³aæ cuda, jeœli dobrze siê je zna. Czy potrzebujesz czegoœ w tej materii?
+[17:27:51] [PIPE SERVER READ]Got encoded message: 0001|0003|9999|0|0|jesteœ g³upia
+[17:27:52] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='jesteœ g³upia')
+[17:28:02] [INTENT INTERPRETER]Analisis result: (Intent: insult Target NPC: None Item: None Quantity: 0 Sentiment: negative)
+[17:28:12] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Nie, nie s¹dzê, ¿e jesteœ g³upia. Ka¿dy ma swoje umiejêtnoœci i m¹droœæ, a ja tu po to, ¿eby pomagaæ i dzieliæ siê wiedz¹. Mo¿e to, co powiedzia³ ktoœ inny, nie odzwierciedla prawdy. Co chcia³byœ wiedzieæ lub jak mogê ci pomóc?
+[17:28:32] [PIPE SERVER READ]Got encoded message: 0005|0005|9999|0|0|End of day triggered from TavernDialogueController
+[17:28:32] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.ENDDAY: 6>, sender=<Sender.SYSTEM: 6>, item=<Item.NULL: 6>, quantity=0, price=0, message='End of day triggered from TavernDialogueController')
+[17:28:40] [INTENT INTERPRETER]Error while analising message
+[17:29:56] [PIPE SERVER]Stopping pipe server...
+[17:29:57] [PIPE SERVER]Pipe server stopped
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 17:32:04
+---------------------------------------
+[17:32:04] [RAG]Split document into 2 chunks
+[17:32:23] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:32:23] [RAG]Vector database created successfully
+[17:32:25] [RAG]Split document into 3 chunks
+[17:32:27] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:32:27] [RAG]Vector database created successfully
+[17:32:28] [RAG]Split document into 6 chunks
+[17:32:30] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:32:30] [RAG]Vector database created successfully
+[17:32:32] [RAG]Split document into 2 chunks
+[17:32:33] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:32:33] [RAG]Vector database created successfully
+[17:32:35] [RAG]Split document into 5 chunks
+[17:32:36] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:32:37] [RAG]Vector database created successfully
+[17:32:38] [PIPE SERVER]Starting pipe server on new thread
+[17:32:38] [PIPE SERVER READ]Server read is running
+[17:32:38] [PIPE SERVER WRITE]Server is running
+[17:32:38] [PIPE SERVER READ]Waiting for client...
+[17:32:38] [PIPE SERVER WRITE]Waiting for client...
+[17:33:47] [PIPE SERVER]Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 17:34:20
+---------------------------------------
+[17:34:20] [RAG]Split document into 2 chunks
+[17:34:38] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:34:39] [RAG]Vector database created successfully
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 17:35:23
+---------------------------------------
+[17:35:23] [RAG]Split document into 2 chunks
+[17:35:40] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:35:40] [RAG]Vector database created successfully
+[17:35:42] [RAG]Split document into 3 chunks
+[17:35:44] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:35:44] [RAG]Vector database created successfully
+[17:35:45] [RAG]Split document into 6 chunks
+[17:35:47] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:35:47] [RAG]Vector database created successfully
+[17:35:49] [RAG]Split document into 2 chunks
+[17:35:50] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:35:51] [RAG]Vector database created successfully
+[17:35:52] [RAG]Split document into 5 chunks
+[17:35:54] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:35:54] [RAG]Vector database created successfully
+[17:35:56] [PIPE SERVER]Starting pipe server on new thread
+[17:35:56] [PIPE SERVER READ]Server read is running
+[17:35:56] [PIPE SERVER WRITE]Server is running
+[17:35:56] [PIPE SERVER READ]Waiting for client...
+[17:35:56] [PIPE SERVER WRITE]Waiting for client...
+[17:39:02] [PIPE SERVER WRITE]Client connected
+[17:39:02] [PIPE SERVER READ]Client connected
+[17:39:07] [PIPE SERVER READ]Got encoded message: 0005|0005|9999|0|0|End of day triggered from TavernDialogueController
+[17:39:08] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.ENDDAY: 6>, sender=<Sender.SYSTEM: 6>, item=<Item.NULL: 6>, quantity=0, price=0, message='End of day triggered from TavernDialogueController')
+[17:39:15] [INTENT INTERPRETER]Analisis result: (Intent: unknown Target NPC: None Item: None Quantity: 0 Sentiment: neutral)
+[17:47:20] [PIPE SERVER]Stopping pipe server...
+[17:47:21] [PIPE SERVER]Pipe server stopped
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 17:47:30
+---------------------------------------
+[17:47:30] [RAG]Split document into 2 chunks
+[17:47:50] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:47:50] [RAG]Vector database created successfully
+[17:47:52] [RAG]Split document into 3 chunks
+[17:47:54] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:47:54] [RAG]Vector database created successfully
+[17:47:56] [RAG]Split document into 6 chunks
+[17:47:57] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:47:57] [RAG]Vector database created successfully
+[17:47:59] [RAG]Split document into 2 chunks
+[17:48:01] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:48:01] [RAG]Vector database created successfully
+[17:48:02] [RAG]Split document into 5 chunks
+[17:48:04] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:48:04] [RAG]Vector database created successfully
+[17:48:06] [PIPE SERVER]Starting pipe server on new thread
+[17:48:06] [PIPE SERVER READ]Server read is running
+[17:48:06] [PIPE SERVER WRITE]Server is running
+[17:48:06] [PIPE SERVER READ]Waiting for client...
+[17:48:06] [PIPE SERVER WRITE]Waiting for client...
+[17:49:55] [PIPE SERVER WRITE]Client connected
+[17:49:55] [PIPE SERVER READ]Client connected
+[17:50:03] [PIPE SERVER READ]Got encoded message: 0001|0001|9999|0|0|Witaj!
+[17:50:03] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:50:03] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:50:11] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: positive)
+[17:50:19] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Witaj! Jakie wieœci przynosisz do mojego kuŸni? Czy mo¿e potrzebujesz nowego ostrza lub czegoœ na g³ód? Chêtnie pomogê!
+[17:50:39] [PIPE SERVER READ]Got encoded message: 0001|0001|9999|0|0|jesteœ fantastycznym cz³owiekiem
+[17:50:39] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='jesteœ fantastycznym cz³owiekiem')
+[17:50:39] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='jesteœ fantastycznym cz³owiekiem')
+[17:50:50] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: neutral)
+[17:51:00] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Borin: Ha! Fantastycznym, mówisz? Rzeczywiœcie, takie s³owa mog¹ brzmieæ mi³o, ale w moich oczach, ciê¿ka praca i odwaga s¹ tym, co czyni cz³owieka godnym pochwa³y. Có¿ z tego, ¿e ktoœ bywa fantastyczny, gdy w sercu jego nie ma prawdziwej odwagi? Przyby³eœ tu, czy po jedzenie, czy po miecz? Nie traæmy czasu na pró¿ne pochwa³y.
+[17:51:14] [PIPE SERVER READ]Got encoded message: 0001|0001|9999|0|0|jesteœ zajebisty
+[17:51:14] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='jesteœ zajebisty')
+[17:51:14] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='jesteœ zajebisty')
+[17:51:24] [INTENT INTERPRETER]Analisis result: (Intent: praise Target NPC: None Item: None Quantity: 0 Sentiment: positive)
+[17:51:24] [NPC Manager]Mentioned NPC 'smith' with sentiment: positive
+[17:51:33] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Borin: Wieœci? Có¿, wszyscy wokó³ mówi¹ o nadchodz¹cych zimowych burzach, które mog¹ zrujnowaæ plony. Ale czy ty, m³odzieñcze, przyszed³eœ tu po wieœci, czy mo¿e raczej pragniesz zakupu mego rzemios³a? Mam miecze i chleb, ale czasu na opowieœci nie ma. Mów prêdko, co chcesz, bo m³odym wiatrem w g³owach siê nie przep³aci!
+[17:51:40] [PIPE SERVER READ]Got encoded message: 0005|0005|9999|0|0|End of day triggered from TavernDialogueController
+[17:51:40] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.ENDDAY: 6>, sender=<Sender.SYSTEM: 6>, item=<Item.NULL: 6>, quantity=0, price=0, message='End of day triggered from TavernDialogueController')
+[17:51:40] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.ENDDAY: 6>, sender=<Sender.SYSTEM: 6>, item=<Item.NULL: 6>, quantity=0, price=0, message='End of day triggered from TavernDialogueController')
+[17:51:40] [NPC Manager]Ending day
+[17:51:40] [PIPE SERVER WRITE]Sending message: 0005|0004|0000|0|0|EndDay received
+[17:51:54] [PIPE SERVER READ]Got encoded message: 0001|0003|9999|0|0|Witaj!
+[17:51:54] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:51:54] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:52:02] [INTENT INTERPRETER]Error while analising message
+[17:52:10] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Witaj, podró¿niku. Có¿, co ciê wo³a w te strony? Niech moje zio³a nie bêd¹ ci zbyteczne, bo nie chcê traciæ czasu na ja³owe rozmowy. Z czym do mnie przychodzisz?
+[17:52:16] [PIPE SERVER READ]Got encoded message: 0001|0001|9999|0|0|Witaj!
+[17:52:16] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:52:16] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:52:24] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: neutral)
+[17:52:33] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Borin: Witaj, m³odzieñcze! Co przynosisz do mojej kuŸni? Czy mo¿e szukasz solidnego miecza, by stawiæ czo³a nadci¹gaj¹cym burzom? A mo¿e potrzebujesz kromki chleba, by nape³niæ pusty brzuch? Pamiêtaj, ¿e w ¿yciu najwa¿niejsza jest ciê¿ka praca i odwaga. Mów prêdko, do czego przyszed³eœ!
+[17:53:36] [PIPE SERVER READ]Got encoded message: 0001|0001|9999|0|0|co masz na sprzeda¿?
+[17:53:36] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='co masz na sprzeda¿?')
+[17:53:36] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='co masz na sprzeda¿?')
+[17:53:46] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: neutral)
+[17:53:56] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Borin: Hmm, m³odzieñcze, pytasz o to, co mogê ci zaoferowaæ w mojej kuŸni? Oto, co mam na sprzeda¿:  - Solidny miecz, za 25 sztuk z³ota – to narzêdzie, które przyda siê na wiele trudnych wypraw. - Chleb, za 10 srebrnych – najsmaczniejszy w wiosce, by nape³niæ twój pusty brzuch. - A jeœli szukasz wyzwañ, mogê ci zaoferowaæ test umiejêtnoœci za 30 sztuk z³ota – sprawdŸ, czy jesteœ wart swojego miejsca w tym œwiecie!  Zatem, co wybierasz, m³odzieñcze? Mów prêdko, bo czasu nie mam na pró¿ne rozmowy!
+[17:54:15] [PIPE SERVER READ]Got encoded message: 0001|0001|9999|0|0|wezmê jeden chleb
+[17:54:15] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='wezmê jeden chleb')
+[17:54:15] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='wezmê jeden chleb')
+[17:54:29] [INTENT INTERPRETER]Analisis result: (Intent: buy Target NPC: BAKER Item: BREAD Quantity: 1 Sentiment: positive)
+[17:54:42] [PIPE SERVER WRITE]Sending message: 0001|0004|0002|0|0|Borin: Hmm, m³odzieñcze, chleb za 10 srebrnych zosta³ rozliczony. Mam nadziejê, ¿e zaspokoi on twój g³ód, gdy¿ w czasach burz i niepokoju, dobrze jest pamiêtaæ o sile i energii! Pamiêtaj, by nie traciæ czasu na ja³owe rozmowy. ¯ycie w Oakhold wymaga ciê¿kiej pracy i m¹drych wyborów. Czy jest coœ jeszcze, co mogê dla ciebie zrobiæ, czy zadowolisz siê jedynie tym bochenkowym skarbem?
+[17:54:59] [PIPE SERVER READ]Client has disconnected
+[17:54:59] [PIPE SERVER]Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 17:57:07
+---------------------------------------
+[17:57:07] [RAG]Split document into 2 chunks
+[17:57:27] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:57:27] [RAG]Vector database created successfully
+[17:57:30] [RAG]Split document into 3 chunks
+[17:57:31] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:57:31] [RAG]Vector database created successfully
+[17:57:33] [RAG]Split document into 6 chunks
+[17:57:35] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:57:35] [RAG]Vector database created successfully
+[17:57:36] [RAG]Split document into 2 chunks
+[17:57:38] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:57:38] [RAG]Vector database created successfully
+[17:57:40] [RAG]Split document into 5 chunks
+[17:57:42] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[17:57:42] [RAG]Vector database created successfully
+[17:57:43] [PIPE SERVER]Starting pipe server on new thread
+[17:57:43] [PIPE SERVER READ]Server read is running
+[17:57:43] [PIPE SERVER WRITE]Server is running
+[17:57:43] [PIPE SERVER READ]Waiting for client...
+[17:57:43] [PIPE SERVER WRITE]Waiting for client...
+[17:57:57] [PIPE SERVER WRITE]Client connected
+[17:57:57] [PIPE SERVER READ]Client connected
+[17:58:00] [PIPE SERVER READ]Got encoded message: 0001|0003|9999|0|0|Witaj!
+[17:58:01] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:58:01] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[17:58:09] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: positive)
+[17:58:18] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Witaj, œmia³ku. Czego¿ to pragniesz od skromnego zielarza, który z dala od ludzkiego zgie³ku wiedzie swe ¿ycie? Mów prêdko, bo czasu na marzenia nie mam. Mo¿e przywioz³eœ ze sob¹ jakieœ zio³a, które zechcia³byœ wymieniæ, albo dopiero wyruszasz na poszukiwanie w³aœciwego leku? A mo¿e tylko chcesz us³yszeæ moje m¹droœci, które niewielu doceni?
+[17:58:28] [PIPE SERVER READ]Got encoded message: 0001|0003|9999|0|0|co masz na sprzeda¿?
+[17:58:28] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='co masz na sprzeda¿?')
+[17:58:28] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.HERBALIST: 4>, item=<Item.NULL: 6>, quantity=0, price=0, message='co masz na sprzeda¿?')
+[17:58:37] [INTENT INTERPRETER]Error while analising message
+[17:58:46] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Eldan: Ach, pytasz o skarby, które skrywam w mym przytulisku? Có¿, sk³adam ofiarê, któr¹ nazywamy "weed". Za sumê dziesiêciu miedzianych monet, mo¿esz nabyæ te zio³a, bliskie memu sercu. Lecz pamiêtaj, nie dla ka¿dego s¹ one b³ogos³awieñstwem! Jeœli twoje serce pe³ne jest mi³oœci do natury, mo¿e zechcesz spróbowaæ? Jakie masz zamiary, wêdrowcze?
+[18:08:15] [PIPE SERVER READ]Client has disconnected
+[18:08:15] [PIPE SERVER]Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:10:33
+---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:12:00
+---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:12:45
+---------------------------------------
+[18:12:45] [RAG]Split document into 1 chunks
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:13:52
+---------------------------------------
+[18:13:52] [RAG]Split document into 1 chunks
+[18:14:10] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:14:10] [RAG]Vector database created successfully
+[18:14:12] [RAG]Split document into 3 chunks
+[18:14:14] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:14:14] [RAG]Vector database created successfully
+[18:14:16] [RAG]Split document into 6 chunks
+[18:14:17] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:14:17] [RAG]Vector database created successfully
+[18:14:19] [RAG]Split document into 1 chunks
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:18:35
+---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:19:47
+---------------------------------------
+[18:19:47] [RAG]Initializing npc None - Sender.SYSTEM
+[18:19:47] [RAG]Split document into 1 chunks
+[18:20:06] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:20:06] [RAG]Vector database created successfully
+[18:20:08] [RAG]Initializing npc Marven - Sender.BAKER
+[18:20:08] [RAG]Split document into 3 chunks
+[18:20:10] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:20:10] [RAG]Vector database created successfully
+[18:20:11] [RAG]Initializing npc Eldan - Sender.HERBALIST
+[18:20:11] [RAG]Split document into 6 chunks
+[18:20:13] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:20:13] [RAG]Vector database created successfully
+[18:20:15] [RAG]Initializing npc None - Sender.SYSTEM
+[18:20:15] [RAG]Split document into 1 chunks
+[18:20:16] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:20:16] [RAG]Vector database created successfully
+[18:20:18] [RAG]Initializing npc Borin - Sender.SMITH
+[18:20:18] [RAG]Split document into 5 chunks
+[18:20:20] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:20:20] [RAG]Vector database created successfully
+[18:20:21] [PIPE SERVER]Starting pipe server on new thread
+[18:20:21] [PIPE SERVER READ]Server read is running
+[18:20:21] [PIPE SERVER WRITE]Server is running
+[18:20:21] [PIPE SERVER READ]Waiting for client...
+[18:20:21] [PIPE SERVER WRITE]Waiting for client...
+[18:22:04] [PIPE SERVER WRITE]Client connected
+[18:22:04] [PIPE SERVER READ]Client connected
+[18:23:46] [PIPE SERVER READ]Client has disconnected
+[18:23:46] [PIPE SERVER]Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:24:09
+---------------------------------------
+[18:24:09] [RAG]Initializing npc Interpreter - Sender.SYSTEM
+[18:24:09] [RAG]Split document into 1 chunks
+[18:24:28] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:24:28] [RAG]Vector database created successfully
+[18:24:29] [RAG]Initializing npc Marven - Sender.BAKER
+[18:24:29] [RAG]Split document into 3 chunks
+[18:24:31] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:24:31] [RAG]Vector database created successfully
+[18:24:33] [RAG]Initializing npc Eldan - Sender.HERBALIST
+[18:24:33] [RAG]Split document into 6 chunks
+[18:24:34] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:24:34] [RAG]Vector database created successfully
+[18:24:36] [RAG]Initializing npc Interpreter - Sender.SYSTEM
+[18:24:36] [RAG]Split document into 1 chunks
+[18:24:37] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:24:37] [RAG]Vector database created successfully
+[18:24:39] [RAG]Initializing npc Borin - Sender.SMITH
+[18:24:39] [RAG]Split document into 5 chunks
+[18:24:41] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:24:41] [RAG]Vector database created successfully
+[18:24:43] [PIPE SERVER]Starting pipe server on new thread
+[18:24:43] [PIPE SERVER READ]Server read is running
+[18:24:43] [PIPE SERVER WRITE]Server is running
+[18:24:43] [PIPE SERVER READ]Waiting for client...
+[18:24:43] [PIPE SERVER WRITE]Waiting for client...
+[18:24:53] [PIPE SERVER WRITE]Client connected
+[18:24:53] [PIPE SERVER READ]Client connected
+[18:24:55] [PIPE SERVER READ]Client has disconnected
+[18:24:55] [PIPE SERVER]Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:26:04
+---------------------------------------
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:26:46
+---------------------------------------
+[18:26:46] [NPC Manager]WTF
+[18:26:46] [RAG]Initializing npc Interpreter - Sender.SYSTEM
+[18:26:46] [RAG]Split document into 1 chunks
+[18:27:03] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:27:03] [RAG]Vector database created successfully
+[18:27:05] [RAG]Initializing npc Marven - Sender.BAKER
+[18:27:05] [RAG]Split document into 3 chunks
+[18:27:07] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:27:07] [RAG]Vector database created successfully
+[18:27:08] [RAG]Initializing npc Eldan - Sender.HERBALIST
+[18:27:08] [RAG]Split document into 6 chunks
+[18:27:10] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:27:10] [RAG]Vector database created successfully
+[18:27:11] [RAG]Initializing npc Interpreter - Sender.SYSTEM
+[18:27:11] [RAG]Split document into 1 chunks
+[18:27:13] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:27:13] [RAG]Vector database created successfully
+[18:27:15] [RAG]Initializing npc Borin - Sender.SMITH
+[18:27:15] [RAG]Split document into 5 chunks
+[18:27:16] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:27:16] [RAG]Vector database created successfully
+[18:27:18] [PIPE SERVER]Starting pipe server on new thread
+[18:27:18] [PIPE SERVER READ]Server read is running
+[18:27:18] [PIPE SERVER WRITE]Server is running
+[18:27:18] [PIPE SERVER READ]Waiting for client...
+[18:27:18] [PIPE SERVER WRITE]Waiting for client...
+[18:27:25] [PIPE SERVER]Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:28:14
+---------------------------------------
+[18:28:14] [RAG]Initializing npc Marven - Sender.BAKER
+[18:28:14] [RAG]Split document into 3 chunks
+[18:28:31] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:28:31] [RAG]Vector database created successfully
+[18:28:33] [RAG]Initializing npc Eldan - Sender.HERBALIST
+[18:28:33] [RAG]Split document into 6 chunks
+[18:28:35] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:28:35] [RAG]Vector database created successfully
+[18:28:36] [RAG]Initializing npc Interpreter - Sender.SYSTEM
+[18:28:36] [RAG]Split document into 1 chunks
+[18:28:38] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:28:38] [RAG]Vector database created successfully
+[18:28:40] [RAG]Initializing npc Borin - Sender.SMITH
+[18:28:40] [RAG]Split document into 5 chunks
+[18:28:41] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:28:42] [RAG]Vector database created successfully
+[18:28:43] [PIPE SERVER]Starting pipe server on new thread
+[18:28:43] [PIPE SERVER READ]Server read is running
+[18:28:43] [PIPE SERVER WRITE]Server is running
+[18:28:43] [PIPE SERVER READ]Waiting for client...
+[18:28:43] [PIPE SERVER WRITE]Waiting for client...
+[18:30:19] [PIPE SERVER]Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:30:30
+---------------------------------------
+[18:30:30] [RAG]Initializing npc Interpreter - Sender.SYSTEM
+[18:30:30] [RAG]Split document into 1 chunks
+[18:30:47] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:30:47] [RAG]Vector database created successfully
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:32:39
+---------------------------------------
+[18:32:39] [RAG]Initializing npc Interpreter - Sender.SYSTEM
+[18:32:39] [RAG]Split document into 1 chunks
+[18:32:56] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:32:56] [RAG]Vector database created successfully
+[18:32:58] [RAG]Initializing npc Marven - Sender.BAKER
+[18:32:58] [RAG]Split document into 3 chunks
+[18:33:00] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:33:00] [RAG]Vector database created successfully
+[18:33:01] [RAG]Initializing npc Eldan - Sender.HERBALIST
+[18:33:01] [RAG]Split document into 6 chunks
+[18:33:03] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:33:03] [RAG]Vector database created successfully
+[18:33:04] [RAG]Initializing npc Borin - Sender.SMITH
+[18:33:05] [RAG]Split document into 5 chunks
+[18:33:06] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:33:07] [RAG]Vector database created successfully
+[18:33:08] [PIPE SERVER]Starting pipe server on new thread
+[18:33:08] [PIPE SERVER READ]Server read is running
+[18:33:08] [PIPE SERVER WRITE]Server is running
+[18:33:08] [PIPE SERVER READ]Waiting for client...
+[18:33:08] [PIPE SERVER WRITE]Waiting for client...
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:34:14
+---------------------------------------
+[18:34:14] [RAG]Initializing npc Interpreter - Sender.SYSTEM
+[18:34:14] [RAG]Split document into 1 chunks
+[18:34:32] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:34:32] [RAG]Vector database created successfully
+[18:34:33] [RAG]Initializing npc Marven - Sender.BAKER
+[18:34:33] [RAG]Split document into 3 chunks
+[18:34:35] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:34:35] [RAG]Vector database created successfully
+[18:34:37] [RAG]Initializing npc Eldan - Sender.HERBALIST
+[18:34:37] [RAG]Split document into 6 chunks
+[18:34:39] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:34:39] [RAG]Vector database created successfully
+[18:34:40] [RAG]Initializing npc Borin - Sender.SMITH
+[18:34:40] [RAG]Split document into 5 chunks
+[18:34:42] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:34:42] [RAG]Vector database created successfully
+[18:34:44] [PIPE SERVER]Starting pipe server on new thread
+[18:34:44] [PIPE SERVER READ]Server read is running
+[18:34:44] [PIPE SERVER WRITE]Server is running
+[18:34:44] [PIPE SERVER READ]Waiting for client...
+[18:34:44] [PIPE SERVER WRITE]Waiting for client...
+[18:35:00] [PIPE SERVER WRITE]Client connected
+[18:35:00] [PIPE SERVER READ]Client connected
+[18:35:07] [PIPE SERVER READ]Got encoded message: 0001|0001|9999|0|0|Witaj!
+[18:35:07] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[18:35:07] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[18:35:16] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: neutral)
+[18:35:24] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Witaj! Jak siê masz? Czy jest coœ, w czym mogê ci pomóc?
+[18:35:25] [PIPE SERVER READ]Got encoded message: 0001|0001|9999|0|0|chcê kupiæ dwa miecze
+[18:35:25] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='chcê kupiæ dwa miecze')
+[18:35:26] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='chcê kupiæ dwa miecze')
+[18:35:36] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: neutral)
+[18:35:45] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Borin: Aha, chcesz nabyæ dwa miecze, powiadasz? Ka¿dy miecz kosztuje dwadzieœcia piêæ sztuk z³ota, wiêc za dwa to bêdzie piêædziesi¹t sztuk z³ota. Czy masz tak¹ kwotê przy sobie?
+[18:36:05] [PIPE SERVER READ]Got encoded message: 0001|0001|9999|0|0|Witaj!
+[18:36:05] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[18:36:05] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[18:36:16] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: neutral)
+[18:36:26] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Witaj ponownie! Jak mogê ci pomóc dzisiaj? Czy myœlisz o innych zakupach lub potrzebujesz dodatkowych informacji o mieczach?
+[18:36:29] [PIPE SERVER READ]Got encoded message: 0001|0001|9999|0|0|chcê kupiæ 2 miecz
+[18:36:29] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='chcê kupiæ 2 miecz')
+[18:36:29] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='chcê kupiæ 2 miecz')
+[18:36:41] [INTENT INTERPRETER]Analisis result: (Intent: buy Target NPC: None Item: SWORD Quantity: 2 Sentiment: neutral)
+[18:36:51] [PIPE SERVER WRITE]Sending message: 0001|0004|0001|0|0|NPC: Dziêkujê za transakcjê! Dwa miecze s¹ teraz twoje. Jeœli potrzebujesz jeszcze czegoœ, daj mi znaæ. Mo¿esz ich u¿yæ do walki z potworami lub jako symbole swojej odwagi. Powodzenia w podró¿y!
+[18:41:07] [PIPE SERVER READ]Client has disconnected
+[18:41:07] [PIPE SERVER]Stopping pipe server...
+
+---------------------------------------
+STARTING PROJECT - 25/06/2025 18:41:27
+---------------------------------------
+[18:41:27] [RAG]Initializing npc Interpreter - Sender.SYSTEM
+[18:41:27] [RAG]Split document into 1 chunks
+[18:41:44] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:41:44] [RAG]Vector database created successfully
+[18:41:46] [RAG]Initializing npc Marven - Sender.BAKER
+[18:41:46] [RAG]Split document into 3 chunks
+[18:41:48] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:41:48] [RAG]Vector database created successfully
+[18:41:49] [RAG]Initializing npc Eldan - Sender.HERBALIST
+[18:41:49] [RAG]Split document into 6 chunks
+[18:41:51] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:41:51] [RAG]Vector database created successfully
+[18:41:52] [RAG]Initializing npc Borin - Sender.SMITH
+[18:41:52] [RAG]Split document into 5 chunks
+[18:41:54] [RAG]Used embedded mode: sentence-transformers/all-MiniLM-L6-v2
+[18:41:54] [RAG]Vector database created successfully
+[18:41:56] [PIPE SERVER]Starting pipe server on new thread
+[18:41:56] [PIPE SERVER READ]Server read is running
+[18:41:56] [PIPE SERVER WRITE]Server is running
+[18:41:56] [PIPE SERVER READ]Waiting for client...
+[18:41:56] [PIPE SERVER WRITE]Waiting for client...
+[18:42:11] [PIPE SERVER WRITE]Client connected
+[18:42:11] [PIPE SERVER READ]Client connected
+[18:42:16] [PIPE SERVER READ]Got encoded message: 0001|0001|9999|0|0|Witaj!
+[18:42:16] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[18:42:16] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='Witaj!')
+[18:42:24] [INTENT INTERPRETER]Analisis result: (Intent: talk Target NPC: None Item: None Quantity: 0 Sentiment: neutral)
+[18:42:31] [PIPE SERVER WRITE]Sending message: 0001|0004|0000|0|0|Witaj! Jak mogê Ci pomóc dzisiaj? Jeœli szukasz wyj¹tkowej broni lub informacji o rzemioœle, to dobrze trafi³eœ!
+[18:42:44] [PIPE SERVER READ]Got encoded message: 0001|0001|9999|0|0|chcê kupiæ 2 miecz
+[18:42:44] [PIPE SERVER READ]Got decoded message: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='chcê kupiæ 2 miecz')
+[18:42:45] [NPC Manager]Received message from pipe: Message(action_code=<ActionCode.TXTMESSAGE: 2>, sender=<Sender.SMITH: 2>, item=<Item.NULL: 6>, quantity=0, price=0, message='chcê kupiæ 2 miecz')
+[18:42:53] [INTENT INTERPRETER]Analisis result: (Intent: buy Target NPC: SMITH Item: SWORD Quantity: 2 Sentiment: neutral)
+[18:43:03] [PIPE SERVER WRITE]Sending message: 0001|0004|0001|2|50|Borin: "Aha, widzê, ¿e kupujesz dwa miecze! £¹cznie to piêædziesi¹t z³ota i srebra. Dziêki za zaufanie! Miecze te s¹ dobrze wywa¿one i wykonane z najlepszych materia³ów, wiêc powinny s³u¿yæ Ci d³ugo. ¯yczê Ci chwalebnych zwyciêstw na polu bitwy! Czy jeszcze coœ mogê dla Ciebie uczyniæ?"
+[18:44:04] [PIPE SERVER READ]Client has disconnected
+[18:44:04] [PIPE SERVER]Stopping pipe server...

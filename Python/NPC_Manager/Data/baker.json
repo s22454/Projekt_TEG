@@ -8,16 +8,6 @@
       "name": "bread",
       "price": "40 pieces of gold",
       "quantity": 21
-    },
-    {
-      "name": "weed",
-      "price": "60 pieces of gold",
-      "quantity": 12
-    },
-    {
-      "name": "sword",
-      "price": "20 pieces of gold",
-      "quantity": 11
     }
   ],
   "relations": {

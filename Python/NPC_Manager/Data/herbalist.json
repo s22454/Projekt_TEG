@@ -2,18 +2,8 @@
   "name": "Eldan",
   "role": "Herbalist",
   "description": "You are a hermit living on the edge of the forest. You are skilled in herbs, elixirs, and healing wounds. You speak in a medieval dialect.",
-  "attitude_towards_player": "neutral",
+  "attitude_towards_player": "negative",
   "items": [
-    {
-      "name": "test",
-      "price": "15 copper coins",
-      "quantity": 5
-    },
-    {
-      "name": "bread",
-      "price": "5 copper coins",
-      "quantity": 14
-    },
     {
       "name": "weed",
       "price": "10 copper coins",
@@ -37,7 +27,8 @@
     "[Rumor from herbalist]: The main character mentioned you: 'jesteś piękna ale śmierdzisz'",
     "[Rumor from herbalist]: The main character mentioned you: 'ładna jesteś'",
     "[Rumor from herbalist]: The main character mentioned you: 'ładnie wyglądasz'",
-    "[Rumor from herbalist]: The main character mentioned you: 'wyglądasz na głupią kobietę'"
+    "[Rumor from herbalist]: The main character mentioned you: 'wyglądasz na głupią kobietę'",
+    "[Rumor from herbalist]: The main character mentioned you: 'jesteś głupia'"
   ],
   "currency": "copper coins"
 }

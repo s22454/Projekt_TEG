@@ -14,6 +14,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_openai import ChatOpenAI
 
 from Utils import Log, MessageType as mt
+from Pipe import Sender
 
 class RAG:
 
@@ -27,18 +28,30 @@ class RAG:
         with open(json_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
         text = npc_json_to_text(data)
-        doc = Document(page_content=text, metadata={"npc": data.get("imie", "unknown")})
+        doc = Document(page_content=text, metadata={"npc": data.get("name", "unknown")})
+
+        # get npc type
+        npc_type:str = data.get("role", "SYSTEM")
+        npc_type = npc_type.upper()
+        self.npc_type = Sender.SYSTEM
+        if npc_type in Sender.__members__:
+            self.npc_type = Sender[npc_type]
+
+        # get npc name
+        self.npc_name = data.get("name", "null")
+
+        Log(self.class_name, mt.LOG, f"Initializing npc {self.npc_name} - {self.npc_type}")
 
         documents = [doc]
 
         template = """
-        Tak wygląda twoja konwersacja dotychczas:
+        Here is what your conversation looks like so far:
         {chat_history}
 
-        Tutaj znajduje się opis Ciebie:
+        Here is a description of you:
         {context}
 
-        Teraz odpowiedz na takią wiadomość:
+        Now respond to this message:
         {question}
         """
 
@@ -90,27 +103,27 @@ class RAG:
 
 def npc_json_to_text(npc_data: dict) -> str:
     lines = [
-        "Poniżej znajduje się opis postaci którą ty jesteś "
-        f"Twoje IMIĘ: {npc_data['name']}",
-        f"Twoja ROLA: {npc_data['role']}\n",
-        f"Twój OPIS:\n{npc_data['description']}",
-        f"Twoje nastawienie do gracza: {npc_data['attitude_towards_player']}\n",
-        "PRZEDMIOTY które masz NA SPRZEDAŻ:",
+        "Below is a description of the character you are:",
+        f"Your NAME: {npc_data['name']}",
+        f"Your ROLE: {npc_data['role']}\n",
+        f"Your DESCRIPTION:\n{npc_data['description']}",
+        f"Your attitude towards the player: {npc_data['attitude_towards_player']}\n",
+        "ITEMS you have FOR SALE:",
     ]
 
     for item in npc_data['items']:
         lines.append(f"- {item['name']} – {item['price']}")
 
     lines.extend([
-        "\nRELACJE które masz z innymi mieszkańcami:",
-        f"- Lubi: {', '.join(npc_data['relations']['likes'])}",
-        f"- Nie lubi: {', '.join(npc_data['relations']['dislikes'])}\n",
-        "PLOTKI KRĄŻĄCE o tobie:",
+        "\nRELATIONSHIPS you have with other residents:",
+        f"- Likes: {', '.join(npc_data['relations']['likes'])}",
+        f"- Dislikes: {', '.join(npc_data['relations']['dislikes'])}\n",
+        "RUMORS circulating about you:",
     ])
 
-    for plotka in npc_data['rumors']:
-        lines.append(f"- {plotka}")
+    for rumor in npc_data['rumors']:
+        lines.append(f"- {rumor}")
 
-    lines.append(f"\nWALUTA wykorzystywana w twoim świecie: {npc_data['currency']}")
+        lines.append(f"\nCURRENCY used in your world: {npc_data['currency']}")
 
     return "\n".join(lines)

@@ -115,3 +115,175 @@ GAME STARTED 24.51.2025 15:51:13
 [15:52:13] [PIPE SYSTEM] | Decoding message
 [15:52:13] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Ehhh, mój drogi przyjacielu, widzę, że twe słowa są jak ostry cierń w gąszczu ziół. Piękno jest sprawą subiektywną, a swój czas poświęcam raczej naturze i jej cudom, niż przyziemnym zgryzotą. No cóż, każdy ma swoją drogę do przebycia. Jeśli potrzebujesz eliksiru, by otworzyć swe serce na piękno otaczającego świata, chętnie pomogę. Jakież masz dolegliwości, że tak ostro krytykujesz?
 [15:52:13] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+
+---------------------------------------
+GAME STARTED 25.26.2025 17:26:49
+---------------------------------------
+[17:26:50] [PIPE SYSTEM] | Connected to python pipe
+[17:26:50] [DIALOGUE UI CONTROLLER] | Started
+[17:26:54] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|Witaj!
+[17:26:54] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|Witaj! sent
+[17:27:21] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj, podróżniku! Co cię sprowadza w te strony? Czasem zioła i eliksiry potrafią zdziałać cuda, jeśli dobrze się je zna. Czy potrzebujesz czegoś w tej materii?
+[17:27:21] [PIPE SYSTEM] | Decoding message
+[17:27:21] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj, podróżniku! Co cię sprowadza w te strony? Czasem zioła i eliksiry potrafią zdziałać cuda, jeśli dobrze się je zna. Czy potrzebujesz czegoś w tej materii?
+[17:27:21] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[17:27:51] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|jesteś głupia
+[17:27:51] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|jesteś głupia sent
+[17:28:12] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Nie, nie sądzę, że jesteś głupia. Każdy ma swoje umiejętności i mądrość, a ja tu po to, żeby pomagać i dzielić się wiedzą. Może to, co powiedział ktoś inny, nie odzwierciedla prawdy. Co chciałbyś wiedzieć lub jak mogę ci pomóc?
+[17:28:12] [PIPE SYSTEM] | Decoding message
+[17:28:12] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Nie, nie sądzę, że jesteś głupia. Każdy ma swoje umiejętności i mądrość, a ja tu po to, żeby pomagać i dzielić się wiedzą. Może to, co powiedział ktoś inny, nie odzwierciedla prawdy. Co chciałbyś wiedzieć lub jak mogę ci pomóc?
+[17:28:12] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[17:28:32] [TAVERN DIALOGUE CONTROLLER] | ENDDAY message sent.
+[17:28:32] [PIPE SYSTEM WRITE] | Sending message: 0005|0005|9999|0|0|End of day triggered from TavernDialogueController
+[17:28:32] [PIPE SYSTEM WRITE] | 0005|0005|9999|0|0|End of day triggered from TavernDialogueController sent
+[17:28:37] [DIALOGUE UI CONTROLLER] | Started
+
+---------------------------------------
+GAME STARTED 25.39.2025 17:39:01
+---------------------------------------
+[17:39:02] [PIPE SYSTEM] | Connected to python pipe
+[17:39:02] [DIALOGUE UI CONTROLLER] | Started
+[17:39:07] [TAVERN DIALOGUE CONTROLLER] | ENDDAY message sent.
+[17:39:07] [PIPE SYSTEM WRITE] | Sending message: 0005|0005|9999|0|0|End of day triggered from TavernDialogueController
+[17:39:07] [PIPE SYSTEM WRITE] | 0005|0005|9999|0|0|End of day triggered from TavernDialogueController sent
+[17:39:13] [DIALOGUE UI CONTROLLER] | Started
+
+---------------------------------------
+GAME STARTED 25.49.2025 17:49:54
+---------------------------------------
+[17:49:55] [PIPE SYSTEM] | Connected to python pipe
+[17:49:55] [DIALOGUE UI CONTROLLER] | Started
+[17:50:03] [PIPE SYSTEM WRITE] | Sending message: 0001|0001|9999|0|0|Witaj!
+[17:50:03] [PIPE SYSTEM WRITE] | 0001|0001|9999|0|0|Witaj! sent
+[17:50:19] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj! Jakie wieści przynosisz do mojego kuźni? Czy może potrzebujesz nowego ostrza lub czegoś na głód? Chętnie pomogę!
+[17:50:19] [PIPE SYSTEM] | Decoding message
+[17:50:19] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj! Jakie wieści przynosisz do mojego kuźni? Czy może potrzebujesz nowego ostrza lub czegoś na głód? Chętnie pomogę!
+[17:50:19] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[17:50:39] [PIPE SYSTEM WRITE] | Sending message: 0001|0001|9999|0|0|jesteś fantastycznym człowiekiem
+[17:50:39] [PIPE SYSTEM WRITE] | 0001|0001|9999|0|0|jesteś fantastycznym człowiekiem sent
+[17:51:00] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Borin: Ha! Fantastycznym, mówisz? Rzeczywiście, takie słowa mogą brzmieć miło, ale w moich oczach, ciężka praca i odwaga są tym, co czyni człowieka godnym pochwały. Cóż z tego, że ktoś bywa fantastyczny, gdy w sercu jego nie ma prawdziwej odwagi? Przybyłeś tu, czy po jedzenie, czy po miecz? Nie traćmy czasu na próżne pochwały.
+[17:51:00] [PIPE SYSTEM] | Decoding message
+[17:51:00] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Borin: Ha! Fantastycznym, mówisz? Rzeczywiście, takie słowa mogą brzmieć miło, ale w moich oczach, ciężka praca i odwaga są tym, co czyni człowieka godnym pochwały. Cóż z tego, że ktoś bywa fantastyczny, gdy w sercu jego nie ma prawdziwej odwagi? Przybyłeś tu, czy po jedzenie, czy po miecz? Nie traćmy czasu na próżne pochwały.
+[17:51:01] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[17:51:14] [PIPE SYSTEM WRITE] | Sending message: 0001|0001|9999|0|0|jesteś zajebisty
+[17:51:14] [PIPE SYSTEM WRITE] | 0001|0001|9999|0|0|jesteś zajebisty sent
+[17:51:33] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Borin: Wieści? Cóż, wszyscy wokół mówią o nadchodzących zimowych burzach, które mogą zrujnować plony. Ale czy ty, młodzieńcze, przyszedłeś tu po wieści, czy może raczej pragniesz zakupu mego rzemiosła? Mam miecze i chleb, ale czasu na opowieści nie ma. Mów prędko, co chcesz, bo młodym wiatrem w głowach się nie przepłaci!
+[17:51:33] [PIPE SYSTEM] | Decoding message
+[17:51:33] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Borin: Wieści? Cóż, wszyscy wokół mówią o nadchodzących zimowych burzach, które mogą zrujnować plony. Ale czy ty, młodzieńcze, przyszedłeś tu po wieści, czy może raczej pragniesz zakupu mego rzemiosła? Mam miecze i chleb, ale czasu na opowieści nie ma. Mów prędko, co chcesz, bo młodym wiatrem w głowach się nie przepłaci!
+[17:51:33] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[17:51:39] [TAVERN DIALOGUE CONTROLLER] | ENDDAY message sent.
+[17:51:40] [PIPE SYSTEM WRITE] | Sending message: 0005|0005|9999|0|0|End of day triggered from TavernDialogueController
+[17:51:40] [PIPE SYSTEM WRITE] | 0005|0005|9999|0|0|End of day triggered from TavernDialogueController sent
+[17:51:40] [PIPE SYSTEM READ] | Got message encoded: 0005|0004|0000|0|0|EndDay received
+[17:51:40] [PIPE SYSTEM] | Decoding message
+[17:51:40] [PIPE SYSTEM READ] | Got message decoded: ENDDAY|PLAYER|TEST|0|0|EndDay received
+[17:51:40] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[17:51:45] [DIALOGUE UI CONTROLLER] | Started
+[17:51:54] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|Witaj!
+[17:51:54] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|Witaj! sent
+[17:52:10] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj, podróżniku. Cóż, co cię woła w te strony? Niech moje zioła nie będą ci zbyteczne, bo nie chcę tracić czasu na jałowe rozmowy. Z czym do mnie przychodzisz?
+[17:52:10] [PIPE SYSTEM] | Decoding message
+[17:52:10] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj, podróżniku. Cóż, co cię woła w te strony? Niech moje zioła nie będą ci zbyteczne, bo nie chcę tracić czasu na jałowe rozmowy. Z czym do mnie przychodzisz?
+[17:52:10] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[17:52:16] [PIPE SYSTEM WRITE] | Sending message: 0001|0001|9999|0|0|Witaj!
+[17:52:16] [PIPE SYSTEM WRITE] | 0001|0001|9999|0|0|Witaj! sent
+[17:52:33] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Borin: Witaj, młodzieńcze! Co przynosisz do mojej kuźni? Czy może szukasz solidnego miecza, by stawić czoła nadciągającym burzom? A może potrzebujesz kromki chleba, by napełnić pusty brzuch? Pamiętaj, że w życiu najważniejsza jest ciężka praca i odwaga. Mów prędko, do czego przyszedłeś!
+[17:52:33] [PIPE SYSTEM] | Decoding message
+[17:52:33] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Borin: Witaj, młodzieńcze! Co przynosisz do mojej kuźni? Czy może szukasz solidnego miecza, by stawić czoła nadciągającym burzom? A może potrzebujesz kromki chleba, by napełnić pusty brzuch? Pamiętaj, że w życiu najważniejsza jest ciężka praca i odwaga. Mów prędko, do czego przyszedłeś!
+[17:52:33] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[17:53:36] [PIPE SYSTEM WRITE] | Sending message: 0001|0001|9999|0|0|co masz na sprzedaż?
+[17:53:36] [PIPE SYSTEM WRITE] | 0001|0001|9999|0|0|co masz na sprzedaż? sent
+[17:53:56] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Borin: Hmm, młodzieńcze, pytasz o to, co mogę ci zaoferować w mojej kuźni? Oto, co mam na sprzedaż:  - Solidny miecz, za 25 sztuk złota – to narzędzie, które przyda się na wiele trudnych wypraw. - Chleb, za 10 srebrnych – najsmaczniejszy w wiosce, by napełnić twój pusty brzuch. - A jeśli szukasz wyzwań, mogę ci zaoferować test umiejętności za 30 sztuk złota – sprawdź, czy jesteś wart swojego miejsca w tym świecie!  Zatem, co wybierasz, młodzieńcze? Mów prędko, bo czasu nie mam na próżne rozmowy!
+[17:53:56] [PIPE SYSTEM] | Decoding message
+[17:53:56] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Borin: Hmm, młodzieńcze, pytasz o to, co mogę ci zaoferować w mojej kuźni? Oto, co mam na sprzedaż:  - Solidny miecz, za 25 sztuk złota – to narzędzie, które przyda się na wiele trudnych wypraw. - Chleb, za 10 srebrnych – najsmaczniejszy w wiosce, by napełnić twój pusty brzuch. - A jeśli szukasz wyzwań, mogę ci zaoferować test umiejętności za 30 sztuk złota – sprawdź, czy jesteś wart swojego miejsca w tym świecie!  Zatem, co wybierasz, młodzieńcze? Mów prędko, bo czasu nie mam na próżne rozmowy!
+[17:53:56] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[17:54:15] [PIPE SYSTEM WRITE] | Sending message: 0001|0001|9999|0|0|wezmę jeden chleb
+[17:54:15] [PIPE SYSTEM WRITE] | 0001|0001|9999|0|0|wezmę jeden chleb sent
+[17:54:42] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0002|0|0|Borin: Hmm, młodzieńcze, chleb za 10 srebrnych został rozliczony. Mam nadzieję, że zaspokoi on twój głód, gdyż w czasach burz i niepokoju, dobrze jest pamiętać o sile i energii! Pamiętaj, by nie tracić czasu na jałowe rozmowy. Życie w Oakhold wymaga ciężkiej pracy i mądrych wyborów. Czy jest coś jeszcze, co mogę dla ciebie zrobić, czy zadowolisz się jedynie tym bochenkowym skarbem?
+[17:54:42] [PIPE SYSTEM] | Decoding message
+[17:54:42] [INVENTORY MANAGER] | Added 1x BREAD
+[17:54:42] [INVENTORY MANAGER] | Removed 40x GOLD
+[17:54:42] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|BREAD|0|0|Borin: Hmm, młodzieńcze, chleb za 10 srebrnych został rozliczony. Mam nadzieję, że zaspokoi on twój głód, gdyż w czasach burz i niepokoju, dobrze jest pamiętać o sile i energii! Pamiętaj, by nie tracić czasu na jałowe rozmowy. Życie w Oakhold wymaga ciężkiej pracy i mądrych wyborów. Czy jest coś jeszcze, co mogę dla ciebie zrobić, czy zadowolisz się jedynie tym bochenkowym skarbem?
+[17:54:42] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+
+---------------------------------------
+GAME STARTED 25.57.2025 17:57:56
+---------------------------------------
+[17:57:57] [PIPE SYSTEM] | Connected to python pipe
+[17:57:57] [DIALOGUE UI CONTROLLER] | Started
+[17:58:00] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|Witaj!
+[17:58:00] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|Witaj! sent
+[17:58:18] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj, śmiałku. Czegoż to pragniesz od skromnego zielarza, który z dala od ludzkiego zgiełku wiedzie swe życie? Mów prędko, bo czasu na marzenia nie mam. Może przywiozłeś ze sobą jakieś zioła, które zechciałbyś wymienić, albo dopiero wyruszasz na poszukiwanie właściwego leku? A może tylko chcesz usłyszeć moje mądrości, które niewielu doceni?
+[17:58:18] [PIPE SYSTEM] | Decoding message
+[17:58:18] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj, śmiałku. Czegoż to pragniesz od skromnego zielarza, który z dala od ludzkiego zgiełku wiedzie swe życie? Mów prędko, bo czasu na marzenia nie mam. Może przywiozłeś ze sobą jakieś zioła, które zechciałbyś wymienić, albo dopiero wyruszasz na poszukiwanie właściwego leku? A może tylko chcesz usłyszeć moje mądrości, które niewielu doceni?
+[17:58:18] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[17:58:28] [PIPE SYSTEM WRITE] | Sending message: 0001|0003|9999|0|0|co masz na sprzedaż?
+[17:58:28] [PIPE SYSTEM WRITE] | 0001|0003|9999|0|0|co masz na sprzedaż? sent
+[17:58:46] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Eldan: Ach, pytasz o skarby, które skrywam w mym przytulisku? Cóż, składam ofiarę, którą nazywamy "weed". Za sumę dziesięciu miedzianych monet, możesz nabyć te zioła, bliskie memu sercu. Lecz pamiętaj, nie dla każdego są one błogosławieństwem! Jeśli twoje serce pełne jest miłości do natury, może zechcesz spróbować? Jakie masz zamiary, wędrowcze?
+[17:58:46] [PIPE SYSTEM] | Decoding message
+[17:58:46] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Eldan: Ach, pytasz o skarby, które skrywam w mym przytulisku? Cóż, składam ofiarę, którą nazywamy "weed". Za sumę dziesięciu miedzianych monet, możesz nabyć te zioła, bliskie memu sercu. Lecz pamiętaj, nie dla każdego są one błogosławieństwem! Jeśli twoje serce pełne jest miłości do natury, może zechcesz spróbować? Jakie masz zamiary, wędrowcze?
+[17:58:46] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+
+---------------------------------------
+GAME STARTED 25.22.2025 18:22:03
+---------------------------------------
+[18:22:04] [PIPE SYSTEM] | Connected to python pipe
+[18:22:04] [DIALOGUE UI CONTROLLER] | Started
+
+---------------------------------------
+GAME STARTED 25.24.2025 18:24:52
+---------------------------------------
+[18:24:53] [PIPE SYSTEM] | Connected to python pipe
+[18:24:53] [DIALOGUE UI CONTROLLER] | Started
+
+---------------------------------------
+GAME STARTED 25.34.2025 18:34:59
+---------------------------------------
+[18:35:00] [PIPE SYSTEM] | Connected to python pipe
+[18:35:00] [DIALOGUE UI CONTROLLER] | Started
+[18:35:06] [PIPE SYSTEM WRITE] | Sending message: 0001|0001|9999|0|0|Witaj!
+[18:35:06] [PIPE SYSTEM WRITE] | 0001|0001|9999|0|0|Witaj! sent
+[18:35:24] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj! Jak się masz? Czy jest coś, w czym mogę ci pomóc?
+[18:35:24] [PIPE SYSTEM] | Decoding message
+[18:35:24] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj! Jak się masz? Czy jest coś, w czym mogę ci pomóc?
+[18:35:24] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[18:35:25] [PIPE SYSTEM WRITE] | Sending message: 0001|0001|9999|0|0|chcę kupić dwa miecze
+[18:35:25] [PIPE SYSTEM WRITE] | 0001|0001|9999|0|0|chcę kupić dwa miecze sent
+[18:35:45] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Borin: Aha, chcesz nabyć dwa miecze, powiadasz? Każdy miecz kosztuje dwadzieścia pięć sztuk złota, więc za dwa to będzie pięćdziesiąt sztuk złota. Czy masz taką kwotę przy sobie?
+[18:35:45] [PIPE SYSTEM] | Decoding message
+[18:35:45] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Borin: Aha, chcesz nabyć dwa miecze, powiadasz? Każdy miecz kosztuje dwadzieścia pięć sztuk złota, więc za dwa to będzie pięćdziesiąt sztuk złota. Czy masz taką kwotę przy sobie?
+[18:35:45] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[18:36:04] [PIPE SYSTEM WRITE] | Sending message: 0001|0001|9999|0|0|Witaj!
+[18:36:04] [PIPE SYSTEM WRITE] | 0001|0001|9999|0|0|Witaj! sent
+[18:36:26] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj ponownie! Jak mogę ci pomóc dzisiaj? Czy myślisz o innych zakupach lub potrzebujesz dodatkowych informacji o mieczach?
+[18:36:26] [PIPE SYSTEM] | Decoding message
+[18:36:26] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj ponownie! Jak mogę ci pomóc dzisiaj? Czy myślisz o innych zakupach lub potrzebujesz dodatkowych informacji o mieczach?
+[18:36:26] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[18:36:29] [PIPE SYSTEM WRITE] | Sending message: 0001|0001|9999|0|0|chcę kupić 2 miecz
+[18:36:29] [PIPE SYSTEM WRITE] | 0001|0001|9999|0|0|chcę kupić 2 miecz sent
+[18:36:51] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0001|0|0|NPC: Dziękuję za transakcję! Dwa miecze są teraz twoje. Jeśli potrzebujesz jeszcze czegoś, daj mi znać. Możesz ich użyć do walki z potworami lub jako symbole swojej odwagi. Powodzenia w podróży!
+[18:36:51] [PIPE SYSTEM] | Decoding message
+[18:36:51] [INVENTORY MANAGER] | Added 1x SWORD
+[18:36:51] [INVENTORY MANAGER] | Removed 20x GOLD
+[18:36:51] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|SWORD|0|0|NPC: Dziękuję za transakcję! Dwa miecze są teraz twoje. Jeśli potrzebujesz jeszcze czegoś, daj mi znać. Możesz ich użyć do walki z potworami lub jako symbole swojej odwagi. Powodzenia w podróży!
+[18:36:51] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+
+---------------------------------------
+GAME STARTED 25.42.2025 18:42:11
+---------------------------------------
+[18:42:11] [PIPE SYSTEM] | Connected to python pipe
+[18:42:11] [DIALOGUE UI CONTROLLER] | Started
+[18:42:16] [PIPE SYSTEM WRITE] | Sending message: 0001|0001|9999|0|0|Witaj!
+[18:42:16] [PIPE SYSTEM WRITE] | 0001|0001|9999|0|0|Witaj! sent
+[18:42:31] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0000|0|0|Witaj! Jak mogę Ci pomóc dzisiaj? Jeśli szukasz wyjątkowej broni lub informacji o rzemiośle, to dobrze trafiłeś!
+[18:42:31] [PIPE SYSTEM] | Decoding message
+[18:42:31] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|TEST|0|0|Witaj! Jak mogę Ci pomóc dzisiaj? Jeśli szukasz wyjątkowej broni lub informacji o rzemiośle, to dobrze trafiłeś!
+[18:42:31] [PIPE SYSTEM READ] | Invoking OnMessageRecived
+[18:42:44] [PIPE SYSTEM WRITE] | Sending message: 0001|0001|9999|0|0|chcę kupić 2 miecz
+[18:42:44] [PIPE SYSTEM WRITE] | 0001|0001|9999|0|0|chcę kupić 2 miecz sent
+[18:43:03] [PIPE SYSTEM READ] | Got message encoded: 0001|0004|0001|2|50|Borin: "Aha, widzę, że kupujesz dwa miecze! Łącznie to pięćdziesiąt złota i srebra. Dzięki za zaufanie! Miecze te są dobrze wyważone i wykonane z najlepszych materiałów, więc powinny służyć Ci długo. Życzę Ci chwalebnych zwycięstw na polu bitwy! Czy jeszcze coś mogę dla Ciebie uczynić?"
+[18:43:03] [PIPE SYSTEM] | Decoding message
+[18:43:03] [INVENTORY MANAGER] | Added 1x SWORD
+[18:43:03] [INVENTORY MANAGER] | Removed 20x GOLD
+[18:43:03] [PIPE SYSTEM READ] | Got message decoded: TXTMESSAGE|PLAYER|SWORD|2|50|Borin: "Aha, widzę, że kupujesz dwa miecze! Łącznie to pięćdziesiąt złota i srebra. Dzięki za zaufanie! Miecze te są dobrze wyważone i wykonane z najlepszych materiałów, więc powinny służyć Ci długo. Życzę Ci chwalebnych zwycięstw na polu bitwy! Czy jeszcze coś mogę dla Ciebie uczynić?"
+[18:43:03] [PIPE SYSTEM READ] | Invoking OnMessageRecived
